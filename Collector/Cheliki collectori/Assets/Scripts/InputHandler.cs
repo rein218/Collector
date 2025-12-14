@@ -4,6 +4,7 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] CoinCounter coinCounter;
 
     private void Start()
     {
@@ -31,7 +32,9 @@ public class InputHandler : MonoBehaviour
                 {
                     Coin clickedCoin = hit.collider.GetComponent<Coin>();
 
-                    Debug.Log($"+{clickedCoin.ValueOfCoin}");
+                    coinCounter.AddCoins(clickedCoin.ValueOfCoin);
+
+                    Destroy(clickedCoin.gameObject);
                 }
             }
     
