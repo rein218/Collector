@@ -97,3 +97,11 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+Collector/Cheliki collectori/Library/
+Collector/Cheliki collectori/UserSettings/
+Collector/Cheliki collectori/Temp/
+Collector/Cheliki collectori/Obj/
+Collector/Cheliki collectori/Build/
+Collector/Cheliki collectori/Builds/
+Collector/Cheliki collectori/Logs/
