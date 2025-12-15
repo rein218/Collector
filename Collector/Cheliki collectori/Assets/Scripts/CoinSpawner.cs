@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class CoinSpawner : MonoBehaviour
 {
-    //private List<Coin> coinsOnField = new List<Coin>();
-
     [SerializeField] private GameObject coinPrefab;
 
 
