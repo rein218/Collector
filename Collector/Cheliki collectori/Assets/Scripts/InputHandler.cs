@@ -31,10 +31,7 @@ public class InputHandler : MonoBehaviour
                 if (hit.collider.CompareTag("Coin"))
                 {
                     Coin clickedCoin = hit.collider.GetComponent<Coin>();
-
-                    coinCounter.AddCoins(clickedCoin.ValueOfCoin);
-
-                    Destroy(clickedCoin.gameObject);
+                    clickedCoin.Interact();
                 }
             }
     

@@ -3,16 +3,25 @@ using UnityEngine;
 
 public class CoinCounter : MonoBehaviour
 {
-    private int coinsCount = 0;
-
-    [SerializeField] private TextMeshProUGUI txtCoinCounter;
-
-    
+    public static CoinCounter Instance { get; private set; }
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+
         //load saved
         UpdateCoinCounterText();
     }
+
+
+    private int coinsCount = 0;
+    [SerializeField] private TextMeshProUGUI txtCoinCounter;
+
+
 
     public void AddCoins(int coinsToAdd)
     {
