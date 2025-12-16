@@ -5,8 +5,7 @@ public class Coin : MonoBehaviour
     private int valueOfCoin = 1;
     public int ValueOfCoin => valueOfCoin;
 
-    private bool isOccupied = false;
-    public bool IsOccupied => isOccupied;
+    public bool isOccupied { get; private set; } = false;
 
     private RandomMover randomMover;
 
@@ -47,11 +46,11 @@ public class Coin : MonoBehaviour
 
         if (GetRandomSideOfCoin())
         {
-            CoinCounter.Instance.AddCoins(valueOfCoin);
+            CurrenciesWallet.Instance.AddDollars(valueOfCoin);
         }
         else
         {
-            //CoinCounter.Instance.AddFail();
+            CurrenciesWallet.Instance.AddFail();
         }
     }
 

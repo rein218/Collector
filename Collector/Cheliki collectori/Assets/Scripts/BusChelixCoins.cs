@@ -29,7 +29,7 @@ public class BusChelixCoins : MonoBehaviour
 
         foreach (Coin coin in coinsListShuffled)
         {
-            if (coin.IsOccupied) continue;
+            if (coin.isOccupied) continue;
 
             return coin;
         }

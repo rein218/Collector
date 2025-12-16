@@ -4,7 +4,7 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] CoinCounter coinCounter;
+    [SerializeField] CurrenciesWallet currenciesWallet;
 
     private void Start()
     {
