@@ -1,9 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chelix : MonoBehaviour
 {
+    [Header("Links")]
+    [SerializeField] private ChelixAnimationController _animationController;
     private Coin currentGoalCoin;
+    [Header("Variables")]
     [SerializeField] private float moveSpeed = 0.5f;
 
     [SerializeField] private float distanceToTriggerGoal = 0.65f;
@@ -65,6 +67,7 @@ public class Chelix : MonoBehaviour
 
     private void InteractWithGoal(Coin coinToInteract)
     {
+        _animationController.DoFlip();
         coinToInteract.Interact(true);
 
         Debug.Log("Chelix interacted with: " + coinToInteract.name); 
