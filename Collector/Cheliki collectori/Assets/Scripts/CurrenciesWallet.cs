@@ -39,7 +39,7 @@ public class CurrenciesWallet : MonoBehaviour
         changeDollarsCountEvent?.Invoke(dollarsCount);
     }
 
-    public void SpendDollars(int dollarToSpend)
+    public bool SpendDollars(int dollarToSpend)
     {
         if (dollarsCount - dollarToSpend >= 0)
         {
@@ -48,7 +48,11 @@ public class CurrenciesWallet : MonoBehaviour
             Debug.Log($"{dollarToSpend} dollars spent");
 
             changeDollarsCountEvent?.Invoke(dollarsCount);
+
+            return true;
         }
+
+        return false;
     }
 
     public void AddFail()
@@ -60,7 +64,7 @@ public class CurrenciesWallet : MonoBehaviour
         changeFailsCountEvent?.Invoke(failsCount);
     }
 
-    public void SpendFails(int dollarToSpend)
+    public bool SpendFails(int dollarToSpend)
     {
         if (dollarsCount - dollarToSpend >= 0)
         {
@@ -69,7 +73,11 @@ public class CurrenciesWallet : MonoBehaviour
             Debug.Log($"{dollarToSpend} fails currency spent");
 
             changeFailsCountEvent?.Invoke(failsCount);
+
+            return true;
         }
+        
+        return false;
     }
 
 

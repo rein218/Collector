@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16e95da280be44119a343415675d6e7, type: 3}
+  m_Name: ItemDataChelix
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemData:
+    itemName: Chelix
+    sprite: {fileID: -1240935768809407551, guid: e852d9c8befc7804d84afe49975b4311, type: 3}
+    priceDefault: 0
+    priceCurrent: 0
+    priceModifierOnUpgrade: 1
+    upgradeMaxValue: 5
+    upgradeCurrentValue: 0
