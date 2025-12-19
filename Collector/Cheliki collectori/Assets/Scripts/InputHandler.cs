@@ -4,7 +4,7 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] CoinCounter coinCounter;
+    [SerializeField] CurrenciesWallet currenciesWallet;
 
     private void Start()
     {
@@ -31,10 +31,7 @@ public class InputHandler : MonoBehaviour
                 if (hit.collider.CompareTag("Coin"))
                 {
                     Coin clickedCoin = hit.collider.GetComponent<Coin>();
-
-                    coinCounter.AddCoins(clickedCoin.ValueOfCoin);
-
-                    Destroy(clickedCoin.gameObject);
+                    clickedCoin.Interact();
                 }
             }
     

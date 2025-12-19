@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7075239255996426236}
   - component: {fileID: 4874634064287752017}
   - component: {fileID: 2546564674925992837}
+  - component: {fileID: 8183806840059877523}
   - component: {fileID: 7589441050472958461}
   m_Layer: 3
   m_Name: Coin
@@ -104,6 +105,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce67d79a96ce87399080f271140e36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
+--- !u!114 &8183806840059877523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807740572482875216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e4ed632b4692ce2902292eeca7986e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomMover
+  movementRadius: 1.5
+  moveDuration: 0.6
 --- !u!58 &7589441050472958461
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +149,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
