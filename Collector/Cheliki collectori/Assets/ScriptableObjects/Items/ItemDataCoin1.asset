@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ItemDataCoin1
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemData:
-    itemName: Coin
-    sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
+    itemName: 1
+    sprite: {fileID: 21300000, guid: 6acb20a9874a9ff4ebc0908118d36059, type: 3}
     priceDefault: 0
-    priceCurrent: 0
-    priceModifierOnUpgrade: 1
+    priceModifierOnUpgrade: 0
     upgradeMaxValue: 5
-    upgradeCurrentValue: 0
+    specialDefaultValue: 1
+    specialModifier: 0

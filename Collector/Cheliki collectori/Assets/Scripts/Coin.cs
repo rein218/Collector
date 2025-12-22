@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private int valueOfCoin = 1;
-    public int ValueOfCoin => valueOfCoin;
+    private ItemSO itemSO;
 
     public bool isOccupied { get; private set; } = false;
 
@@ -15,9 +14,9 @@ public class Coin : MonoBehaviour
         randomMover = GetComponent<RandomMover>();
     }
 
-    public void Init(int newValueOfCoin)
+    public void Init(ItemSO newItemSO)
     {
-        valueOfCoin = newValueOfCoin;
+        itemSO = newItemSO;
     }
 
     public void Interact(bool isInteractedByNPC = false)
@@ -46,7 +45,7 @@ public class Coin : MonoBehaviour
 
         if (GetRandomSideOfCoin())
         {
-            CurrenciesWallet.Instance.AddDollars(valueOfCoin);
+            CurrenciesWallet.Instance.AddDollars(itemSO.ItemData.SpecialCurrentValue);
         }
         else
         {

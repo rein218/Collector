@@ -25,11 +25,11 @@ public class Spawner : MonoBehaviour
     }
 
 
-    public void SpawnNewCoin(int newValueOfCoin)
+    public void SpawnNewCoin(ItemSO itemSO)
     {
         GameObject newCoinObj = SpawnNewObj(coinPrefab);
         Coin newCoin = newCoinObj.GetComponent<Coin>();
-        newCoin.Init(newValueOfCoin);
+        newCoin.Init(itemSO);
 
         BusChelixCoins.Instance.AddToCoinList(newCoin);
     }

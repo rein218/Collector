@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,6 +31,12 @@ public class CurrenciesWallet : MonoBehaviour
 
     public void AddDollars(int dollarsToAdd)
     {
+        if (dollarsToAdd <= 0)
+        {
+            Debug.LogError("dollarsToAdd <= 0");
+            return;
+        }
+
         dollarsCount += dollarsToAdd;
 
         Debug.Log($"{dollarsToAdd} dollars added");

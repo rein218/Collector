@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
@@ -11,22 +12,20 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtPrice;
     [SerializeField] private TextMeshProUGUI txtUpgrade;
 
-    [SerializeField] private ItemSO itemSO;
     private ItemData itemData;
 
     private void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonClick);
+    }
+
+    public void Init(ItemSO itemSO)
+    {
 
         itemData = itemSO.ItemData;
         SetNewValues();
     }
-
-    //public void Init(ItemData newItemData)
-    //{
-    //    itemData = newItemData;
-    //}
 
     public void SetNewValues()
     {
@@ -50,10 +49,7 @@ public class ItemButton : MonoBehaviour
             return;
         }
 
-        if (!itemData.IsUpgradedFull() && CurrenciesWallet.Instance.SpendDollars(itemData.PriceCurrent))
-        {
-            if (itemData.Upgrade()) SetNewValues();
-        }
+        if (itemData.ButtonClick()) SetNewValues();
     }
 
     private void OnDestroy()

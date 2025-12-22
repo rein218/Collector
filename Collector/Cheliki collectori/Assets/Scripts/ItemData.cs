@@ -5,29 +5,53 @@ using UnityEngine.Events;
 [Serializable]
 public class ItemData
 {
-    [SerializeField] private string itemName;
-        public string ItemName => itemName;
+    [SerializeField] private ItemName itemName;
+        public ItemName ItemName => itemName;
     [SerializeField] private  Sprite sprite;
         public Sprite Sprite => sprite;
+
+
     [SerializeField] private  int priceDefault;
         public int PriceDefault => priceDefault;
-    [SerializeField] private  int priceCurrent;
+    private  int priceCurrent;
         public int PriceCurrent => priceCurrent;
     [SerializeField] private  int priceModifierOnUpgrade;
         public int PriceModifierOnUpgrade => priceModifierOnUpgrade;
     [SerializeField] private  int upgradeMaxValue;
         public int UpgradeMaxValue => upgradeMaxValue;
-    [SerializeField] private  int upgradeCurrentValue;
+    private  int upgradeCurrentValue;
         public int UpgradeCurrentValue => upgradeCurrentValue;
 
 
-    public bool Upgrade()
+    [SerializeField] private  int specialDefaultValue;
+        public int SpecialDefaultValue => specialDefaultValue;
+    private  int specialCurrentValue;
+        public int SpecialCurrentValue => specialCurrentValue;
+    [SerializeField] private int specialModifier;
+        public int SpecialModifier => specialModifier;
+
+    public UnityAction actionOnClick {get; private set; }
+
+    public void Init(UnityAction newActionOnClick )
     {
-        if (IsUpgradedFull()) return false;
+        priceCurrent = priceDefault;
+        upgradeCurrentValue = 0;
+        specialCurrentValue = specialDefaultValue;
+        Debug.Log($"specialCurrentValue == {specialCurrentValue}");
+
+        actionOnClick = newActionOnClick;
+    }
+
+
+    public bool ButtonClick()
+    {
+        if (IsUpgradedFull() || !CurrenciesWallet.Instance.SpendDollars(PriceCurrent)) return false;
 
         upgradeCurrentValue++;
-
         priceCurrent += priceModifierOnUpgrade;
+        specialCurrentValue += specialModifier;
+
+        actionOnClick?.Invoke();
 
         return true;
     }

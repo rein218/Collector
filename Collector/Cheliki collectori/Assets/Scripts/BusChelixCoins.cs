@@ -45,5 +45,12 @@ public class BusChelixCoins : MonoBehaviour
         chelixList.Add(newChelix);
     }
 
+    public bool CoinListIsEmpty()
+    {
+        if (coinsList.Count > 0) return false;
+
+        return true;
+    }
+
 
 }

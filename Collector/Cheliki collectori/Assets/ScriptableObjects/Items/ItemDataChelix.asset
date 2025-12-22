@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ItemDataChelix
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemData:
-    itemName: Chelix
-    sprite: {fileID: -1240935768809407551, guid: e852d9c8befc7804d84afe49975b4311, type: 3}
+    itemName: 0
+    sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
     priceDefault: 0
-    priceCurrent: 0
-    priceModifierOnUpgrade: 1
+    priceModifierOnUpgrade: 0
     upgradeMaxValue: 5
-    upgradeCurrentValue: 0
+    specialDefaultValue: 1
+    specialModifier: 0

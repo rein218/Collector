@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Chelix : MonoBehaviour
@@ -13,35 +14,98 @@ public class Chelix : MonoBehaviour
 
     private ChelixState currentState = ChelixState.Idle;
 
-
-    private void Update()
+    private void Awake()
     {
         DoStateAction();
     }
 
+
     private void DoStateAction()
     {
+        StopAllCoroutines();
         switch (currentState)
         {
             case ChelixState.Idle:
-                Debug.Log(currentState);
-                SetNewGoal();
+                StartCoroutine(IdleIE());
                 break;
 
             case ChelixState.MovingToGoal:
-                MoveToGoalPos();
+                StartCoroutine(MoveToGoalIE());
                 break;
 
             case ChelixState.Sleeping:
-                //
+                StartCoroutine(SleepIE());
                 break;
         }
+        Debug.Log(currentState);
+    }
+
+    private IEnumerator MoveToGoalIE()
+    {
+        distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
+
+        while (distanceToGoal > distanceToTriggerGoal)
+        {
+            Vector3 direction = (currentGoalCoin.transform.position - transform.position).normalized;
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+            distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
+
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.3f);
+
+
+        InteractWithGoal(currentGoalCoin);
+
+        currentState = ChelixState.Idle;
+        DoStateAction();
+    }
+
+    private IEnumerator IdleIE()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        Debug.Log("hehe");
+        SetNewGoal();
+
+        DoStateAction();
+    }
+
+    private IEnumerator SleepIE()
+    {
+        while (currentState == ChelixState.Sleeping)
+        {
+            Debug.Log("Chelix is sleeping");
+            yield return new WaitForSeconds(2);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        SetNewGoal();
+
+        DoStateAction();
     }
 
     public void SetNewGoal()
     {
+        if (BusChelixCoins.Instance.CoinListIsEmpty())
+        {
+            currentState = ChelixState.Sleeping;
+            DoStateAction();
+            return;
+        }
+
         Coin newGoalCoin = BusChelixCoins.Instance.FindGoalForChelix();
-        if (newGoalCoin == currentGoalCoin || newGoalCoin == null) SetNewGoal();
+
+        Debug.Log($"newGoalCoin == {newGoalCoin}");
+        if (newGoalCoin == currentGoalCoin || newGoalCoin == null)
+        {
+            currentGoalCoin = null;
+            SetNewGoal();
+        }
+        
+        Debug.Log($"currentGoalCoin == {currentGoalCoin}");
 
         currentGoalCoin = newGoalCoin;
 
@@ -49,20 +113,6 @@ public class Chelix : MonoBehaviour
             currentState = ChelixState.MovingToGoal;
         else
             currentState = ChelixState.Sleeping;
-
-        Debug.Log(currentState);
-    }
-
-    private void MoveToGoalPos()
-    {
-        Vector3 direction = (currentGoalCoin.transform.position - transform.position).normalized;
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
-
-        distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
-
-        Debug.Log(distanceToGoal);
-
-        if (distanceToGoal <= distanceToTriggerGoal) InteractWithGoal(currentGoalCoin);
     }
 
     private void InteractWithGoal(Coin coinToInteract)
@@ -75,5 +125,10 @@ public class Chelix : MonoBehaviour
         currentState = ChelixState.Idle;
 
         SetNewGoal();
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
