@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 704656967}
   - component: {fileID: 704656968}
   m_Layer: 5
-  m_Name: UpgradeMenu
+  m_Name: ItemsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 704656966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6532a9e2ad4f51f927370e3717f01e, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1c2728f6240347194c9cefe06930dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeMenu
   itemButtonPrefab: {fileID: 1132074546010025786, guid: 9c008129005b597e3808cb9921d74241, type: 3}

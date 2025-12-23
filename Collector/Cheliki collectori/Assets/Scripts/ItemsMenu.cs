@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UpgradeMenu : MonoBehaviour
+public class ItemsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject itemButtonPrefab;
     [SerializeField] private Transform containerT;
@@ -13,12 +13,12 @@ public class UpgradeMenu : MonoBehaviour
     {
         foreach (ItemSO itemSO in itemsSO)
         {
-            AddNewUpgrade(itemSO);
+            AddNewItem(itemSO);
         }
     }
     
 
-    private void AddNewUpgrade(ItemSO itemSO)
+    private void AddNewItem(ItemSO itemSO)
     {
         GameObject newItemButtonGO = Instantiate(itemButtonPrefab, containerT);
         ItemButton newItemButton = newItemButtonGO.GetComponent<ItemButton>();
