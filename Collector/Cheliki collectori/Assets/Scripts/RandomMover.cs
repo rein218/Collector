@@ -46,7 +46,6 @@ public class RandomMover : MonoBehaviour
             if (t>1) t=1; if (t<0) t=0; 
             t = t * t * (3f - 2f * t); //smooth
             float tLerp = Mathf.Sin(t * Mathf.PI); //stuck in the middle
-            Debug.Log("t "+ t + " tLerp " +tLerp);
 
             //calculate move
             Vector3 currentMovePos = Vector3.Lerp(startPos, targetPos, t);

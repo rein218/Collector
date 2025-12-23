@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Chelix : MonoBehaviour
@@ -27,6 +28,7 @@ public class Chelix : MonoBehaviour
         {
             case ChelixState.Idle:
                 StartCoroutine(IdleIE());
+                _animationController.StopMoving();
                 break;
 
             case ChelixState.MovingToGoal:
@@ -35,6 +37,7 @@ public class Chelix : MonoBehaviour
 
             case ChelixState.Sleeping:
                 StartCoroutine(SleepIE());
+                _animationController.StopMoving();
                 break;
         }
         Debug.Log(currentState);
@@ -44,6 +47,13 @@ public class Chelix : MonoBehaviour
     {
         distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
 
+
+        var sidetomove = (currentGoalCoin.transform.position - transform.position).normalized;
+        if      (sidetomove.y<0 && sidetomove.x<0) _animationController.MoveTopLeft();
+        else if (sidetomove.y<0 && sidetomove.x>0) _animationController.MoveTopRight();
+        else if (sidetomove.y>0 && sidetomove.x<0) _animationController.MoveBottomLeft();
+        else                                       _animationController.MoveBottomRight();
+        
         while (distanceToGoal > distanceToTriggerGoal)
         {
             Vector3 direction = (currentGoalCoin.transform.position - transform.position).normalized;
@@ -53,6 +63,8 @@ public class Chelix : MonoBehaviour
 
             yield return null;
         }
+
+
         yield return new WaitForSeconds(0.3f);
 
 
