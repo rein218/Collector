@@ -31,6 +31,7 @@ public class ItemData
         public int SpecialModifier => specialModifier;
 
     public UnityAction actionOnClick {get; private set; }
+    
 
     public void Init(UnityAction newActionOnClick )
     {
@@ -47,13 +48,25 @@ public class ItemData
     {
         if (IsUpgradedFull() || !CurrenciesWallet.Instance.SpendDollars(PriceCurrent)) return false;
 
-        upgradeCurrentValue++;
-        priceCurrent += priceModifierOnUpgrade;
-        specialCurrentValue += specialModifier;
+        IncreaseUpgradeCurrentValue();
+        IncreasePriceCurrentValue();
 
         actionOnClick?.Invoke();
 
         return true;
+    }
+
+    public void IncreaseUpgradeCurrentValue()
+    {
+        upgradeCurrentValue++;
+    }
+    public void IncreasePriceCurrentValue()
+    {
+        priceCurrent += priceModifierOnUpgrade;
+    }
+    public void IncreaseSpecialCurrentValue()
+    {
+        specialCurrentValue += specialModifier;
     }
 
     public bool IsUpgradedFull()
