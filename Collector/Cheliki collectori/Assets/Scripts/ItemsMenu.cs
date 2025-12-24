@@ -5,40 +5,42 @@ public class ItemsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject itemButtonPrefab;
     [SerializeField] private Transform containerT;
-    [SerializeField] private ItemSO[] itemsSO;
+    [SerializeField] private ItemData[] itemsData;
 
     [SerializeField] private Spawner spawner;
 
     public void Awake()
     {
-        foreach (ItemSO itemSO in itemsSO)
+        foreach (ItemData itemData in itemsData)
         {
-            AddNewItem(itemSO);
+            AddNewItem(itemData);
         }
     }
     
 
-    private void AddNewItem(ItemSO itemSO)
+    private void AddNewItem(ItemData itemData)
     {
         GameObject newItemButtonGO = Instantiate(itemButtonPrefab, containerT);
         ItemButton newItemButton = newItemButtonGO.GetComponent<ItemButton>();
 
-        itemSO.ItemData.Init(ActionOnClick(itemSO));
+        itemData.Init(ActionOnClick(itemData));
 
-        newItemButton.Init(itemSO);
+        newItemButton.Init(itemData);
     }
 
-    private UnityAction ActionOnClick(ItemSO itemSO)
+    private UnityAction ActionOnClick(ItemData itemData)
     {
-        switch (itemSO.ItemData.ItemName)
+        switch (itemData.ItemName)
         {
             case ItemName.NewCoin:
-                return () => spawner.SpawnNewCoin(itemSO);
+                return () => spawner.SpawnNewCoin(itemData);
 
             case ItemName.NewChelix:
                 return () => spawner.SpawnNewChelix();
+
+            // upgrades are set in ItemUpgradeData
         }
 
-        return () => Debug.LogError("ActionOnClick hasn't been set");
+        return null;
     }
 }
