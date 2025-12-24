@@ -2,38 +2,37 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[Serializable]
-public class ItemData
+[CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
+public class ItemData : ScriptableObject
 {
-    [SerializeField] private ItemName itemName;
+    [SerializeField] protected private ItemName itemName;
         public ItemName ItemName => itemName;
-    [SerializeField] private  Sprite sprite;
+    [SerializeField] protected private  Sprite sprite;
         public Sprite Sprite => sprite;
 
 
-    [SerializeField] private  int priceDefault;
+    [SerializeField] protected private  int priceDefault;
         public int PriceDefault => priceDefault;
-    private  int priceCurrent;
+    protected private  int priceCurrent;
         public int PriceCurrent => priceCurrent;
-    [SerializeField] private  int priceModifierOnUpgrade;
+    [SerializeField] protected private  int priceModifierOnUpgrade;
         public int PriceModifierOnUpgrade => priceModifierOnUpgrade;
-    [SerializeField] private  int upgradeMaxValue;
+    [SerializeField] protected private  int upgradeMaxValue;
         public int UpgradeMaxValue => upgradeMaxValue;
-    private  int upgradeCurrentValue;
+    protected private  int upgradeCurrentValue;
         public int UpgradeCurrentValue => upgradeCurrentValue;
 
 
-    [SerializeField] private  int specialDefaultValue;
+    [SerializeField] private int specialDefaultValue;
         public int SpecialDefaultValue => specialDefaultValue;
     private  int specialCurrentValue;
         public int SpecialCurrentValue => specialCurrentValue;
-    [SerializeField] private int specialModifier;
-        public int SpecialModifier => specialModifier;
 
-    public UnityAction actionOnClick {get; private set; }
+
+    public UnityAction actionOnClick {get; protected private set; }
     
 
-    public void Init(UnityAction newActionOnClick )
+    virtual public void Init (UnityAction newActionOnClick)
     {
         priceCurrent = priceDefault;
         upgradeCurrentValue = 0;
@@ -64,9 +63,11 @@ public class ItemData
     {
         priceCurrent += priceModifierOnUpgrade;
     }
-    public void IncreaseSpecialCurrentValue()
+    public void IncreaseSpecialCurrentValue(int specialModifierValue)
     {
-        specialCurrentValue += specialModifier;
+        specialCurrentValue += specialModifierValue;
+
+        Debug.Log("specialCurrentValue");
     }
 
     public bool IsUpgradedFull()

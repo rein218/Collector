@@ -20,10 +20,10 @@ public class ItemButton : MonoBehaviour
         button.onClick.AddListener(ButtonClick);
     }
 
-    public void Init(ItemSO itemSO)
+    public void Init(ItemData newItemData)
     {
 
-        itemData = itemSO.ItemData;
+        itemData = newItemData;
         SetNewValues();
     }
 

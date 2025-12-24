@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a16e95da280be44119a343415675d6e7, type: 3}
+  m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemData:
-    itemName: 0
-    sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
-    priceDefault: 0
-    priceModifierOnUpgrade: 1
-    upgradeMaxValue: 5
-    specialDefaultValue: 1
-    specialModifier: 1
+  itemName: 0
+  sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
+  priceDefault: 0
+  priceModifierOnUpgrade: 1
+  upgradeMaxValue: 5
+  specialDefaultValue: 1

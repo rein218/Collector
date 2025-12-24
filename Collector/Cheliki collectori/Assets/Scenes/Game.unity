@@ -430,9 +430,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeMenu
   itemButtonPrefab: {fileID: 1132074546010025786, guid: 9c008129005b597e3808cb9921d74241, type: 3}
   containerT: {fileID: 202770924}
-  itemsSO:
+  itemsData:
   - {fileID: 11400000, guid: 9d4c3d299cadfa40689490a8969eeb25, type: 2}
   - {fileID: 11400000, guid: 9be5f31a89f980bc0bba9d2efe40f28e, type: 2}
+  - {fileID: 11400000, guid: cc6131e29b2385330b870e78c2a6a227, type: 2}
   spawner: {fileID: 1064348417}
 --- !u!1 &731959534
 GameObject:
