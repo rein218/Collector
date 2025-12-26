@@ -33,6 +33,11 @@ public class InputHandler : MonoBehaviour
                     Coin clickedCoin = hit.collider.GetComponent<Coin>();
                     clickedCoin.Interact();
                 }
+                else if (hit.collider.CompareTag("Chelix"))
+                {
+                    Chelix clickedChelix = hit.collider.GetComponent<Chelix>();
+                    clickedChelix.SetNewGoal();
+                }
             }
     
         }
