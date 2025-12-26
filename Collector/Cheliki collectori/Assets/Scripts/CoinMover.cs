@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
-public class RandomMover : MonoBehaviour
+public class CoinMover : MonoBehaviour
 {
     [Header("Animations settings")]
     [SerializeField] private CoinAnimationControllers _animationController;
@@ -28,13 +27,26 @@ public class RandomMover : MonoBehaviour
         
 
         Vector3 startPos = transform.position;
-        Vector2 randomOffset = Random.insideUnitCircle * _movementRadius;
-        Vector3 targetPos = startPos + new Vector3(randomOffset.x, randomOffset.y, 0);
+        Vector3 targetPos = startPos + FindNewDirection();
         
 
         moveCoroutine = StartCoroutine(MoveToPosition(startPos, targetPos, _moveDuration));
     }
-    
+
+    private Vector3 FindNewDirection()
+    {
+        sbyte targetX = 0, targetY = 0;
+        Vector2 randomOffset = Random.insideUnitCircle * _movementRadius;
+
+        if (transform.position.x + randomOffset.x * _movementRadius > BoundsOfActiveSpace.rightBorder) targetX = -2;
+        else if (transform.position.x - randomOffset.x *  _movementRadius < BoundsOfActiveSpace.leftBorder) targetX = 2;
+
+        if (transform.position.y + randomOffset.y * _movementRadius > BoundsOfActiveSpace.topBorder) targetY = -2;
+        else if (transform.position.y - randomOffset.y * _movementRadius < BoundsOfActiveSpace.bottomBorder) targetY = 2;
+
+        return new Vector3(targetX + randomOffset.x, targetY + randomOffset.y, 0);
+    }
+
     private IEnumerator MoveToPosition(Vector3 startPos, Vector3 targetPos, float duration)
     {
         _animationController.StartRotation();
@@ -52,7 +64,7 @@ public class RandomMover : MonoBehaviour
 
             //calculate tossing
             float currHeight = Mathf.Lerp(0,_tossHeight, tLerp);
-            Vector3 currentTossPos = new Vector3(0,currHeight,0);
+            Vector3 currentTossPos = new Vector3(0, currHeight,0);
 
             //animations
             float currentSpeed = Mathf.Lerp(_minAnimSpeed,_maxAnimSpeed, tLerp);
