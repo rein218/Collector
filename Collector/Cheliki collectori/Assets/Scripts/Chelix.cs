@@ -76,7 +76,7 @@ public class Chelix : MonoBehaviour
 
     private IEnumerator IdleIE()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2);
 
         Debug.Log("hehe");
         SetNewGoal();
@@ -89,10 +89,10 @@ public class Chelix : MonoBehaviour
         while (currentState == ChelixState.Sleeping)
         {
             Debug.Log("Chelix is sleeping");
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
         }
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.5f);
 
         SetNewGoal();
 
