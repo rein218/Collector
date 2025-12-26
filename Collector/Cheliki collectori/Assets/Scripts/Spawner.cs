@@ -16,8 +16,8 @@ public class Spawner : MonoBehaviour
 
         //needs to find bounds instead 20
 
-        posX = Random.Range(-5.0f, 5.0f); 
-        posY = Random.Range(-5.0f, 5.0f);
+        posX = Random.Range(BoundsOfActiveSpace.leftBorder, BoundsOfActiveSpace.rightBorder); 
+        posY = Random.Range(BoundsOfActiveSpace.bottomBorder, BoundsOfActiveSpace.topBorder);
 
         Vector3 newPos = new(posX, posY, 0);
 

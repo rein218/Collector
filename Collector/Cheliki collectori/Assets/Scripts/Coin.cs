@@ -6,12 +6,12 @@ public class Coin : MonoBehaviour
 
     public bool isOccupied { get; private set; } = false;
 
-    private RandomMover randomMover;
+    private CoinMover coinMover;
 
 
     private void Awake()
     {
-        randomMover = GetComponent<RandomMover>();
+        coinMover = GetComponent<CoinMover>();
     }
 
     public void Init(ItemData newItemData)
@@ -40,7 +40,7 @@ public class Coin : MonoBehaviour
 
     private void Toss()
     {
-        randomMover.StartMovement();
+        coinMover.StartMovement();
 
 
         if (GetRandomSideOfCoin())

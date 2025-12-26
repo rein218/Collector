@@ -76,7 +76,7 @@ public class Chelix : MonoBehaviour
 
     private IEnumerator IdleIE()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.5f);
 
         Debug.Log("hehe");
         SetNewGoal();
@@ -92,7 +92,7 @@ public class Chelix : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.5f);
 
         SetNewGoal();
 

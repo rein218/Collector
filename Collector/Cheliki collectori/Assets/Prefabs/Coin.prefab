@@ -242,12 +242,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7807740572482875216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e4ed632b4692ce2902292eeca7986e, type: 3}
+  m_Script: {fileID: 11500000, guid: 49a1ce6f27f1dcd2aba5b0db097f699c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomMover
   _animationController: {fileID: 6985667036232071052}
-  movementRadius: 1.5
-  moveDuration: 0.6
+  _minAnimSpeed: 0
+  _maxAnimSpeed: 3
+  _movementRadius: 2
+  _moveDuration: 2
+  _tossHeight: 2
+  _tossDuration: 2
 --- !u!58 &7589441050472958461
 CircleCollider2D:
   m_ObjectHideFlags: 0
