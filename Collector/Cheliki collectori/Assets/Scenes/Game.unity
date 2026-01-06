@@ -433,8 +433,11 @@ MonoBehaviour:
   itemsData:
   - {fileID: 11400000, guid: 9d4c3d299cadfa40689490a8969eeb25, type: 2}
   - {fileID: 11400000, guid: 9be5f31a89f980bc0bba9d2efe40f28e, type: 2}
+  - {fileID: 11400000, guid: 6afc810b9e8f5540192e220bce589dba, type: 2}
+  upgradesData:
   - {fileID: 11400000, guid: cc6131e29b2385330b870e78c2a6a227, type: 2}
   spawner: {fileID: 1064348417}
+  inputHandler: {fileID: 2133612166}
 --- !u!1 &731959534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1665,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   currenciesWallet: {fileID: 1756073678}
+  clickIsRequired: 1
 --- !u!4 &2133612167
 Transform:
   m_ObjectHideFlags: 0

@@ -116,7 +116,8 @@ public class Chelix : MonoBehaviour
             currentGoalCoin = null;
             SetNewGoal();
         }
-        
+        //newGoalCoin.SetIsOcupied(true);
+
         Debug.Log($"currentGoalCoin == {currentGoalCoin}");
 
         currentGoalCoin = newGoalCoin;

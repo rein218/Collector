@@ -9,8 +9,11 @@ public class ItemUpgradeData : ItemData
     [SerializeField] private int specialModifier;
         public int SpecialModifier => specialModifier;
 
-    override public void Init (UnityAction newActionOnClick)
+    [SerializeField] private int valueToUnlock;
+
+    override public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
+        isUnlocked = false;
         priceCurrent = priceDefault;
         upgradeCurrentValue = 0;
 
@@ -21,6 +24,11 @@ public class ItemUpgradeData : ItemData
     public void UpgradeItem()
     {
         itemDataToUpgrade.IncreaseSpecialCurrentValue(specialModifier);
+    }
+
+    public void Unlock(int upgrValue)
+    {
+        if (upgrValue == valueToUnlock) isUnlocked = true;
     }
 
 

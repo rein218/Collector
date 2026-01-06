@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
 public class ItemData : ScriptableObject
 {
+    protected bool isUnlocked;
     [SerializeField] protected private ItemName itemName;
         public ItemName ItemName => itemName;
     [SerializeField] protected private  Sprite sprite;
@@ -30,27 +31,31 @@ public class ItemData : ScriptableObject
 
 
     public UnityAction actionOnClick {get; protected private set; }
-    
+    public UnityAction unlockOnClick {get; protected private set; }
 
-    virtual public void Init (UnityAction newActionOnClick)
+    virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
+        isUnlocked = true;
         priceCurrent = priceDefault;
         upgradeCurrentValue = 0;
         specialCurrentValue = specialDefaultValue;
+
         Debug.Log($"specialCurrentValue == {specialCurrentValue}");
 
         actionOnClick = newActionOnClick;
+        unlockOnClick = newUnlockOnClick;
     }
 
 
     public bool ButtonClick()
     {
-        if (IsUpgradedFull() || !CurrenciesWallet.Instance.SpendDollars(PriceCurrent)) return false;
+        if (IsUpgradedFull() || !CurrenciesWallet.Instance.SpendDollars(PriceCurrent) || !isUnlocked) return false;
 
         IncreaseUpgradeCurrentValue();
         IncreasePriceCurrentValue();
 
         actionOnClick?.Invoke();
+        unlockOnClick?.Invoke();
 
         return true;
     }

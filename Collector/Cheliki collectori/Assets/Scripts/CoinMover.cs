@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class CoinMover : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class CoinMover : MonoBehaviour
     
     
     private Coroutine moveCoroutine;
-    
+
+    [SerializeField] private UnityEvent eventTossEnding;
+
 
     public void StartMovement()
     {
@@ -80,6 +83,8 @@ public class CoinMover : MonoBehaviour
         _animationController.EndRotation();
         transform.position = targetPos;
         moveCoroutine = null;
+
+        eventTossEnding?.Invoke();
     }
     
 

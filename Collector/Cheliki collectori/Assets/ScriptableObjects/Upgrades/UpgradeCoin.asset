@@ -20,3 +20,4 @@ MonoBehaviour:
   specialDefaultValue: 0
   itemDataToUpgrade: {fileID: 11400000, guid: 9d4c3d299cadfa40689490a8969eeb25, type: 2}
   specialModifier: 1
+  valueToUnlock: 3

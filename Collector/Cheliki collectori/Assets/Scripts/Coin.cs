@@ -21,29 +21,15 @@ public class Coin : MonoBehaviour
 
     public void Interact(bool isInteractedByNPC = false)
     {
-        //animation
-
-        Toss();
-        
-
+        if (!coinMover.IsMoving()) coinMover.StartMovement();
 
 
         if (isInteractedByNPC) isOccupied = false;
     }
 
-    private bool GetRandomSideOfCoin()
+    public void GetSideOfCoin()
     {
-        if (Random.Range(0, 2) > 0) return true;
-
-        return false;
-    }
-
-    private void Toss()
-    {
-        coinMover.StartMovement();
-
-
-        if (GetRandomSideOfCoin())
+        if (Random.Range(0, 2) > 0)
         {
             CurrenciesWallet.Instance.AddDollars(itemData.SpecialCurrentValue);
         }
@@ -51,6 +37,11 @@ public class Coin : MonoBehaviour
         {
             CurrenciesWallet.Instance.AddFail();
         }
+    }
+
+    public void SetIsOcupied(bool newBool)
+    {
+        isOccupied = newBool;
     }
 
 
