@@ -41,8 +41,8 @@ public class ItemData : ScriptableObject
 
         Debug.Log($"specialCurrentValue == {specialCurrentValue}");
 
-        eventOnClick.AddListener(newActionOnClick);
-        eventOnClick.AddListener(newUnlockOnClick);
+        if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
+        if (newUnlockOnClick != null) eventOnClick.AddListener(newUnlockOnClick);
     }
 
 
