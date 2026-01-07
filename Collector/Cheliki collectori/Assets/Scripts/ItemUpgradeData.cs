@@ -19,7 +19,7 @@ public class ItemUpgradeData : ItemData
         upgradeCurrentValue = 0;
 
         eventOnClick.AddListener(() => UpgradeItem());
-        eventOnClick.AddListener(newActionOnClick);
+        if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
     }
 
     public void UpgradeItem()
