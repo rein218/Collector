@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using YG;
 
 public class CurrenciesWallet : MonoBehaviour
 {
@@ -21,9 +22,23 @@ public class CurrenciesWallet : MonoBehaviour
         Instance = this;
 
         //load saved
-
+        Load();
         changeDollarsCountEvent?.Invoke(dollarsCount);
         changeFailsCountEvent?.Invoke(failsCount);
+    }
+
+
+    public void Save()
+    {
+        YG2.saves.dollarsCount = dollarsCount;
+        YG2.saves.failsCount = failsCount;
+        
+    }
+
+    public void Load()
+    {
+        dollarsCount = YG2.saves.dollarsCount;
+        failsCount = YG2.saves.failsCount;
     }
 
 
@@ -42,6 +57,7 @@ public class CurrenciesWallet : MonoBehaviour
         Debug.Log($"{dollarsToAdd} dollars added");
 
         changeDollarsCountEvent?.Invoke(dollarsCount);
+        Save();
     }
 
     public bool SpendDollars(int dollarToSpend)
@@ -53,7 +69,7 @@ public class CurrenciesWallet : MonoBehaviour
             Debug.Log($"{dollarToSpend} dollars spent");
 
             changeDollarsCountEvent?.Invoke(dollarsCount);
-
+            Save();
             return true;
         }
 
@@ -67,6 +83,7 @@ public class CurrenciesWallet : MonoBehaviour
         Debug.Log($"1 fail currency added");
 
         changeFailsCountEvent?.Invoke(failsCount);
+        Save();
     }
 
     public bool SpendFails(int dollarToSpend)
@@ -78,7 +95,7 @@ public class CurrenciesWallet : MonoBehaviour
             Debug.Log($"{dollarToSpend} fails currency spent");
 
             changeFailsCountEvent?.Invoke(failsCount);
-
+            Save();
             return true;
         }
         
@@ -93,3 +110,4 @@ public class CurrenciesWallet : MonoBehaviour
         changeFailsCountEvent.RemoveAllListeners();
     }
 }
+
