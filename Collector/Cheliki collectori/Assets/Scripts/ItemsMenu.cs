@@ -1,20 +1,28 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.Events;
+using YG;
 
 public class ItemsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject itemButtonPrefab;
     [SerializeField] private Transform containerT;
-    [SerializeField] private ItemData[] itemsData;
-    [SerializeField] private ItemUpgradeData[] upgradesData;
+    [SerializeField] private List<ItemData> itemsData;
+    [SerializeField] private List<ItemUpgradeData> upgradesData;
 
     [SerializeField] private Spawner spawner;
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private BusChelixCoins busChelixCoins;
 
-    public void Awake()
+    [Order(-1)]
+    public IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f);
         foreach (ItemData itemData in itemsData)
         {
             AddNewItem(itemData);
@@ -23,6 +31,80 @@ public class ItemsMenu : MonoBehaviour
         foreach (ItemData upgradeData in upgradesData)
         {
             AddNewItem(upgradeData);
+        }
+        //
+    }
+    
+    public void TestSave()
+    {
+        var test1 = new TestClass("first", true);
+        var test2 = new TestClass("second", false);
+        var test3 = new TestClass("third", false);
+
+
+        YG2.saves.testsData = new List<TestClass>();
+        var data = new TestClass();
+
+        data.CopyFrom(test1);
+        YG2.saves.testsData.Add(data);
+
+        data.CopyFrom(test2);
+        YG2.saves.testsData.Add(data);
+
+        data.CopyFrom(test3);
+        YG2.saves.testsData.Add(data);
+
+        YG2.SaveProgress();
+
+        string json = JsonUtility.ToJson(YG2.saves);
+         Debug.Log(json);
+        PlayerPrefs.SetString("SaveData", json);
+
+        PlayerPrefs.Save();
+    }
+
+    public void TestLoad()
+    {
+        Debug.Log(YG2.saves.testsData.Count);
+        foreach (var singleData in YG2.saves.testsData)
+        {
+            var data = new TestClass();
+            data.CopyFrom(singleData);
+            Debug.Log(data.itemName + " " + data.isUnlocked);
+        }
+    }
+    
+    public void Save()
+    {
+
+        YG2.saves.itemsData = new List<ItemData>();
+        foreach (var itemData in itemsData)
+        {
+            var data = ScriptableObject.CreateInstance<ItemData>();;
+            data.CopyFrom(itemData);
+            Debug.Log(data.ItemName);
+            YG2.saves.itemsData.Add(data);
+        }
+        YG2.SaveProgress();
+
+         
+    }
+
+    public void Load()
+    {
+        itemsData = new List<ItemData>();
+        Debug.Log(YG2.saves.itemsData.Count);
+        foreach (var singleData in YG2.saves.itemsData)
+        {
+            var data = ScriptableObject.CreateInstance<ItemData>();
+            if (singleData == null)
+            {
+                Debug.LogError("хуйня");
+                return;
+            }
+            Debug.Log(singleData.ItemName);
+            data.CopyFrom(singleData);
+            itemsData.Add(data);
         }
     }
     
@@ -60,7 +142,7 @@ public class ItemsMenu : MonoBehaviour
 
             // upgrades are set in  ItemUpgradeData.UpgradeItem()
         }
-
+        //Save();
         return null;
     }
 
@@ -85,5 +167,33 @@ public class ItemsMenu : MonoBehaviour
         ItemUpgradeData upgradeToUnlock = upgradesData.First(upgr => upgr.ItemName == nameOfUnlocked);
 
         upgradeToUnlock?.Unlock(upgrValue);
+    }
+}
+
+[Serializable]
+public class TestClass 
+{
+    public bool isUnlocked;
+    public string itemName;
+    public TestClass()
+    {
+        
+    }
+    public TestClass(string itemName, bool isUnlocked)
+    {
+        this.itemName = itemName;
+        this.isUnlocked = isUnlocked;
+    }
+
+    public void CopyTo(TestClass toWhom)
+    {
+        toWhom.isUnlocked = this.isUnlocked;
+        toWhom.itemName = this.itemName;
+    }
+
+    public void CopyFrom(TestClass fromWhom)
+    {
+        this.isUnlocked = fromWhom.isUnlocked;
+        this.itemName = fromWhom.itemName;
     }
 }
