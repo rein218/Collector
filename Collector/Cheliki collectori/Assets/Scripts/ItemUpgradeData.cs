@@ -5,9 +5,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemUpgradeData")]
 public class ItemUpgradeData : ItemData
 {
-    [SerializeField] ItemData itemDataToUpgrade;
-    [SerializeField] private int specialModifier;
-        public int SpecialModifier => specialModifier;
+    [SerializeField] private ItemData itemDataToUpgrade;
+    public ItemData ItemDataToUpgrade => itemDataToUpgrade;
+    [SerializeField] private float specialModifier;
+        public float SpecialModifier => specialModifier;
 
     [SerializeField] private int valueToUnlock;
 
@@ -17,8 +18,8 @@ public class ItemUpgradeData : ItemData
         priceCurrent = priceDefault;
         upgradeCurrentValue = 0;
 
-        if (newActionOnClick == null) actionOnClick = () => UpgradeItem();
-        else actionOnClick = newActionOnClick;
+        eventOnClick.AddListener(() => UpgradeItem());
+        eventOnClick.AddListener(newActionOnClick);
     }
 
     public void UpgradeItem()

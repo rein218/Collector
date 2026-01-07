@@ -19,37 +19,56 @@ public class BusChelixCoins : MonoBehaviour
         //instantiate saved
     }
 
-    [SerializeField] List<Coin> coinsList = new List<Coin>();
+    [SerializeField] List<Coin> coinsBronzeList = new List<Coin>();
     [SerializeField] List<Chelix> chelixList = new List<Chelix>();
 
 
     public Coin FindGoalForChelix()
     {
-        var coinsListShuffled = coinsList.OrderBy(item => Guid.NewGuid());
+        var coinsBronzeListShuffled = coinsBronzeList.OrderBy(item => Guid.NewGuid());
 
-        foreach (Coin coin in coinsListShuffled)
+        
+        foreach (Coin coinBronze in coinsBronzeListShuffled)
         {
-            if (coin.isOccupied) continue;
+            if (coinBronze.isOccupied) continue;
 
-            return coin;
+            return coinBronze;
         }
         return null;
     }
 
-    public void AddToCoinList(Coin newCoin)
+    public void AddToCoinBronzeList(Coin newCoinBronze)
     {
-        coinsList.Add(newCoin);
+        coinsBronzeList.Add(newCoinBronze);
     }
     public void AddToChelixList(Chelix newChelix)
     {
         chelixList.Add(newChelix);
     }
 
-    public bool CoinListIsEmpty()
+    public bool CoinBronzeListIsEmpty()
     {
-        if (coinsList.Count > 0) return false;
+        if (coinsBronzeList.Count > 0) return false;
 
         return true;
+    }
+
+    public void SetSpeedOfAllChelix(ItemData itemData)
+    {
+        float newSpeed = itemData.SpecialCurrentValue;
+        foreach (Chelix chel in chelixList)
+        {
+            chel.SetNewSpeed(newSpeed);
+        }
+    }
+
+    public void SetAllCoinsBronzeValue(ItemData itemData)
+    {
+        int newCoinValue = (int) itemData.SpecialCurrentValue;
+        foreach (Coin coinBronze in coinsBronzeList)
+        {
+            coinBronze.SetNewCoinValue(newCoinValue);
+        }
     }
 
 

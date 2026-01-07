@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
   m_Name: Chelix
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemName: 1
+  itemName: 3
   sprite: {fileID: 21300000, guid: 6acb20a9874a9ff4ebc0908118d36059, type: 3}
   priceDefault: 0
   priceModifierOnUpgrade: 1

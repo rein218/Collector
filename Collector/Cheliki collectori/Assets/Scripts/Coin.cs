@@ -5,6 +5,7 @@ public class Coin : MonoBehaviour
     private ItemData itemData;
 
     public bool isOccupied { get; private set; } = false;
+    public int coinValue { get; private set; }
 
     private CoinMover coinMover;
 
@@ -14,9 +15,9 @@ public class Coin : MonoBehaviour
         coinMover = GetComponent<CoinMover>();
     }
 
-    public void Init(ItemData newItemData)
+    public void SetNewCoinValue(int newCoinValue)
     {
-        itemData = newItemData;
+        coinValue = newCoinValue;
     }
 
     public void Interact(bool isInteractedByNPC = false)
@@ -31,7 +32,7 @@ public class Coin : MonoBehaviour
     {
         if (Random.Range(0, 2) > 0)
         {
-            CurrenciesWallet.Instance.AddDollars(itemData.SpecialCurrentValue);
+            CurrenciesWallet.Instance.AddDollars(coinValue);
         }
         else
         {

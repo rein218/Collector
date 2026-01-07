@@ -8,8 +8,8 @@ public class Chelix : MonoBehaviour
     [SerializeField] private ChelixAnimationController _animationController;
     private Coin currentGoalCoin;
     [Header("Variables")]
-    [SerializeField] private float moveSpeed = 0.5f;
-
+    [SerializeField] private float moveSpeed;
+    
     [SerializeField] private float distanceToTriggerGoal = 0.65f;
     private float distanceToGoal;
 
@@ -101,7 +101,7 @@ public class Chelix : MonoBehaviour
 
     public void SetNewGoal()
     {
-        if (BusChelixCoins.Instance.CoinListIsEmpty())
+        if (BusChelixCoins.Instance.CoinBronzeListIsEmpty())
         {
             currentState = ChelixState.Sleeping;
             DoStateAction();
@@ -126,6 +126,11 @@ public class Chelix : MonoBehaviour
             currentState = ChelixState.MovingToGoal;
         else
             currentState = ChelixState.Sleeping;
+    }
+
+    public void SetNewSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
     }
 
     private void InteractWithGoal(Coin coinToInteract)

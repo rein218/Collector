@@ -24,14 +24,13 @@ public class ItemData : ScriptableObject
         public int UpgradeCurrentValue => upgradeCurrentValue;
 
 
-    [SerializeField] private int specialDefaultValue;
-        public int SpecialDefaultValue => specialDefaultValue;
-    private  int specialCurrentValue;
-        public int SpecialCurrentValue => specialCurrentValue;
+    [SerializeField] private float specialDefaultValue;
+        public float SpecialDefaultValue => specialDefaultValue;
+    private  float specialCurrentValue;
+        public float SpecialCurrentValue => specialCurrentValue;
 
 
-    public UnityAction actionOnClick {get; protected private set; }
-    public UnityAction unlockOnClick {get; protected private set; }
+    public UnityEvent eventOnClick {get; protected private set; }
 
     virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
@@ -42,8 +41,8 @@ public class ItemData : ScriptableObject
 
         Debug.Log($"specialCurrentValue == {specialCurrentValue}");
 
-        actionOnClick = newActionOnClick;
-        unlockOnClick = newUnlockOnClick;
+        eventOnClick.AddListener(newActionOnClick);
+        eventOnClick.AddListener(newUnlockOnClick);
     }
 
 
@@ -54,8 +53,7 @@ public class ItemData : ScriptableObject
         IncreaseUpgradeCurrentValue();
         IncreasePriceCurrentValue();
 
-        actionOnClick?.Invoke();
-        unlockOnClick?.Invoke();
+        eventOnClick?.Invoke();
 
         return true;
     }
@@ -68,7 +66,7 @@ public class ItemData : ScriptableObject
     {
         priceCurrent += priceModifierOnUpgrade;
     }
-    public void IncreaseSpecialCurrentValue(int specialModifierValue)
+    public void IncreaseSpecialCurrentValue(float specialModifierValue)
     {
         specialCurrentValue += specialModifierValue;
 
@@ -78,5 +76,10 @@ public class ItemData : ScriptableObject
     public bool IsUpgradedFull()
     {
         return upgradeCurrentValue >= upgradeMaxValue;
+    }
+
+    private void OnDestroy()
+    {
+        eventOnClick.RemoveAllListeners();
     }
 }

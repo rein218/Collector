@@ -11,6 +11,7 @@ public class ItemsMenu : MonoBehaviour
 
     [SerializeField] private Spawner spawner;
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private BusChelixCoins busChelixCoins;
 
     public void Awake()
     {
@@ -40,15 +41,24 @@ public class ItemsMenu : MonoBehaviour
     {
         switch (itemData.ItemName)
         {
-            case ItemName.NewCoin:
+            case ItemName.NewCoinBronze:
+            case ItemName.NewCoinSilver:
+            case ItemName.NewCoinGold:
                 return () => spawner.SpawnNewCoin(itemData);
 
             case ItemName.NewChelix:
                 return () => spawner.SpawnNewChelix();
-            case ItemName.UnlockMouseHover:
+
+            case ItemName.FeatureMouseHover:
                 return () => inputHandler.SetClickNotRequired();
 
-                // upgrades are set in ItemUpgradeData
+            case ItemName.UpgradeCoinBronzeValue:
+                return () => busChelixCoins.SetAllCoinsBronzeValue(((ItemUpgradeData)itemData).ItemDataToUpgrade);
+
+            case ItemName.UpgradeChelixSpeed:
+                return () => busChelixCoins.SetSpeedOfAllChelix(((ItemUpgradeData)itemData).ItemDataToUpgrade);
+
+            // upgrades are set in  ItemUpgradeData.UpgradeItem()
         }
 
         return null;
@@ -58,9 +68,13 @@ public class ItemsMenu : MonoBehaviour
     {
         switch (itemData.ItemName)
         {
-            case ItemName.NewCoin:
-                return () => UnlockUpgrade(ItemName.UpgradeCoinValue, itemData.UpgradeCurrentValue);
+            case ItemName.NewCoinBronze:
+            case ItemName.NewCoinSilver:
+            case ItemName.NewCoinGold:
+                return () => UnlockUpgrade(ItemName.UpgradeCoinBronzeValue, itemData.UpgradeCurrentValue);
 
+            case ItemName.NewChelix:
+                return () => UnlockUpgrade(ItemName.UpgradeChelixSpeed, itemData.UpgradeCurrentValue);
         }
 
         return null;
