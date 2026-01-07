@@ -7,18 +7,18 @@
         false,
         false
     ],
-    "idSave": 11,
+    "idSave": 43,
     "dollarsCount": 0,
     "failsCount": 2,
     "itemsData": [
         {
-            "instanceID": 46546
+            "instanceID": 0
         },
         {
-            "instanceID": 46076
+            "instanceID": 0
         },
         {
-            "instanceID": 46290
+            "instanceID": 0
         }
     ]
 }

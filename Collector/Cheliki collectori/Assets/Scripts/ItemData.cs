@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -78,5 +79,33 @@ public class ItemData : ScriptableObject
     public bool IsUpgradedFull()
     {
         return upgradeCurrentValue >= upgradeMaxValue;
+    }
+
+    public void CopyTo(ItemData toWhom)
+    {
+        toWhom.isUnlocked = this.isUnlocked;
+        toWhom.itemName = this.itemName;
+        toWhom.sprite = this.sprite;
+        toWhom.priceDefault = this.priceDefault;
+        toWhom.priceCurrent = this.priceCurrent;
+        toWhom.priceModifierOnUpgrade = this.priceModifierOnUpgrade;
+        toWhom.upgradeMaxValue = this.upgradeMaxValue;
+        toWhom.upgradeCurrentValue = this.upgradeCurrentValue;
+        toWhom.specialDefaultValue = this.specialDefaultValue;
+        toWhom.specialCurrentValue = this.specialCurrentValue;
+    }
+
+    public void CopyFrom(ItemData fromWhom)
+    {
+        this.isUnlocked = fromWhom.isUnlocked;
+        this.itemName = fromWhom.itemName;
+        this.sprite = fromWhom.sprite;
+        this.priceDefault = fromWhom.priceDefault;
+        this.priceCurrent = fromWhom.priceCurrent;
+        this.priceModifierOnUpgrade = fromWhom.priceModifierOnUpgrade;
+        this.upgradeMaxValue = fromWhom.upgradeMaxValue;
+        this.upgradeCurrentValue = fromWhom.upgradeCurrentValue;
+        this.specialDefaultValue = fromWhom.specialDefaultValue;
+        this.specialCurrentValue = fromWhom.specialCurrentValue;
     }
 }
