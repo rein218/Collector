@@ -68,26 +68,40 @@ public class BusChelixCoins : MonoBehaviour
 
     public void UnlockTypeOfCoinForChelix(ItemName coinType)
     {
-        var current = coinsXListsByType[coinType];
-        coinsXListsByType[coinType] = (current.coinList, true);
+        if (coinsXListsByType.TryGetValue(coinType, out var current))
+        {
+            // Make sure the list isn't null
+            if (current.coinList == null)
+            {
+                Debug.LogError($"Coin list for {coinType} is null!");
+                current.coinList = new List<Coin>();
+            }
+            coinsXListsByType[coinType] = (current.coinList, true);
+            Debug.Log($"Unlocked {coinType}, now has {current.coinList.Count} coins");
+        }
+        else
+        {
+            Debug.LogError($"Coin type {coinType} not found in dictionary!");
+        }
     }
 
 
-public Coin FindGoalForChelix()
+    public Coin FindGoalForChelix()
     {
         List<Coin> coinsListShuffled = new List<Coin>();
-        foreach ((List<Coin> coinList, bool isAvailable) coinListsAndBools
-            in coinsXListsByType.Values)
+        
+        foreach (var kvp in coinsXListsByType)
         {
-            if (!coinListsAndBools.isAvailable) continue;
-
-            coinsListShuffled.AddRange(coinListsAndBools.coinList.OrderBy(item => Guid.NewGuid()));
+            if (!kvp.Value.isAvailable) continue;
+            
+            coinsListShuffled.AddRange(kvp.Value.coinList);
         }
+        var random = new System.Random();
+        coinsListShuffled = coinsListShuffled.OrderBy(x => random.Next()).ToList();
         
         foreach (Coin coin in coinsListShuffled)
         {
             if (coin.isOccupied) continue;
-
             return coin;
         }
         return null;
