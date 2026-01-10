@@ -38,7 +38,7 @@ public class BusChelixCoins : MonoBehaviour
     }
 
 
-    
+
     public void AddToCoinsXList(Coin newCoinX, ItemName coinType)
     {
         coinsXListsByType[coinType].coinList.Add(newCoinX);
@@ -59,15 +59,21 @@ public class BusChelixCoins : MonoBehaviour
 
     public void SetAllCoinsXValue(ItemData itemData)
     {
-        int newCoinValue = (int) itemData.SpecialCurrentValue;
+        int newCoinValue = (int)itemData.SpecialCurrentValue;
         foreach (Coin coinX in coinsXListsByType[itemData.ItemName].coinList)
         {
             coinX.SetNewCoinValue(newCoinValue);
         }
     }
 
+    public void UnlockTypeOfCoinForChelix(ItemName coinType)
+    {
+        var current = coinsXListsByType[coinType];
+        coinsXListsByType[coinType] = (current.coinList, true);
+    }
 
-    public Coin FindGoalForChelix()
+
+public Coin FindGoalForChelix()
     {
         List<Coin> coinsListShuffled = new List<Coin>();
         foreach ((List<Coin> coinList, bool isAvailable) coinListsAndBools

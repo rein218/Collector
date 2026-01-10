@@ -130,10 +130,7 @@ public class ItemsMenu : MonoBehaviour
             case ItemName.NewChelix:
                 return () => spawner.SpawnNewChelix();
 
-            case ItemName.FeatureMouseHover:
-                return () => inputHandler.SetClickNotRequired();
-
-            case ItemName.UpgradeCoinBronzeValue:
+            case ItemName.UpgradeCoinBronzeValue:   // upgrades are set in  ItemUpgradeData.UpgradeItem()
             case ItemName.UpgradeCoinSilverValue:
             case ItemName.UpgradeCoinGoldValue:
                 return () => busChelixCoins.SetAllCoinsXValue(((ItemUpgradeData)itemData).ItemDataToUpgrade);
@@ -141,7 +138,14 @@ public class ItemsMenu : MonoBehaviour
             case ItemName.UpgradeChelixSpeed:
                 return () => busChelixCoins.SetSpeedOfAllChelix(((ItemUpgradeData)itemData).ItemDataToUpgrade);
 
-            // upgrades are set in  ItemUpgradeData.UpgradeItem()
+            case ItemName.FeatureMouseHover:
+                return () => inputHandler.SetClickNotRequired();
+
+            case ItemName.FeatureUnlockCoinSilverForChelix:
+                return () => busChelixCoins.UnlockTypeOfCoinForChelix(ItemName.NewCoinSilver);
+            case ItemName.FeatureUnlockCoinGoldForChelix:
+                return () => busChelixCoins.UnlockTypeOfCoinForChelix(ItemName.NewCoinGold);
+
         }
         //Save();
         return null;

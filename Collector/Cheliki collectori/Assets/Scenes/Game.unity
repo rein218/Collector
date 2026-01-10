@@ -435,7 +435,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9be5f31a89f980bc0bba9d2efe40f28e, type: 2}
   - {fileID: 11400000, guid: 6afc810b9e8f5540192e220bce589dba, type: 2}
   - {fileID: 11400000, guid: 0a951daead2660d0697ef6685670a616, type: 2}
+  - {fileID: 11400000, guid: 565ab787645a039128b683de0c7ae8ca, type: 2}
   - {fileID: 11400000, guid: 52fdf3bc6837feb338afc887dd36908d, type: 2}
+  - {fileID: 11400000, guid: d53d16a8b9cd959b1b2cdc148853ad9d, type: 2}
   upgradesData:
   - {fileID: 11400000, guid: cc6131e29b2385330b870e78c2a6a227, type: 2}
   - {fileID: 11400000, guid: 7869bcf27f2ce88a1b696622128ebb80, type: 2}
