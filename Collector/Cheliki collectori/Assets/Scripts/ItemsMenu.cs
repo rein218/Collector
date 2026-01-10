@@ -22,7 +22,7 @@ public class ItemsMenu : MonoBehaviour
     [Order(-1)]
     public void Start()
     {
-       // Load();
+        // Load();
         foreach (ItemData itemData in itemsData)
         {
             AddNewItem(itemData);
@@ -31,6 +31,16 @@ public class ItemsMenu : MonoBehaviour
         foreach (ItemData upgradeData in upgradesData)
         {
             AddNewItem(upgradeData);
+        }
+        StartCoroutine(SaveCycle());
+    }
+
+    IEnumerator SaveCycle()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10);
+            Save();
         }
     }
     
@@ -103,7 +113,6 @@ public class ItemsMenu : MonoBehaviour
                 return () => busChelixCoins.UnlockTypeOfCoinForChelix(ItemName.NewCoinGold);
 
         }
-        Save();
         return null;
     }
 
