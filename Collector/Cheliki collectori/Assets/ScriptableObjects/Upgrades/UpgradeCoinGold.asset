@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b69b4e3832461b7e5aedbcb7384701ef, type: 3}
-  m_Name: UpgradeCoin
+  m_Name: UpgradeCoinGold
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
-  itemName: 4
+  itemName: 6
   sprite: {fileID: 8710227670000588859, guid: bb95852e6ae6caa4395ac8c19a7a404c, type: 3}
   priceDefault: 0
   priceModifierOnUpgrade: 1
   upgradeMaxValue: 10
   specialDefaultValue: 0
-  itemDataToUpgrade: {fileID: 11400000, guid: 9d4c3d299cadfa40689490a8969eeb25, type: 2}
+  itemDataToUpgrade: {fileID: 11400000, guid: 52fdf3bc6837feb338afc887dd36908d, type: 2}
   specialModifier: 1
   valueToUnlock: 3

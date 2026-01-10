@@ -6,6 +6,15 @@ using System;
 public class BusChelixCoins : MonoBehaviour
 {
     public static BusChelixCoins Instance { get; private set; }
+
+    [SerializeField] List<Chelix> chelixList = new List<Chelix>();
+    [SerializeField]
+    List<Coin> coinsBronzeList = new List<Coin>(),
+                                coinsSilverList = new List<Coin>(),
+                                coinsGoldList = new List<Coin>();
+
+    Dictionary<ItemName, (List<Coin> coinList, bool isAvailable)> coinsXListsByType;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -15,42 +24,72 @@ public class BusChelixCoins : MonoBehaviour
         }
         Instance = this;
 
+
+        coinsXListsByType = new Dictionary<ItemName, (List<Coin> coinList, bool isAvailable)>
+        {
+            { ItemName.NewCoinBronze, (coinsBronzeList, true) },
+            { ItemName.NewCoinSilver, (coinsSilverList, false) },
+            { ItemName.NewCoinGold, (coinsGoldList, false) }
+        };
+
+
         //load saved
         //instantiate saved
     }
 
-    [SerializeField] List<Coin> coinsBronzeList = new List<Coin>();
-    [SerializeField] List<Chelix> chelixList = new List<Chelix>();
+
+    
+    public void AddToCoinsXList(Coin newCoinX, ItemName coinType)
+    {
+        coinsXListsByType[coinType].coinList.Add(newCoinX);
+    }
+
+    public bool CoinsAvailableListsIsEmpty()
+    {
+        foreach ((List<Coin> coinList, bool isAvailable) coinListsAndBools
+            in coinsXListsByType.Values)
+        {
+            if (!coinListsAndBools.isAvailable) continue;
+
+            if (coinListsAndBools.coinList.Count > 0) return false;
+        }
+
+        return true;
+    }
+
+    public void SetAllCoinsXValue(ItemData itemData)
+    {
+        int newCoinValue = (int) itemData.SpecialCurrentValue;
+        foreach (Coin coinX in coinsXListsByType[itemData.ItemName].coinList)
+        {
+            coinX.SetNewCoinValue(newCoinValue);
+        }
+    }
 
 
     public Coin FindGoalForChelix()
     {
-        var coinsBronzeListShuffled = coinsBronzeList.OrderBy(item => Guid.NewGuid());
-
-        
-        foreach (Coin coinBronze in coinsBronzeListShuffled)
+        List<Coin> coinsListShuffled = new List<Coin>();
+        foreach ((List<Coin> coinList, bool isAvailable) coinListsAndBools
+            in coinsXListsByType.Values)
         {
-            if (coinBronze.isOccupied) continue;
+            if (!coinListsAndBools.isAvailable) continue;
 
-            return coinBronze;
+            coinsListShuffled.AddRange(coinListsAndBools.coinList.OrderBy(item => Guid.NewGuid()));
+        }
+        
+        foreach (Coin coin in coinsListShuffled)
+        {
+            if (coin.isOccupied) continue;
+
+            return coin;
         }
         return null;
     }
 
-    public void AddToCoinBronzeList(Coin newCoinBronze)
-    {
-        coinsBronzeList.Add(newCoinBronze);
-    }
     public void AddToChelixList(Chelix newChelix)
     {
         chelixList.Add(newChelix);
-    }
-
-    public bool CoinBronzeListIsEmpty()
-    {
-        if (coinsBronzeList.Count > 0) return false;
-
-        return true;
     }
 
     public void SetSpeedOfAllChelix(ItemData itemData)
@@ -61,15 +100,4 @@ public class BusChelixCoins : MonoBehaviour
             chel.SetNewSpeed(newSpeed);
         }
     }
-
-    public void SetAllCoinsBronzeValue(ItemData itemData)
-    {
-        int newCoinValue = (int) itemData.SpecialCurrentValue;
-        foreach (Coin coinBronze in coinsBronzeList)
-        {
-            coinBronze.SetNewCoinValue(newCoinValue);
-        }
-    }
-
-
 }

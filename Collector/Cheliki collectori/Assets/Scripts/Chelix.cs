@@ -101,7 +101,7 @@ public class Chelix : MonoBehaviour
 
     public void SetNewGoal()
     {
-        if (BusChelixCoins.Instance.CoinBronzeListIsEmpty())
+        if (BusChelixCoins.Instance.CoinsAvailableListsIsEmpty())
         {
             currentState = ChelixState.Sleeping;
             DoStateAction();

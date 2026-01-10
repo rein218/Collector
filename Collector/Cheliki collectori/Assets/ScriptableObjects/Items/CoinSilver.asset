@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
-  m_Name: Coin
+  m_Name: CoinSilver
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemName: 0
+  itemName: 1
   sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
-  priceDefault: 0
+  priceDefault: 5
   priceModifierOnUpgrade: 1
-  upgradeMaxValue: 5
-  specialDefaultValue: 1
+  upgradeMaxValue: 25
+  specialDefaultValue: 5

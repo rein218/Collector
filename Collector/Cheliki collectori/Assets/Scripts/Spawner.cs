@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] GameObject coinPrefab;
+    [SerializeField] GameObject coinBronzePrefab,
+                                coinSilverPrefab,
+                                coinGoldPrefab;
     [SerializeField] GameObject chelixPrefab;
 
     private GameObject SpawnNewObj(GameObject prefab) 
@@ -27,11 +29,30 @@ public class Spawner : MonoBehaviour
 
     public void SpawnNewCoin(ItemData itemData)
     {
-        GameObject newCoinObj = SpawnNewObj(coinPrefab);
+        GameObject newCoinObj;
+        switch (itemData.ItemName)
+        {
+            case ItemName.NewCoinBronze:
+                newCoinObj = SpawnNewObj(coinBronzePrefab);
+                break;
+
+            case ItemName.NewCoinSilver:
+                newCoinObj = SpawnNewObj(coinSilverPrefab);
+                break;
+
+            case ItemName.NewCoinGold:
+                newCoinObj = SpawnNewObj(coinGoldPrefab);
+                break;
+            
+            default:
+                Debug.LogError("Trying to spawn coin without correct itemData");
+                return;
+        }
+        
         Coin newCoin = newCoinObj.GetComponent<Coin>();
         newCoin.SetNewCoinValue((int)itemData.SpecialCurrentValue);
 
-        BusChelixCoins.Instance.AddToCoinBronzeList(newCoin);
+        BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemName);
     }
 
     public void SpawnNewChelix()

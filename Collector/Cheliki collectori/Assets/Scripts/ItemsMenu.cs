@@ -134,7 +134,9 @@ public class ItemsMenu : MonoBehaviour
                 return () => inputHandler.SetClickNotRequired();
 
             case ItemName.UpgradeCoinBronzeValue:
-                return () => busChelixCoins.SetAllCoinsBronzeValue(((ItemUpgradeData)itemData).ItemDataToUpgrade);
+            case ItemName.UpgradeCoinSilverValue:
+            case ItemName.UpgradeCoinGoldValue:
+                return () => busChelixCoins.SetAllCoinsXValue(((ItemUpgradeData)itemData).ItemDataToUpgrade);
 
             case ItemName.UpgradeChelixSpeed:
                 return () => busChelixCoins.SetSpeedOfAllChelix(((ItemUpgradeData)itemData).ItemDataToUpgrade);
@@ -150,9 +152,13 @@ public class ItemsMenu : MonoBehaviour
         switch (itemData.ItemName)
         {
             case ItemName.NewCoinBronze:
-            case ItemName.NewCoinSilver:
-            case ItemName.NewCoinGold:
                 return () => UnlockUpgrade(ItemName.UpgradeCoinBronzeValue, itemData.UpgradeCurrentValue);
+
+            case ItemName.NewCoinSilver:
+                return () => UnlockUpgrade(ItemName.UpgradeCoinSilverValue, itemData.UpgradeCurrentValue);
+
+            case ItemName.NewCoinGold:
+                return () => UnlockUpgrade(ItemName.UpgradeCoinGoldValue, itemData.UpgradeCurrentValue);
 
             case ItemName.NewChelix:
                 return () => UnlockUpgrade(ItemName.UpgradeChelixSpeed, itemData.UpgradeCurrentValue);
@@ -163,9 +169,16 @@ public class ItemsMenu : MonoBehaviour
 
     private void UnlockUpgrade(ItemName nameOfUnlocked, int upgrValue)
     {
-        ItemUpgradeData upgradeToUnlock = upgradesData.First(upgr => upgr.ItemName == nameOfUnlocked);
+        ItemUpgradeData upgradeToUnlock = upgradesData.FirstOrDefault(upgr => upgr.ItemName == nameOfUnlocked);
 
-        upgradeToUnlock?.Unlock(upgrValue);
+        if (upgradeToUnlock != null)
+        {
+            upgradeToUnlock.Unlock(upgrValue);
+        }
+        else
+        {
+            Debug.LogError($"Upgrade with name {nameOfUnlocked} not found in upgradesData list");
+        }
     }
 }
 
