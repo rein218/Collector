@@ -78,7 +78,6 @@ public class Chelix : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        Debug.Log("hehe");
         SetNewGoal();
 
         DoStateAction();
@@ -88,7 +87,6 @@ public class Chelix : MonoBehaviour
     {
         while (currentState == ChelixState.Sleeping)
         {
-            Debug.Log("Chelix is sleeping");
             yield return new WaitForSeconds(3);
         }
 
@@ -110,15 +108,12 @@ public class Chelix : MonoBehaviour
 
         Coin newGoalCoin = BusChelixCoins.Instance.FindGoalForChelix();
 
-        Debug.Log($"newGoalCoin == {newGoalCoin}");
         if (newGoalCoin == currentGoalCoin || newGoalCoin == null)
         {
             currentGoalCoin = null;
             SetNewGoal();
         }
         //newGoalCoin.SetIsOcupied(true);
-
-        Debug.Log($"currentGoalCoin == {currentGoalCoin}");
 
         currentGoalCoin = newGoalCoin;
 
@@ -137,8 +132,6 @@ public class Chelix : MonoBehaviour
     {
         _animationController.DoFlip();
         coinToInteract.Interact(true);
-
-        Debug.Log("Chelix interacted with: " + coinToInteract.name); 
 
         currentState = ChelixState.Idle;
 

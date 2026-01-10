@@ -16,9 +16,9 @@ public class ItemUpgradeData : ItemData
 
     override public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
-        isUnlocked = false;
-        priceCurrent = priceDefault;
-        upgradeCurrentValue = 0;
+        _isUnlocked = false;
+        _priceCurrent = _priceDefault;
+        _upgradeCurrentValue = 0;
 
         eventOnClick.AddListener(() => UpgradeItem());
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
@@ -34,7 +34,7 @@ public class ItemUpgradeData : ItemData
 
     public void Unlock(int upgrValue)
     {
-        if (upgrValue == valueToUnlock) isUnlocked = true;
+        if (upgrValue == valueToUnlock) _isUnlocked = true;
     }
 
 

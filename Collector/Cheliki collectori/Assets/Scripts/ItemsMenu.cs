@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using YG;
@@ -19,91 +20,41 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private BusChelixCoins busChelixCoins;
 
     [Order(-1)]
-    public IEnumerator Start()
+    public void Start()
     {
-        yield return new WaitForSeconds(1f);
+       // Load();
         foreach (ItemData itemData in itemsData)
         {
             AddNewItem(itemData);
         }
-        // maybe should add new tab for upgrades
+
         foreach (ItemData upgradeData in upgradesData)
         {
             AddNewItem(upgradeData);
-        }
-        //
-    }
-    
-    public void TestSave()
-    {
-        var test1 = new TestClass("first", true);
-        var test2 = new TestClass("second", false);
-        var test3 = new TestClass("third", false);
-
-
-        YG2.saves.testsData = new List<TestClass>();
-        var data = new TestClass();
-
-        data.CopyFrom(test1);
-        YG2.saves.testsData.Add(data);
-
-        data.CopyFrom(test2);
-        YG2.saves.testsData.Add(data);
-
-        data.CopyFrom(test3);
-        YG2.saves.testsData.Add(data);
-
-        YG2.SaveProgress();
-
-        string json = JsonUtility.ToJson(YG2.saves);
-         Debug.Log(json);
-        PlayerPrefs.SetString("SaveData", json);
-
-        PlayerPrefs.Save();
-    }
-
-    public void TestLoad()
-    {
-        Debug.Log(YG2.saves.testsData.Count);
-        foreach (var singleData in YG2.saves.testsData)
-        {
-            var data = new TestClass();
-            data.CopyFrom(singleData);
-            Debug.Log(data.itemName + " " + data.isUnlocked);
         }
     }
     
     public void Save()
     {
-
-        YG2.saves.itemsData = new List<ItemData>();
+        YG2.saves.itemsData.Clear();
         foreach (var itemData in itemsData)
         {
-            var data = ScriptableObject.CreateInstance<ItemData>();;
-            data.CopyFrom(itemData);
-            Debug.Log(data.ItemName);
+            var data = itemData.GetSaveData();
+            Debug.Log("1");
             YG2.saves.itemsData.Add(data);
         }
         YG2.SaveProgress();
-
-         
+        Debug.Log("Saved: "+ JsonUtility.ToJson(YG2.saves, true));
     }
 
     public void Load()
     {
-        itemsData = new List<ItemData>();
-        Debug.Log(YG2.saves.itemsData.Count);
+        if (YG2.saves.itemsData == null) return;
+        Debug.Log("Load: "+ JsonUtility.ToJson(YG2.saves, true));
         foreach (var singleData in YG2.saves.itemsData)
         {
-            var data = ScriptableObject.CreateInstance<ItemData>();
-            if (singleData == null)
-            {
-                Debug.LogError("хуйня");
-                return;
-            }
-            Debug.Log(singleData.ItemName);
-            data.CopyFrom(singleData);
-            itemsData.Add(data);
+            var data = new ItemData();
+            data.LoadSaveData(singleData);
         }
     }
     
@@ -152,7 +103,7 @@ public class ItemsMenu : MonoBehaviour
                 return () => busChelixCoins.UnlockTypeOfCoinForChelix(ItemName.NewCoinGold);
 
         }
-        //Save();
+        Save();
         return null;
     }
 
@@ -216,33 +167,5 @@ public class ItemsMenu : MonoBehaviour
                 Debug.LogError($"Upgrade with name {nameOfUnlocked} not found in upgradesData list");
             }
         }
-    }
-}
-
-[Serializable]
-public class TestClass 
-{
-    public bool isUnlocked;
-    public string itemName;
-    public TestClass()
-    {
-        
-    }
-    public TestClass(string itemName, bool isUnlocked)
-    {
-        this.itemName = itemName;
-        this.isUnlocked = isUnlocked;
-    }
-
-    public void CopyTo(TestClass toWhom)
-    {
-        toWhom.isUnlocked = this.isUnlocked;
-        toWhom.itemName = this.itemName;
-    }
-
-    public void CopyFrom(TestClass fromWhom)
-    {
-        this.isUnlocked = fromWhom.isUnlocked;
-        this.itemName = fromWhom.itemName;
     }
 }

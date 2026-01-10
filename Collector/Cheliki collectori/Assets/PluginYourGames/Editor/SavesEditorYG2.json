@@ -7,18 +7,52 @@
         false,
         false
     ],
-    "idSave": 43,
+    "idSave": 62,
     "dollarsCount": 0,
     "failsCount": 2,
     "itemsData": [
         {
-            "instanceID": 0
+            "isUnlocked": true,
+            "itemName": 0,
+            "sprite": {
+                "instanceID": 0
+            },
+            "priceDefault": 0,
+            "priceCurrent": 0,
+            "priceModifierOnUpgrade": 0,
+            "upgradeMaxValue": 0,
+            "upgradeCurrentValue": 0,
+            "specialDefaultValue": 0.0,
+            "specialCurrentValue": 0.0
         },
         {
-            "instanceID": 0
+            "isUnlocked": true,
+            "itemName": 0,
+            "sprite": {
+                "instanceID": 47740
+            },
+            "priceDefault": 0,
+            "priceCurrent": 0,
+            "priceModifierOnUpgrade": 1,
+            "upgradeMaxValue": 10,
+            "upgradeCurrentValue": 0,
+            "specialDefaultValue": 1.0,
+            "specialCurrentValue": 1.0
         },
         {
-            "instanceID": 0
+            "isUnlocked": true,
+            "itemName": 0,
+            "sprite": {
+                "instanceID": 0
+            },
+            "priceDefault": 0,
+            "priceCurrent": 0,
+            "priceModifierOnUpgrade": 0,
+            "upgradeMaxValue": 0,
+            "upgradeCurrentValue": 0,
+            "specialDefaultValue": 0.0,
+            "specialCurrentValue": 0.0
         }
-    ]
+    ],
+    "testsData": []
 }

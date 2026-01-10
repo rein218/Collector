@@ -6,7 +6,6 @@ namespace YG
     {
         public int dollarsCount = 0; 
         public int failsCount = 0;
-        public List<ItemData> itemsData;
-        public List<TestClass> testsData;
+        public List<SaveData> itemsData;
     }
 }

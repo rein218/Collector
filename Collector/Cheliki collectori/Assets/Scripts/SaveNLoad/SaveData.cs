@@ -1,16 +1,16 @@
 using UnityEngine;
-
-public class SaveData : MonoBehaviour
+using System;
+[Serializable]
+public class SaveData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool isUnlocked;
+    public ItemName itemName;
+    public Sprite sprite;
+    public int priceDefault;
+    public int priceCurrent;
+    public int priceModifierOnUpgrade;
+    public int upgradeMaxValue;
+    public int upgradeCurrentValue;
+    public float specialDefaultValue;
+    public float specialCurrentValue;
 }
