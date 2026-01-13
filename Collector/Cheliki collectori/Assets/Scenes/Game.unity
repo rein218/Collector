@@ -446,6 +446,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb16959eb29befa5890b876ce0c26230, type: 2}
   - {fileID: 11400000, guid: d4c71d414d8f36796be9a6fc1e32bfff, type: 2}
   - {fileID: 11400000, guid: c372eaf4d1d95c5fbbdd58a63b83b5a9, type: 2}
+  - {fileID: 11400000, guid: 34b6ec3a0d619bea6bab56b162663e3d, type: 2}
+  - {fileID: 11400000, guid: 6d50f8cb3755e3d4997e622521a3add0, type: 2}
+  - {fileID: 11400000, guid: 4900fa385f03c4e5fa43bff7c439879b, type: 2}
   spawner: {fileID: 1064348417}
   inputHandler: {fileID: 2133612166}
   busChelixCoins: {fileID: 1706924272}
@@ -1009,6 +1012,7 @@ MonoBehaviour:
   coinsBronzeList: []
   coinsSilverList: []
   coinsGoldList: []
+  itemsMenu: {fileID: 704656968}
 --- !u!4 &1706924273
 Transform:
   m_ObjectHideFlags: 0

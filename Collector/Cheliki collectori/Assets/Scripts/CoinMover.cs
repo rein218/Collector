@@ -10,10 +10,10 @@ public class CoinMover : MonoBehaviour
     [SerializeField] private float _maxAnimSpeed = 3f;
     [Header("Move Settings")]
     [SerializeField] private float _movementRadius = 2f;
-    [SerializeField] private float _moveDuration = 2f;
+    [SerializeField] private float defaultMoveDuration = 2f;
+    private float _moveDuration;
     [Header("Toss Settings")]
     [SerializeField] private float _tossHeight = 2f;
-    [SerializeField] private float _tossDuration = 2f;
     
     
     private Coroutine moveCoroutine;
@@ -34,6 +34,11 @@ public class CoinMover : MonoBehaviour
         
 
         moveCoroutine = StartCoroutine(MoveToPosition(startPos, targetPos, _moveDuration));
+    }
+
+    public void SetMoveDuration(float newCoinMoveUpgrade)
+    {
+        _moveDuration = defaultMoveDuration - newCoinMoveUpgrade;
     }
 
     private Vector3 FindNewDirection()

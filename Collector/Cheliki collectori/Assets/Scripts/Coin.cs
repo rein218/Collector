@@ -13,11 +13,17 @@ public class Coin : MonoBehaviour
     private void Awake()
     {
         coinMover = GetComponent<CoinMover>();
+        coinMover.SetMoveDuration(0);
     }
 
     public void SetNewCoinValue(int newCoinValue)
     {
         coinValue = newCoinValue;
+    }
+
+    public void SetNewMoveDuration(float newCoinMoveUpgrade)
+    {
+        coinMover.SetMoveDuration(newCoinMoveUpgrade);
     }
 
     public void Interact(bool isInteractedByNPC = false)

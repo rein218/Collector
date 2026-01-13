@@ -10,6 +10,7 @@ public enum ItemName
     NewChelix,
     UpgradeCoinBronzeValue, UpgradeCoinSilverValue, UpgradeCoinGoldValue,
     UpgradeChelixSpeed,
+    UpgradeCoinMoveDurationBronze, UpgradeCoinMoveDurationSilver, UpgradeCoinMoveDurationGold,
     FeatureMouseHover,
     FeatureUnlockCoinSilverForChelix, FeatureUnlockCoinGoldForChelix
 }

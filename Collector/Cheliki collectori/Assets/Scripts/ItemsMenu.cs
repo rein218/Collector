@@ -135,6 +135,11 @@ public class ItemsMenu : MonoBehaviour
             case ItemName.UpgradeCoinGoldValue:
                 return () => busChelixCoins.SetAllCoinsXValue(((ItemUpgradeData)itemData).ItemDataToUpgrade);
 
+            case ItemName.UpgradeCoinMoveDurationBronze:
+            case ItemName.UpgradeCoinMoveDurationSilver:
+            case ItemName.UpgradeCoinMoveDurationGold:
+                return () => busChelixCoins.SetAllCoinsMoveDuration(((ItemUpgradeData)itemData).ItemDataToUpgrade, GetCurrentUpgrade(itemData.ItemName));
+
             case ItemName.UpgradeChelixSpeed:
                 return () => busChelixCoins.SetSpeedOfAllChelix(((ItemUpgradeData)itemData).ItemDataToUpgrade);
 
@@ -171,6 +176,31 @@ public class ItemsMenu : MonoBehaviour
         return null;
     }
 
+    public float GetCurrentUpgrade(ItemName upgradeName)
+    {
+        ItemUpgradeData upgradeForRequiredItemData = upgradesData.FirstOrDefault(upgr => upgr.ItemName == upgradeName);
+
+        Debug.Log($"asqweqwesadczx: {upgradeForRequiredItemData} ; {upgradeName}");
+
+        return upgradeForRequiredItemData.SpecialModifier * upgradeForRequiredItemData.UpgradeCurrentValue;
+    }
+
+    public float GetCurrentCoinTypeMoveDuration(ItemName coinType)
+    {
+        switch (coinType)
+        {
+            case ItemName.NewCoinBronze:
+                return GetCurrentUpgrade(ItemName.UpgradeCoinMoveDurationBronze);
+
+            case ItemName.NewCoinSilver:
+                return GetCurrentUpgrade(ItemName.UpgradeCoinMoveDurationSilver);
+
+            case ItemName.NewCoinGold:
+                return GetCurrentUpgrade(ItemName.UpgradeCoinMoveDurationGold);
+        }
+        return -1;
+    }
+
     private void UnlockUpgrade(ItemName nameOfUnlocked, int upgrValue)
     {
         List<ItemUpgradeData> upgradesToUnlock = upgradesData.FindAll(upgr => upgr.ItemName == nameOfUnlocked);
@@ -178,13 +208,13 @@ public class ItemsMenu : MonoBehaviour
         foreach (ItemUpgradeData upgradeToUnlock in upgradesToUnlock)
         {
             if (upgradeToUnlock != null)
-        {
-            upgradeToUnlock.Unlock(upgrValue);
-        }
-        else
-        {
-            Debug.LogError($"Upgrade with name {nameOfUnlocked} not found in upgradesData list");
-        }
+            {
+                upgradeToUnlock.Unlock(upgrValue);
+            }
+            else
+            {
+                Debug.LogError($"Upgrade with name {nameOfUnlocked} not found in upgradesData list");
+            }
         }
     }
 }

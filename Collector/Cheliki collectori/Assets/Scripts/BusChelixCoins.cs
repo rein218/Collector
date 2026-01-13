@@ -9,11 +9,13 @@ public class BusChelixCoins : MonoBehaviour
 
     [SerializeField] List<Chelix> chelixList = new List<Chelix>();
     [SerializeField]
-    List<Coin> coinsBronzeList = new List<Coin>(),
-                                coinsSilverList = new List<Coin>(),
-                                coinsGoldList = new List<Coin>();
+    List<Coin>  coinsBronzeList = new List<Coin>(),
+                coinsSilverList = new List<Coin>(),
+                coinsGoldList = new List<Coin>();
 
     Dictionary<ItemName, (List<Coin> coinList, bool isAvailable)> coinsXListsByType;
+
+    [SerializeField] ItemsMenu itemsMenu;
 
     void Awake()
     {
@@ -42,6 +44,10 @@ public class BusChelixCoins : MonoBehaviour
     public void AddToCoinsXList(Coin newCoinX, ItemName coinType)
     {
         coinsXListsByType[coinType].coinList.Add(newCoinX);
+
+        float newCoinMoveUpgrade = itemsMenu.GetCurrentCoinTypeMoveDuration(coinType);
+
+        if (newCoinMoveUpgrade > 0) newCoinX.SetNewMoveDuration(newCoinMoveUpgrade);        
     }
 
     public bool CoinsAvailableListsIsEmpty()
@@ -63,6 +69,14 @@ public class BusChelixCoins : MonoBehaviour
         foreach (Coin coinX in coinsXListsByType[itemData.ItemName].coinList)
         {
             coinX.SetNewCoinValue(newCoinValue);
+        }
+    }
+
+    public void SetAllCoinsMoveDuration(ItemData itemData, float newCoinMoveUpgrade)
+    {
+        foreach (Coin coinX in coinsXListsByType[itemData.ItemName].coinList)
+        {
+            coinX.SetNewMoveDuration(newCoinMoveUpgrade);
         }
     }
 
@@ -110,6 +124,10 @@ public class BusChelixCoins : MonoBehaviour
     public void AddToChelixList(Chelix newChelix)
     {
         chelixList.Add(newChelix);
+
+        float newSpeed = itemsMenu.GetCurrentUpgrade(ItemName.UpgradeChelixSpeed);
+
+        if (newSpeed > 0) newChelix.SetNewSpeed(newSpeed);
     }
 
     public void SetSpeedOfAllChelix(ItemData itemData)

@@ -22,6 +22,8 @@ public class ItemUpgradeData : ItemData
 
         eventOnClick.AddListener(() => UpgradeItem());
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
+
+        if (valueToUnlock == 0) Unlock(0);
     }
 
     public void UpgradeItem()

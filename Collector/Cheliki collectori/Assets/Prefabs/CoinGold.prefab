@@ -249,7 +249,7 @@ MonoBehaviour:
   _minAnimSpeed: 0
   _maxAnimSpeed: 3
   _movementRadius: 2
-  _moveDuration: 2
+  _moveDuration: 2.5
   _tossHeight: 2
   _tossDuration: 2
   eventTossEnding:
