@@ -66,11 +66,18 @@ public class ItemData : ScriptableObject
     {
         priceCurrent += priceModifierOnUpgrade;
     }
-    public void IncreaseSpecialCurrentValue(float specialModifierValue)
+    public void IncreaseSpecialCurrentValueAdd(float specialModifierValue)
     {
         specialCurrentValue += specialModifierValue;
 
-        Debug.Log("specialCurrentValue");
+        Debug.Log($"specialCurrentValue=={specialCurrentValue}");
+    }
+
+    public void IncreaseSpecialCurrentValueMultiply(float specialModifierValue)
+    {
+        specialCurrentValue *= specialModifierValue;
+
+        Debug.Log($"specialCurrentValue=={specialCurrentValue}");
     }
 
     public bool IsUpgradedFull()

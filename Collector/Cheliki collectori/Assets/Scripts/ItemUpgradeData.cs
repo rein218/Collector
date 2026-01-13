@@ -9,6 +9,8 @@ public class ItemUpgradeData : ItemData
     public ItemData ItemDataToUpgrade => itemDataToUpgrade;
     [SerializeField] private float specialModifier;
         public float SpecialModifier => specialModifier;
+    [SerializeField] private bool multilpyInsteadOfAdding;
+        public bool MultilpyInsteadOfAdding => multilpyInsteadOfAdding;
 
     [SerializeField] private int valueToUnlock;
 
@@ -24,7 +26,8 @@ public class ItemUpgradeData : ItemData
 
     public void UpgradeItem()
     {
-        itemDataToUpgrade.IncreaseSpecialCurrentValue(specialModifier);
+        if (multilpyInsteadOfAdding) itemDataToUpgrade.IncreaseSpecialCurrentValueMultiply(specialModifier);
+        else itemDataToUpgrade.IncreaseSpecialCurrentValueAdd(specialModifier);
     }
 
     public void Unlock(int upgrValue)

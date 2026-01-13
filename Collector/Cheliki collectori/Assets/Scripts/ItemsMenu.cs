@@ -173,15 +173,18 @@ public class ItemsMenu : MonoBehaviour
 
     private void UnlockUpgrade(ItemName nameOfUnlocked, int upgrValue)
     {
-        ItemUpgradeData upgradeToUnlock = upgradesData.FirstOrDefault(upgr => upgr.ItemName == nameOfUnlocked);
+        List<ItemUpgradeData> upgradesToUnlock = upgradesData.FindAll(upgr => upgr.ItemName == nameOfUnlocked);
 
-        if (upgradeToUnlock != null)
+        foreach (ItemUpgradeData upgradeToUnlock in upgradesToUnlock)
+        {
+            if (upgradeToUnlock != null)
         {
             upgradeToUnlock.Unlock(upgrValue);
         }
         else
         {
             Debug.LogError($"Upgrade with name {nameOfUnlocked} not found in upgradesData list");
+        }
         }
     }
 }
