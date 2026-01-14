@@ -1,16 +1,9 @@
 using UnityEngine;
-
-public class SaveUpgradeData : MonoBehaviour
+using System;
+[Serializable]
+public class SaveUpgradeData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public SaveData saveData;
+    public float specialModifier;
+    public int valueToUnlock;
 }

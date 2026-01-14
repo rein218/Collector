@@ -46,7 +46,6 @@ public class ItemsMenu : MonoBehaviour
     
     public void Save()
     {
-
         YG2.saves.itemsData = new List<SaveData>();
         foreach (var itemData in itemsData)
         {
@@ -54,19 +53,39 @@ public class ItemsMenu : MonoBehaviour
             Debug.Log("1");
             YG2.saves.itemsData.Add(data);
         }
+
+        YG2.saves.itemsUpdateData = new List<SaveUpgradeData>();
+        foreach (var upgradData in upgradesData)
+        {
+            var data = upgradData.GetSaveUpgradeData();
+            Debug.Log("2");
+            YG2.saves.itemsUpdateData.Add(data);
+        }
+
+
         YG2.SaveProgress();
         Debug.Log("Saved: "+ JsonUtility.ToJson(YG2.saves, true));
     }
 
     public void Load()
     {
-        if (YG2.saves.itemsData == null) return;
+        if (YG2.saves == null || YG2.saves.itemsData == null || YG2.saves.itemsUpdateData == null) return;
         Debug.Log("Load: "+ JsonUtility.ToJson(YG2.saves, true));
         foreach (var singleData in YG2.saves.itemsData)
         {
             var data = new ItemData();
             data.LoadSaveData(singleData);
         }
+
+
+        foreach (var singleData in YG2.saves.itemsUpdateData)
+        {
+            var data = new ItemUpgradeData();
+            data.LoadSaveUpgradeData(singleData);
+        }
+
+
+
     }
     
 

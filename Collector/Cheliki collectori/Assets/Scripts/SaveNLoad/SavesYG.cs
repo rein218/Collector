@@ -7,5 +7,6 @@ namespace YG
         public int dollarsCount = 0; 
         public int failsCount = 0;
         public List<SaveData> itemsData;
+        public List<SaveUpgradeData> itemsUpdateData;
     }
 }

@@ -109,9 +109,14 @@ public class ItemData : ScriptableObject
         return _upgradeCurrentValue >= _upgradeMaxValue;
     }
 
+    private void OnDisable()
+    {
+        eventOnClick?.RemoveAllListeners();
+    }
+
     private void OnDestroy()
     {
-        eventOnClick.RemoveAllListeners();
+        eventOnClick?.RemoveAllListeners();
     }
     public void CopyTo(ItemData toWhom)
     {

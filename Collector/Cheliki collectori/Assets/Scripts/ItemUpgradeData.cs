@@ -5,32 +5,18 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemUpgradeData")]
 public class ItemUpgradeData : ItemData
 {
-    public SaveUpgradeData GetSaveData() => new SaveUpgradeData
+    public SaveUpgradeData GetSaveUpgradeData() => new SaveUpgradeData
     {
-        isUnlocked = _isUnlocked,
-        itemName = _itemName,
-        sprite = _sprite,
-        priceDefault = _priceDefault,
-        priceCurrent = _priceCurrent,
-        priceModifierOnUpgrade = _priceModifierOnUpgrade,
-        upgradeMaxValue = _upgradeMaxValue,
-        upgradeCurrentValue = _upgradeCurrentValue,
-        specialDefaultValue = _specialDefaultValue,
-        specialCurrentValue = _specialCurrentValue
+        saveData = base.GetSaveData(),
+        specialModifier = _specialModifier,
+        valueToUnlock = _valueToUnlock,
     };
     
-    public void LoadSaveData(SaveData data)
+    public void LoadSaveUpgradeData(SaveUpgradeData data)
     {
-        _isUnlocked = data.isUnlocked;
-        _itemName = data.itemName;
-        _sprite = data.sprite;
-        _priceDefault = data.priceDefault;
-        _priceCurrent = data.priceCurrent;
-        _priceModifierOnUpgrade = data.priceModifierOnUpgrade;
-        _upgradeMaxValue = data.upgradeMaxValue;
-        _upgradeCurrentValue = data.upgradeCurrentValue;
-        _specialDefaultValue = data.specialDefaultValue;
-        _specialCurrentValue = data.specialCurrentValue;
+        base.LoadSaveData(data.saveData);
+        _specialModifier = data.specialModifier;
+        _valueToUnlock =  data.valueToUnlock;
     }
     
     [SerializeField] private ItemData itemDataToUpgrade;
@@ -38,7 +24,7 @@ public class ItemUpgradeData : ItemData
     [SerializeField] private float _specialModifier;
         public float SpecialModifier => _specialModifier;
 
-    [SerializeField] private int valueToUnlock;
+    [SerializeField] private int _valueToUnlock;
 
     override public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
@@ -57,7 +43,7 @@ public class ItemUpgradeData : ItemData
 
     public void Unlock(int upgrValue)
     {
-        if (upgrValue == valueToUnlock) _isUnlocked = true;
+        if (upgrValue == _valueToUnlock) _isUnlocked = true;
     }
 
 

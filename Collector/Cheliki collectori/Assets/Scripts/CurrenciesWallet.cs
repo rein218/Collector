@@ -21,7 +21,7 @@ public class CurrenciesWallet : MonoBehaviour
         }
         Instance = this;
 
-        //load saved
+
         Load();
         changeDollarsCountEvent?.Invoke(dollarsCount);
         changeFailsCountEvent?.Invoke(failsCount);
@@ -72,7 +72,6 @@ public class CurrenciesWallet : MonoBehaviour
             Save();
             return true;
         }
-
         return false;
     }
 

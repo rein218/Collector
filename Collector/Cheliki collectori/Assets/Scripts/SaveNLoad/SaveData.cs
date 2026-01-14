@@ -11,6 +11,6 @@ public class SaveData
     public int priceModifierOnUpgrade;
     public int upgradeMaxValue;
     public int upgradeCurrentValue;
-    public float specialDefaultValue;
+    public float specialDefaultValue;   
     public float specialCurrentValue;
 }
