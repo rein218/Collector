@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
 public class ItemData : ScriptableObject
 {
+    
     public SaveData GetSaveData() => new SaveData
     {
         isUnlocked = _isUnlocked,
@@ -32,6 +33,7 @@ public class ItemData : ScriptableObject
         _specialDefaultValue = data.specialDefaultValue;
         _specialCurrentValue = data.specialCurrentValue;
     }
+    
 
     protected bool _isUnlocked;
     [SerializeField] protected private ItemName _itemName;
@@ -48,9 +50,9 @@ public class ItemData : ScriptableObject
         public int UpgradeMaxValue => _upgradeMaxValue;
     protected private  int _upgradeCurrentValue;
         public int UpgradeCurrentValue => _upgradeCurrentValue;
-    [SerializeField] private float _specialDefaultValue;
+    [SerializeField] protected private float _specialDefaultValue;
         public float SpecialDefaultValue => _specialDefaultValue;
-    private  float _specialCurrentValue;
+    protected private float _specialCurrentValue;
         public float SpecialCurrentValue => _specialCurrentValue;
 
 
@@ -62,8 +64,6 @@ public class ItemData : ScriptableObject
         _priceCurrent = _priceDefault;
         _upgradeCurrentValue = 0;
         _specialCurrentValue = _specialDefaultValue;
-
-        Debug.Log($"specialCurrentValue == {_specialCurrentValue}");
 
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
         if (newUnlockOnClick != null) eventOnClick.AddListener(newUnlockOnClick);

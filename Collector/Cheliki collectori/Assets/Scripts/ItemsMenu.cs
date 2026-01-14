@@ -22,7 +22,7 @@ public class ItemsMenu : MonoBehaviour
     [Order(-1)]
     public void Start()
     {
-        // Load();
+        Load();
         foreach (ItemData itemData in itemsData)
         {
             AddNewItem(itemData);
@@ -39,14 +39,15 @@ public class ItemsMenu : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(2);
             Save();
         }
     }
     
     public void Save()
     {
-        YG2.saves.itemsData.Clear();
+
+        YG2.saves.itemsData = new List<SaveData>();
         foreach (var itemData in itemsData)
         {
             var data = itemData.GetSaveData();

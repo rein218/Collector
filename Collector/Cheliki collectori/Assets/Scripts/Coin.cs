@@ -18,7 +18,7 @@ public class Coin : MonoBehaviour
 
     public void SetNewCoinValue(int newCoinValue)
     {
-        coinValue = newCoinValue;
+        coinValue += newCoinValue;
     }
 
     public void SetNewMoveDuration(float newCoinMoveUpgrade)
