@@ -93,15 +93,11 @@ public class ItemData : ScriptableObject
     public void IncreaseSpecialCurrentValueAdd(float specialModifierValue)
     {
         _specialCurrentValue += specialModifierValue;
-
-        Debug.Log($"specialCurrentValue=={specialCurrentValue}");
     }
 
     public void IncreaseSpecialCurrentValueMultiply(float specialModifierValue)
     {
-        specialCurrentValue *= specialModifierValue;
-
-        Debug.Log($"specialCurrentValue=={specialCurrentValue}");
+        _specialCurrentValue *= specialModifierValue;
     }
 
     public bool IsUpgradedFull()

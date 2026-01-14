@@ -9,6 +9,7 @@ public class ItemUpgradeData : ItemData
     {
         saveData = base.GetSaveData(),
         specialModifier = _specialModifier,
+        multilpyInsteadOfAdding = _multilpyInsteadOfAdding,
         valueToUnlock = _valueToUnlock,
     };
     
@@ -16,6 +17,7 @@ public class ItemUpgradeData : ItemData
     {
         base.LoadSaveData(data.saveData);
         _specialModifier = data.specialModifier;
+        _multilpyInsteadOfAdding = data.multilpyInsteadOfAdding;
         _valueToUnlock =  data.valueToUnlock;
     }
     
@@ -23,6 +25,9 @@ public class ItemUpgradeData : ItemData
     public ItemData ItemDataToUpgrade => itemDataToUpgrade;
     [SerializeField] private float _specialModifier;
         public float SpecialModifier => _specialModifier;
+    [SerializeField] private bool _multilpyInsteadOfAdding;
+    public bool MultilpyInsteadOfAdding => _multilpyInsteadOfAdding;
+
 
     [SerializeField] private int _valueToUnlock;
 
@@ -34,11 +39,14 @@ public class ItemUpgradeData : ItemData
 
         eventOnClick.AddListener(() => UpgradeItem());
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
+
+        if (_valueToUnlock == 0) Unlock(0);
     }
 
     public void UpgradeItem()
     {
-        itemDataToUpgrade.IncreaseSpecialCurrentValue(_specialModifier);
+        if (_multilpyInsteadOfAdding) itemDataToUpgrade.IncreaseSpecialCurrentValueMultiply(_specialModifier);
+        else itemDataToUpgrade.IncreaseSpecialCurrentValueAdd(_specialModifier);
     }
 
     public void Unlock(int upgrValue)

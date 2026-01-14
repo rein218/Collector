@@ -10,6 +10,8 @@ using YG;
 
 public class ItemsMenu : MonoBehaviour
 {
+    [SerializeField] private bool load = false;
+    [SerializeField] private float saveTimer = 15;
     [SerializeField] private GameObject itemButtonPrefab;
     [SerializeField] private Transform containerT;
     [SerializeField] private List<ItemData> itemsData;
@@ -19,10 +21,12 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private BusChelixCoins busChelixCoins;
 
+    
+
     [Order(-1)]
     public void Start()
     {
-        Load();
+        if (load) Load();
         foreach (ItemData itemData in itemsData)
         {
             AddNewItem(itemData);
@@ -39,7 +43,7 @@ public class ItemsMenu : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(saveTimer);
             Save();
         }
     }
