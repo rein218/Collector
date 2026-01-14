@@ -61,10 +61,10 @@ public class ItemData : ScriptableObject
 
     virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
-        _isUnlocked = true;
-        _priceCurrent = _priceDefault;
-        _upgradeCurrentValue = 0;
-        _specialCurrentValue = _specialDefaultValue;
+       // _isUnlocked = true;
+       // _priceCurrent = _priceDefault;
+      //  _upgradeCurrentValue = 0;
+       // _specialCurrentValue = _specialDefaultValue;
 
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
         if (newUnlockOnClick != null) eventOnClick.AddListener(newUnlockOnClick);

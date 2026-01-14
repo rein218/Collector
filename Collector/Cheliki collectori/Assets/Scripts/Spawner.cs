@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using YG;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject coinBronzePrefab,
@@ -29,6 +29,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnNewCoin(ItemData itemData)
     {
+        Debug.Log("yes");
         GameObject newCoinObj;
         switch (itemData.ItemName)
         {
@@ -38,10 +39,12 @@ public class Spawner : MonoBehaviour
 
             case ItemName.NewCoinSilver:
                 newCoinObj = SpawnNewObj(coinSilverPrefab);
+
                 break;
 
             case ItemName.NewCoinGold:
                 newCoinObj = SpawnNewObj(coinGoldPrefab);
+
                 break;
             
             default:
