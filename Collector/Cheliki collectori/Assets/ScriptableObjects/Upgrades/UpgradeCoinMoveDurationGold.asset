@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b4e3832461b7e5aedbcb7384701ef, type: 3}
   m_Name: UpgradeCoinMoveDurationGold
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
-  itemName: 8
-  sprite: {fileID: 6210811236209494756, guid: 2cc199b7ccd7e8e4f8dc75c38d823099, type: 3}
-  priceDefault: 0
-  priceModifierOnUpgrade: 1
-  upgradeMaxValue: 4
-  specialDefaultValue: 0
-  itemDataToUpgrade: {fileID: 11400000, guid: 52fdf3bc6837feb338afc887dd36908d, type: 2}
-  specialModifier: 0.5
-  multilpyInsteadOfAdding: 0
-  valueToUnlock: 0
+  _itemName: 10
+  _sprite: {fileID: 0}
+  _priceDefault: 0
+  _priceModifierOnUpgrade: 1
+  _upgradeMaxValue: 4
+  _specialDefaultValue: 0
+  itemDataToUpgrade: {fileID: 11400000, guid: 9e9dea1304f02724699ea04065dd93d7, type: 2}
+  _specialModifier: 0.5
+  _multilpyInsteadOfAdding: 0
+  _valueToUnlock: 0

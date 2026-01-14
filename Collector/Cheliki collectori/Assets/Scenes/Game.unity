@@ -428,27 +428,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1c2728f6240347194c9cefe06930dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeMenu
+  load: 0
+  saveTimer: 15
   itemButtonPrefab: {fileID: 1132074546010025786, guid: 9c008129005b597e3808cb9921d74241, type: 3}
   containerT: {fileID: 202770924}
   itemsData:
-  - {fileID: 11400000, guid: 9d4c3d299cadfa40689490a8969eeb25, type: 2}
-  - {fileID: 11400000, guid: 9be5f31a89f980bc0bba9d2efe40f28e, type: 2}
-  - {fileID: 11400000, guid: 6afc810b9e8f5540192e220bce589dba, type: 2}
-  - {fileID: 11400000, guid: 0a951daead2660d0697ef6685670a616, type: 2}
-  - {fileID: 11400000, guid: 565ab787645a039128b683de0c7ae8ca, type: 2}
-  - {fileID: 11400000, guid: 52fdf3bc6837feb338afc887dd36908d, type: 2}
-  - {fileID: 11400000, guid: d53d16a8b9cd959b1b2cdc148853ad9d, type: 2}
+  - {fileID: 11400000, guid: 8e43bd880987023458bd596c2ca545a7, type: 2}
+  - {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
+  - {fileID: 11400000, guid: eba159ae39b4ad54d8fa9a3e53b69cd0, type: 2}
+  - {fileID: 11400000, guid: 287cfa5d8779bc4459d292a3c53b5ee9, type: 2}
+  - {fileID: 11400000, guid: 292cea88ab0b987418ce38dbf14cf6b3, type: 2}
+  - {fileID: 11400000, guid: 9e9dea1304f02724699ea04065dd93d7, type: 2}
+  - {fileID: 11400000, guid: b0829d0788e2be8419323447a41e472b, type: 2}
   upgradesData:
-  - {fileID: 11400000, guid: a7bbadedb8cd1eb899b635a179609192, type: 2}
-  - {fileID: 11400000, guid: cc6131e29b2385330b870e78c2a6a227, type: 2}
-  - {fileID: 11400000, guid: 7869bcf27f2ce88a1b696622128ebb80, type: 2}
-  - {fileID: 11400000, guid: 5a9c6bcbd0c6ab9f4ae0fa18d80393cf, type: 2}
-  - {fileID: 11400000, guid: bb16959eb29befa5890b876ce0c26230, type: 2}
-  - {fileID: 11400000, guid: d4c71d414d8f36796be9a6fc1e32bfff, type: 2}
-  - {fileID: 11400000, guid: c372eaf4d1d95c5fbbdd58a63b83b5a9, type: 2}
-  - {fileID: 11400000, guid: 34b6ec3a0d619bea6bab56b162663e3d, type: 2}
-  - {fileID: 11400000, guid: 6d50f8cb3755e3d4997e622521a3add0, type: 2}
-  - {fileID: 11400000, guid: 4900fa385f03c4e5fa43bff7c439879b, type: 2}
+  - {fileID: 11400000, guid: 8ef990b977ae0384599032b0cc07c5d4, type: 2}
+  - {fileID: 11400000, guid: b47d92a0d3241e34a920ee4ff9031150, type: 2}
+  - {fileID: 11400000, guid: fdcd6fd6684cbbe4bab93d7763691be4, type: 2}
+  - {fileID: 11400000, guid: eebfb0ca73d27a64a95b28fc3f561f6d, type: 2}
+  - {fileID: 11400000, guid: f63ea977591b17343ba5ee83fe152013, type: 2}
+  - {fileID: 11400000, guid: 853c94a86991c594cb35df11dcd37c32, type: 2}
+  - {fileID: 11400000, guid: 2f02ba037f4f4a1469d626d95f549810, type: 2}
+  - {fileID: 11400000, guid: fa0bb2db4ec7571499c283f7bdffcd6f, type: 2}
+  - {fileID: 11400000, guid: fb4e1192a5155a84fbbb04366ec7143c, type: 2}
+  - {fileID: 11400000, guid: cbb68384fac48a8439a33f6c929c01bf, type: 2}
   spawner: {fileID: 1064348417}
   inputHandler: {fileID: 2133612166}
   busChelixCoins: {fileID: 1706924272}

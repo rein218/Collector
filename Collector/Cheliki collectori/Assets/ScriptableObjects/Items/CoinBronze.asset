@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
   m_Name: CoinBronze
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemName: 0
-  sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
-  priceDefault: 0
-  priceModifierOnUpgrade: 1
-  upgradeMaxValue: 10
-  specialDefaultValue: 1
+  _itemName: 0
+  _sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
+  _priceDefault: 0
+  _priceModifierOnUpgrade: 1
+  _upgradeMaxValue: 10
+  _specialDefaultValue: 1
