@@ -40,7 +40,7 @@ public class ItemUpgradeData : ItemData
         eventOnClick.AddListener(() => UpgradeItem());
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
 
-        if (_valueToUnlock == 0) Unlock(0);
+        if (_valueToUnlock == 0) TryToUnlock(0);
     }
 
     public void UpgradeItem()
@@ -49,9 +49,11 @@ public class ItemUpgradeData : ItemData
         else itemDataToUpgrade.IncreaseSpecialCurrentValueAdd(_specialModifier);
     }
 
-    public void Unlock(int upgrValue)
+    public bool TryToUnlock(int upgrValue)
     {
         if (upgrValue == _valueToUnlock) _isUnlocked = true;
+
+        return _isUnlocked;
     }
 
 
