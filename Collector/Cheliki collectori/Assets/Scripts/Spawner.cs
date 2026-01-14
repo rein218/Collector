@@ -25,24 +25,24 @@ public class Spawner : MonoBehaviour
 
         return newPos;
     }
-
-
-    public void SpawnNewCoin(ItemData itemData)
+    public void SpawnNewCoin(ItemData itemData, bool yes = true)
     {
-        Debug.Log("yes");
         GameObject newCoinObj;
         switch (itemData.ItemName)
         {
             case ItemName.NewCoinBronze:
+                if(yes) YG2.saves.bronzeCount++;
                 newCoinObj = SpawnNewObj(coinBronzePrefab);
                 break;
 
             case ItemName.NewCoinSilver:
+                if(yes) YG2.saves.siverCount++;
                 newCoinObj = SpawnNewObj(coinSilverPrefab);
 
                 break;
 
             case ItemName.NewCoinGold:
+                if(yes) YG2.saves.goldCount++;
                 newCoinObj = SpawnNewObj(coinGoldPrefab);
 
                 break;
@@ -58,11 +58,11 @@ public class Spawner : MonoBehaviour
         BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemName);
     }
 
-    public void SpawnNewChelix()
+    public void SpawnNewChelix( bool yes = true)
     {
+        if(yes) YG2.saves.chelixCount++;
         GameObject newChelixObj = SpawnNewObj(chelixPrefab);
         Chelix newChelix = newChelixObj.GetComponent<Chelix>();
-
         BusChelixCoins.Instance.AddToChelixList(newChelix);
     }
 }

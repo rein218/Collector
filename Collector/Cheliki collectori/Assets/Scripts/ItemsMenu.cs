@@ -11,6 +11,7 @@ using YG;
 public class ItemsMenu : MonoBehaviour
 {
     [SerializeField] private bool load = false;
+    [SerializeField] private bool SetDefault = false;
     [SerializeField] private float saveTimer = 15;
     [SerializeField] private GameObject itemButtonPrefab;
     [SerializeField] private Transform containerT;
@@ -27,8 +28,8 @@ public class ItemsMenu : MonoBehaviour
     [Order(-1)]
     public void Start()
     {
+        if (SetDefault) SetDefaultSaves();
         if (load) Load();
-        Debug.Log(itemsData.Count + " " + upgradesData.Count);
         foreach (ItemData itemData in itemsData)
         {
             AddNewItem(itemData);
@@ -40,6 +41,13 @@ public class ItemsMenu : MonoBehaviour
         }
         if (load) LoadGameStuff();
         StartCoroutine(SaveCycle());
+    }
+    [ContextMenu("SetDefaultSaves")]
+    public void SetDefaultSaves()
+    {
+        YG2.SetDefaultSaves();
+        YG2.saves.SetDefault();
+        YG2.SaveProgress();
     }
 
     IEnumerator SaveCycle()
@@ -57,7 +65,6 @@ public class ItemsMenu : MonoBehaviour
         foreach (var itemData in itemsData)
         {
             var data = itemData.GetSaveData();
-            Debug.Log("1");
             YG2.saves.itemsData.Add(data);
         }
 
@@ -65,7 +72,6 @@ public class ItemsMenu : MonoBehaviour
         foreach (var upgradData in upgradesData)
         {
             var data = upgradData.GetSaveUpgradeData();
-            Debug.Log("2");
             YG2.saves.itemsUpdateData.Add(data);
         }
 
@@ -101,24 +107,24 @@ public class ItemsMenu : MonoBehaviour
         var linkToBronze = itemsData.FirstOrDefault(coin => coin.ItemName == ItemName.NewCoinBronze);
         for (int i = 0; i < YG2.saves.bronzeCount; i++)
         {
-            spawner.SpawnNewCoin(linkToBronze);
+            spawner.SpawnNewCoin(linkToBronze, false);
         }
 
         var linkToSilver = itemsData.FirstOrDefault(coin => coin.ItemName == ItemName.NewCoinSilver);
         for (int i = 0; i < YG2.saves.siverCount; i++)
         {
-            spawner.SpawnNewCoin(linkToSilver);
+            spawner.SpawnNewCoin(linkToSilver, false);
         }
 
         var linkToGold = itemsData.FirstOrDefault(coin => coin.ItemName == ItemName.NewCoinGold);
         for (int i = 0; i < YG2.saves.goldCount; i++)
         {
-            spawner.SpawnNewCoin(linkToGold);
+            spawner.SpawnNewCoin(linkToGold, false);
         }
 
         for (int i = 0; i < YG2.saves.chelixCount; i++)
         {
-            spawner.SpawnNewChelix();
+            spawner.SpawnNewChelix(false);
         }
         
     }
@@ -145,17 +151,14 @@ public class ItemsMenu : MonoBehaviour
         switch (itemData.ItemName)
         {
             case ItemName.NewCoinBronze:
-                YG2.saves.bronzeCount++;
                 return () => spawner.SpawnNewCoin(itemData);
             case ItemName.NewCoinSilver:
-                YG2.saves.siverCount++;
                 return () => spawner.SpawnNewCoin(itemData);
             case ItemName.NewCoinGold:
-                YG2.saves.goldCount++;
                 return () => spawner.SpawnNewCoin(itemData);
 
             case ItemName.NewChelix:
-                YG2.saves.chelixCount++;
+                
                 return () => spawner.SpawnNewChelix();
 
             case ItemName.UpgradeCoinBronzeValue:   // upgrades are set in  ItemUpgradeData.UpgradeItem()
@@ -207,7 +210,6 @@ public class ItemsMenu : MonoBehaviour
     {
         ItemUpgradeData upgradeForRequiredItemData = upgradesData.FirstOrDefault(upgr => upgr.ItemName == upgradeName);
 
-        Debug.Log($"asqweqwesadczx: {upgradeForRequiredItemData} ; {upgradeName}");
 
         return upgradeForRequiredItemData.SpecialModifier * upgradeForRequiredItemData.UpgradeCurrentValue;
     }

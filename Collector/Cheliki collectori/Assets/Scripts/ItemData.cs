@@ -10,7 +10,6 @@ public class ItemData : ScriptableObject
     {
         isUnlocked = _isUnlocked,
         itemName = _itemName,
-        sprite = _sprite,
         priceDefault = _priceDefault,
         priceCurrent = _priceCurrent,
         priceModifierOnUpgrade = _priceModifierOnUpgrade,
@@ -24,7 +23,6 @@ public class ItemData : ScriptableObject
     {
         _isUnlocked = data.isUnlocked;
         _itemName = data.itemName;
-        _sprite = data.sprite;
         _priceDefault = data.priceDefault;
         _priceCurrent = data.priceCurrent;
         _priceModifierOnUpgrade = data.priceModifierOnUpgrade;
@@ -34,26 +32,25 @@ public class ItemData : ScriptableObject
         _specialCurrentValue = data.specialCurrentValue;
     }
     
-
-    protected bool _isUnlocked;
-    public bool IsUnlocked => _isUnlocked;
+    [SerializeField] protected private bool _isUnlocked;
+    protected bool IsUnlocked => _isUnlocked;
     [SerializeField] protected private ItemName _itemName;
         public ItemName ItemName => _itemName;
     [SerializeField] protected private  Sprite _sprite;
         public Sprite Sprite => _sprite;
     [SerializeField] protected private  int _priceDefault;
         public int PriceDefault => _priceDefault;
-    protected private  int _priceCurrent;
+    [SerializeField]  protected private  int _priceCurrent;
         public int PriceCurrent => _priceCurrent;
     [SerializeField] protected private  int _priceModifierOnUpgrade;
         public int PriceModifierOnUpgrade => _priceModifierOnUpgrade;
     [SerializeField] protected private  int _upgradeMaxValue;
         public int UpgradeMaxValue => _upgradeMaxValue;
-    protected private  int _upgradeCurrentValue;
+    [SerializeField] protected private  int _upgradeCurrentValue;
         public int UpgradeCurrentValue => _upgradeCurrentValue;
     [SerializeField] protected private float _specialDefaultValue;
         public float SpecialDefaultValue => _specialDefaultValue;
-    protected private float _specialCurrentValue;
+    [SerializeField] protected private float _specialCurrentValue;
         public float SpecialCurrentValue => _specialCurrentValue;
 
 
@@ -61,10 +58,8 @@ public class ItemData : ScriptableObject
 
     virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
-       // _isUnlocked = true;
-       // _priceCurrent = _priceDefault;
-      //  _upgradeCurrentValue = 0;
-       // _specialCurrentValue = _specialDefaultValue;
+        //_priceCurrent = _priceDefault;
+        _specialCurrentValue = _specialDefaultValue;
 
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
         if (newUnlockOnClick != null) eventOnClick.AddListener(newUnlockOnClick);

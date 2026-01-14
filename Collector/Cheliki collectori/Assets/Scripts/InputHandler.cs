@@ -47,7 +47,6 @@ public class InputHandler : MonoBehaviour
         
         if (hit.collider != null)
         {
-            Debug.Log("Clicked on: " + hit.collider.name); 
 
             if (hit.collider.CompareTag("Coin"))
             {

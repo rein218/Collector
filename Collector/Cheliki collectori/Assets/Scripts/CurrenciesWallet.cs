@@ -48,13 +48,10 @@ public class CurrenciesWallet : MonoBehaviour
     {
         if (dollarsToAdd <= 0)
         {
-            Debug.LogError("dollarsToAdd <= 0");
             return;
         }
 
         dollarsCount += dollarsToAdd;
-
-        Debug.Log($"{dollarsToAdd} dollars added");
 
         changeDollarsCountEvent?.Invoke(dollarsCount);
         Save();
@@ -66,7 +63,6 @@ public class CurrenciesWallet : MonoBehaviour
         {
             dollarsCount -= dollarToSpend;
 
-            Debug.Log($"{dollarToSpend} dollars spent");
 
             changeDollarsCountEvent?.Invoke(dollarsCount);
             Save();
@@ -79,7 +75,6 @@ public class CurrenciesWallet : MonoBehaviour
     {
         failsCount += 1;
 
-        Debug.Log($"1 fail currency added");
 
         changeFailsCountEvent?.Invoke(failsCount);
         Save();
@@ -91,7 +86,6 @@ public class CurrenciesWallet : MonoBehaviour
         {
             dollarsCount -= dollarToSpend;
 
-            Debug.Log($"{dollarToSpend} fails currency spent");
 
             changeFailsCountEvent?.Invoke(failsCount);
             Save();

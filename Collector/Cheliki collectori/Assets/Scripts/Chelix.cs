@@ -40,7 +40,6 @@ public class Chelix : MonoBehaviour
                 _animationController.StopMoving();
                 break;
         }
-        Debug.Log(currentState);
     }
 
     private IEnumerator MoveToGoalIE()
