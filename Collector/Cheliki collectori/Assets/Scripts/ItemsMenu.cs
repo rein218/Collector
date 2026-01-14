@@ -16,6 +16,7 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private Transform containerT;
     [SerializeField] private List<ItemData> itemsData;
     [SerializeField] private List<ItemUpgradeData> upgradesData;
+    private Dictionary<ItemData, ItemButton> buttonObjectsForItems = new Dictionary<ItemData, ItemButton>();
 
     [SerializeField] private Spawner spawner;
     [SerializeField] private InputHandler inputHandler;
@@ -99,8 +100,14 @@ public class ItemsMenu : MonoBehaviour
         ItemButton newItemButton = newItemButtonGO.GetComponent<ItemButton>();
 
         itemData.Init(ActionOnClick(itemData), UnlockOnClick(itemData));
-
         newItemButton.Init(itemData);
+
+        if (itemData.IsUnlocked)
+            newItemButtonGO.SetActive(true);
+        else
+            newItemButtonGO.SetActive(false); 
+
+        buttonObjectsForItems.Add(itemData, newItemButton);
     }
 
     private UnityAction ActionOnClick(ItemData itemData)
@@ -193,7 +200,8 @@ public class ItemsMenu : MonoBehaviour
         {
             if (upgradeToUnlock != null)
             {
-                upgradeToUnlock.Unlock(upgrValue);
+                if (upgradeToUnlock.TryToUnlock(upgrValue))
+                    buttonObjectsForItems[upgradeToUnlock].gameObject.SetActive(true);
             }
             else
             {

@@ -14,21 +14,34 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        if (clickIsRequired) HandleClick();
-        else MouseProcessing();
+        HandleMouse();
+        HandleTouch();
     }
 
-    private void HandleClick()
+    private void HandleMouse()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || !clickIsRequired)
         {
-            MouseProcessing();
+            TouchProcessing(Input.mousePosition);
         }
     }
 
-    private void MouseProcessing()
+    private void HandleTouch()
     {
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began  || !clickIsRequired)
+            {
+                TouchProcessing(touch.position);
+            }
+        }
+    }
+
+    private void TouchProcessing(Vector2 touchPosition)
+    {
+        Vector2 mousePos = cam.ScreenToWorldPoint(touchPosition);
             
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, layerMask);
         
