@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using YG;
 
 public class ItemsMenu : MonoBehaviour
@@ -14,10 +15,15 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private bool SetDefault = false;
     [SerializeField] private float saveTimer = 15;
     [SerializeField] private GameObject itemButtonPrefab;
-    [SerializeField] private Transform containerT;
-    [SerializeField] private List<ItemData> itemsData;
+    [SerializeField] private Transform  containerItems,
+                                        containerFeatures,
+                                        containerUpgrades;
+    [SerializeField] private List<ItemData> itemsData,
+                                            featuresData;
     [SerializeField] private List<ItemUpgradeData> upgradesData;
     private Dictionary<ItemData, ItemButton> buttonObjectsForItems = new Dictionary<ItemData, ItemButton>();
+
+    [SerializeField] private ScrollRect scrollRect;
 
     [SerializeField] private Spawner spawner;
     [SerializeField] private InputHandler inputHandler;
@@ -32,15 +38,23 @@ public class ItemsMenu : MonoBehaviour
         if (load) Load();
         foreach (ItemData itemData in itemsData)
         {
-            AddNewItem(itemData);
+            AddNewItem(itemData, containerItems);
         }
 
         foreach (ItemData upgradeData in upgradesData)
         {
-            AddNewItem(upgradeData);
+            AddNewItem(upgradeData, containerUpgrades);
         }
+
+        foreach (ItemData featureData in featuresData)
+        {
+            AddNewItem(featureData, containerFeatures);
+        }
+
         if (load) LoadGameStuff();
         StartCoroutine(SaveCycle());
+
+        SelectTab(containerItems.gameObject);
     }
     [ContextMenu("SetDefaultSaves")]
     public void SetDefaultSaves()
@@ -130,7 +144,7 @@ public class ItemsMenu : MonoBehaviour
     }
     
 
-    private void AddNewItem(ItemData itemData)
+    private void AddNewItem(ItemData itemData, Transform containerT)
     {
         GameObject newItemButtonGO = Instantiate(itemButtonPrefab, containerT);
         ItemButton newItemButton = newItemButtonGO.GetComponent<ItemButton>();
@@ -246,5 +260,15 @@ public class ItemsMenu : MonoBehaviour
                 Debug.LogError($"Upgrade with name {nameOfUnlocked} not found in upgradesData list");
             }
         }
+    }
+
+    public void SelectTab(GameObject tabToOpen)
+    {
+        containerItems.gameObject.SetActive(false);
+        containerFeatures.gameObject.SetActive(false);
+        containerUpgrades.gameObject.SetActive(false);
+
+        tabToOpen.SetActive(true);
+        scrollRect.content = tabToOpen.GetComponent<RectTransform>();
     }
 }

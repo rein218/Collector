@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.EventSystems; // Add this namespace
 
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask layerMaskInteractable;
     [SerializeField] CurrenciesWallet currenciesWallet;
     [SerializeField] private bool clickIsRequired = true;
 
@@ -22,7 +23,10 @@ public class InputHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || !clickIsRequired)
         {
-            TouchProcessing(Input.mousePosition);
+            if (!IsPointerOverUI(Input.mousePosition))
+            {
+                TouchProcessing(Input.mousePosition);
+            }
         }
     }
 
@@ -32,22 +36,37 @@ public class InputHandler : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began  || !clickIsRequired)
+            if (touch.phase == TouchPhase.Began || !clickIsRequired)
             {
-                TouchProcessing(touch.position);
+                if (!IsPointerOverUI(touch.position))
+                {
+                    TouchProcessing(touch.position);
+                }
             }
         }
+    }
+
+    private bool IsPointerOverUI(Vector2 position)
+    {
+        if (EventSystem.current == null)
+            return false;
+
+        PointerEventData eventDataCurrentPosition = new(EventSystem.current) { position = position };
+
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        
+        return results.Count > 0;
     }
 
     private void TouchProcessing(Vector2 touchPosition)
     {
         Vector2 mousePos = cam.ScreenToWorldPoint(touchPosition);
             
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, layerMaskInteractable);
         
         if (hit.collider != null)
         {
-
             if (hit.collider.CompareTag("Coin"))
             {
                 Coin clickedCoin = hit.collider.GetComponent<Coin>();
