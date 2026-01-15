@@ -33,7 +33,7 @@ public class ItemData : ScriptableObject
     }
     
     [SerializeField] protected private bool _isUnlocked;
-    protected bool IsUnlocked => _isUnlocked;
+        public bool IsUnlocked => _isUnlocked;
     [SerializeField] protected private ItemName _itemName;
         public ItemName ItemName => _itemName;
     [SerializeField] protected private  Sprite _sprite;

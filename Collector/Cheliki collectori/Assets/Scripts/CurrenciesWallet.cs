@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Security.Cryptography;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
 using YG;
@@ -20,8 +23,11 @@ public class CurrenciesWallet : MonoBehaviour
             return;
         }
         Instance = this;
+    }
 
-
+    [Order(-2)]
+    public void Start()
+    {
         Load();
         changeDollarsCountEvent?.Invoke(dollarsCount);
         changeFailsCountEvent?.Invoke(failsCount);
@@ -102,5 +108,5 @@ public class CurrenciesWallet : MonoBehaviour
         changeDollarsCountEvent.RemoveAllListeners();
         changeFailsCountEvent.RemoveAllListeners();
     }
+    
 }
-
