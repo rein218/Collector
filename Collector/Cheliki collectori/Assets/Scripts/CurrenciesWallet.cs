@@ -48,6 +48,16 @@ public class CurrenciesWallet : MonoBehaviour
     }
 
 
+    public bool Check(int dollarToSpend)
+    {
+        if (dollarsCount >= dollarToSpend)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
     public void AddDollars(int dollarsToAdd)

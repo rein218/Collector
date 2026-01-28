@@ -1,25 +1,47 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.ComponentModel.Design;
 
 public class CoinMover : MonoBehaviour
 {
     [Header("Animations settings")]
-    [SerializeField] private CoinAnimationControllers _animationController;
+    [SerializeField] private CoinAnimationController _animationController;
     [SerializeField] private float _minAnimSpeed = 0f;
     [SerializeField] private float _maxAnimSpeed = 3f;
+
+    [Header("Sound Settings")]
+    [SerializeField] private ObjectSound _soundFlung;
+    [SerializeField] private ObjectSound _soundDrop;
+
     [Header("Move Settings")]
     [SerializeField] private float _movementRadius = 2f;
     [SerializeField] private float defaultMoveDuration = 2f;
     private float _moveDuration;
     [Header("Toss Settings")]
     [SerializeField] private float _tossHeight = 2f;
-    
-    
     private Coroutine moveCoroutine;
 
     [SerializeField] private UnityEvent eventTossEnding;
 
+    public void Start()
+    {
+        StartCoroutine(Spawn());
+    }
+    public IEnumerator Spawn()
+    {
+        float elapsedTime = 0f;
+        
+        while (elapsedTime < 0.3)
+        {
+            float t = elapsedTime / 0.3f;
+            Vector3 currentMovePos = Vector3.Lerp(new Vector3(0,25,0), new Vector3(0,0,0), t);
+            _animationController.transform.localPosition = currentMovePos;
+            yield return null;
+            elapsedTime+=Time.deltaTime;
+        }
+        _animationController.transform.localPosition = Vector3.zero;
+    }
 
     public void StartMovement()
     {
@@ -28,36 +50,34 @@ public class CoinMover : MonoBehaviour
             StopCoroutine(moveCoroutine);
         }
         
-
-        Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + FindNewDirection();
+        var p =  FindNewPos();
         
-
-        moveCoroutine = StartCoroutine(MoveToPosition(startPos, targetPos, _moveDuration));
+        moveCoroutine = StartCoroutine(MoveToPosition(transform.position, p, _moveDuration));
     }
 
     public void SetMoveDuration(float newCoinMoveUpgrade)
     {
         _moveDuration = defaultMoveDuration - newCoinMoveUpgrade;
+
     }
 
-    private Vector3 FindNewDirection()
+    private Vector3 FindNewPos()
     {
-        sbyte targetX = 0, targetY = 0;
         Vector2 randomOffset = Random.insideUnitCircle * _movementRadius;
+        Vector3 destination =  new Vector3(transform.position.x + randomOffset.x, transform.position.y + randomOffset.y, 0);
+        
+        if (destination.x > TableBorders.rightBorder)  destination.x = TableBorders.rightBorder - 0.1f;
+        if (destination.x < TableBorders.leftBorder)   destination.x = TableBorders.leftBorder + 0.1f;
+        if (destination.y > TableBorders.topBorder)    destination.y = TableBorders.topBorder - 0.1f; 
+        if (destination.y < TableBorders.bottomBorder) destination.y = TableBorders.bottomBorder + 0.1f;
 
-        if (transform.position.x + randomOffset.x * _movementRadius > BoundsOfActiveSpace.rightBorder) targetX = -2;
-        else if (transform.position.x - randomOffset.x *  _movementRadius < BoundsOfActiveSpace.leftBorder) targetX = 2;
-
-        if (transform.position.y + randomOffset.y * _movementRadius > BoundsOfActiveSpace.topBorder) targetY = -2;
-        else if (transform.position.y - randomOffset.y * _movementRadius < BoundsOfActiveSpace.bottomBorder) targetY = 2;
-
-        return new Vector3(targetX + randomOffset.x, targetY + randomOffset.y, 0);
+        return destination;
     }
 
     private IEnumerator MoveToPosition(Vector3 startPos, Vector3 targetPos, float duration)
     {
         _animationController.StartRotation();
+        _soundFlung.PlaySound();
         float elapsedTime = 0f;
         
         while (elapsedTime < duration)
@@ -76,15 +96,18 @@ public class CoinMover : MonoBehaviour
 
             //animations
             float currentSpeed = Mathf.Lerp(_minAnimSpeed,_maxAnimSpeed, tLerp);
+            currentSpeed=currentSpeed*(defaultMoveDuration/_moveDuration);
             _animationController.ChangeSpeed(currentSpeed);
             
             //change pos
-            transform.position = currentMovePos + currentTossPos;
+            _animationController.transform.localPosition = currentTossPos;
+            transform.position = currentMovePos;
+            
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
+        _soundDrop.PlaySound();
         _animationController.EndRotation();
         transform.position = targetPos;
         moveCoroutine = null;

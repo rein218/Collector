@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class CoinAnimationControllers : MonoBehaviour
+public class CoinAnimationController : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+
     public void StartRotation()
     {
         _animator.SetBool("Rotation", true);

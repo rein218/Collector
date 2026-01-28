@@ -9,7 +9,7 @@ public class SettingPanel : MonoBehaviour
     [SerializeField] private Slider _musicVolume;
 
 
-    void OnEnable()
+    void Start()
     {
         _soundMixerManager.Load();
         _masterVolume.value = _soundMixerManager.GetMasterVolume();

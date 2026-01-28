@@ -82,12 +82,21 @@ public class ItemsMenu : MonoBehaviour
             YG2.saves.itemsData.Add(data);
         }
 
+        YG2.saves.featuresData = new List<SaveData>();
+        foreach (var itemData in featuresData)
+        {
+            var data = itemData.GetSaveData();
+            YG2.saves.featuresData.Add(data);
+        }
+
         YG2.saves.itemsUpdateData = new List<SaveUpgradeData>();
         foreach (var upgradData in upgradesData)
         {
             var data = upgradData.GetSaveUpgradeData();
             YG2.saves.itemsUpdateData.Add(data);
         }
+
+        
 
 
         YG2.SaveProgress();
@@ -106,6 +115,12 @@ public class ItemsMenu : MonoBehaviour
             id++;
         }
 
+        id = 0;
+        foreach (var singleData in YG2.saves.featuresData)
+        {
+            featuresData[id].LoadSaveData(singleData);
+            id++;
+        }
 
         id = 0;
         foreach (var singleData in YG2.saves.itemsUpdateData)

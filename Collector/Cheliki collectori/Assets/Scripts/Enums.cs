@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ChelixState { Idle, MovingToGoal, OnGoalInteraction, Sleeping }
+public enum ChelixState { Idle, MovingToGoal, OnGoalInteraction, Sleeping, Spawning }
 
 public enum Currencies { Dollars, Fails }
 

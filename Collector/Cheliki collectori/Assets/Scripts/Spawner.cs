@@ -7,9 +7,10 @@ public class Spawner : MonoBehaviour
                                 coinGoldPrefab;
     [SerializeField] GameObject chelixPrefab;
 
+    [SerializeField] private float _spawnPosRadius = 3f;
     private GameObject SpawnNewObj(GameObject prefab) 
     {
-        return Instantiate(prefab, GenerateNewPosition(), Quaternion.identity);
+        return Instantiate(prefab, GeneratePositionInMiddle(), Quaternion.identity);
     }
 
     private Vector3 GenerateNewPosition()
@@ -18,12 +19,25 @@ public class Spawner : MonoBehaviour
 
         //needs to find bounds instead 20
 
-        posX = Random.Range(BoundsOfActiveSpace.leftBorder, BoundsOfActiveSpace.rightBorder); 
-        posY = Random.Range(BoundsOfActiveSpace.bottomBorder, BoundsOfActiveSpace.topBorder);
+        posX = Random.Range(TableBorders.leftBorder, TableBorders.rightBorder); 
+        posY = Random.Range(TableBorders.bottomBorder, TableBorders.topBorder);
 
         Vector3 newPos = new(posX, posY, 0);
 
         return newPos;
+    }
+
+    private Vector3 GeneratePositionInMiddle()
+    {
+        Vector2 randomOffset = Random.insideUnitCircle * _spawnPosRadius;
+        Vector3 destination =  new Vector3(TableBorders.position.x + randomOffset.x, TableBorders.position.y + randomOffset.y, 0);
+        
+        if (destination.x > TableBorders.rightBorder)  destination.x = TableBorders.rightBorder - 0.1f;
+        if (destination.x < TableBorders.leftBorder)   destination.x = TableBorders.leftBorder + 0.1f;
+        if (destination.y > TableBorders.topBorder)    destination.x = TableBorders.topBorder - 0.1f; 
+        if (destination.y < TableBorders.bottomBorder) destination.x = TableBorders.bottomBorder + 0.1f;
+
+        return destination;
     }
     public void SpawnNewCoin(ItemData itemData, bool yes = true)
     {

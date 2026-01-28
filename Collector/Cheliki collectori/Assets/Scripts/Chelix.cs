@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -11,9 +12,11 @@ public class Chelix : MonoBehaviour
     [SerializeField] private float moveSpeed;
     
     [SerializeField] private float distanceToTriggerGoal = 0.65f;
+
+    [SerializeField] private float spawnTime = 0.3f;
     private float distanceToGoal;
 
-    private ChelixState currentState = ChelixState.Idle;
+    private ChelixState currentState = ChelixState.Spawning;
 
     private void Awake()
     {
@@ -26,6 +29,9 @@ public class Chelix : MonoBehaviour
         StopAllCoroutines();
         switch (currentState)
         {
+            case ChelixState.Spawning:
+                StartCoroutine(Spawning());
+                break;
             case ChelixState.Idle:
                 StartCoroutine(IdleIE());
                 _animationController.StopMoving();
@@ -40,6 +46,13 @@ public class Chelix : MonoBehaviour
                 _animationController.StopMoving();
                 break;
         }
+    }
+
+    private IEnumerator Spawning()
+    {
+        yield return new WaitForSeconds(spawnTime);
+        currentState = ChelixState.Idle;
+         DoStateAction();
     }
 
     private IEnumerator MoveToGoalIE()

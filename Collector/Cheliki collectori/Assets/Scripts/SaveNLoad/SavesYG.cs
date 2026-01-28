@@ -11,7 +11,9 @@ namespace YG
         public int siverCount = 0;
         public int goldCount = 0;
         public List<SaveData> itemsData;
+        public List<SaveData> featuresData;
         public List<SaveUpgradeData> itemsUpdateData;
+         
 
         public void SetDefault()
         {
@@ -22,7 +24,9 @@ namespace YG
             siverCount = 0;
             goldCount = 0;
             itemsData = new List<SaveData>();
+            featuresData = new List<SaveData>();
             itemsUpdateData = new List<SaveUpgradeData>();
+
         }
     }
 }

@@ -3,10 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using YG;
 
 public class ItemButton : MonoBehaviour
 {
     private Button button;
+    [SerializeField] private ObjectSound _sound;
 
     [SerializeField] private TextMeshProUGUI txtItemName;
     [SerializeField] private Image image;
@@ -15,32 +17,38 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtUpgradeValue;
 
     public ItemData itemData { get; protected private set; }
-
-    private Color txtPriceColorDefault;
-    [SerializeField] private Color txtPriceColorError = Color.red;
-    [SerializeField] private float timeForPriceError = 2;
+    [Header("костыль")]
+    [SerializeField] private CurrenciesWallet _currenciesWallet;
+    [Header("price visual")]
+    [SerializeField] private float _priceCheckerCooldown = 0.25f;
+    [SerializeField] private Color _baseColor;
+    [SerializeField] private Color _notEnoughColor;
+    [SerializeField] private Color _soldColor;
 
     private void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonClick);
-
-        txtPriceColorDefault = txtPrice.color;
-        txtUpgradeValue.transform.parent.gameObject.SetActive(false);
+        _currenciesWallet = FindAnyObjectByType<CurrenciesWallet>();
+        _baseColor = txtPrice.color;
+        
+       // txtUpgradeValue.transform.parent.gameObject.SetActive(false);
     }
 
     public void Init(ItemData newItemData)
     {
         itemData = newItemData;
         
-
+    /*
         if (itemData is ItemUpgradeData itemUpgradeData)
         {
             txtUpgradeValue.transform.parent.gameObject.SetActive(true);
             txtUpgradeValue.text = $"{itemUpgradeData.SpecialModifier}";
         }
+        */
 
         SetNewValues();
+        StartCoroutine(PriceChecker());
     }
 
     public void SetNewValues()
@@ -51,10 +59,19 @@ public class ItemButton : MonoBehaviour
             return;
         }
 
+       
+
         txtItemName.text = $"{itemData.ItemName}";
         image.sprite = itemData.Sprite;
-        txtPrice.text = $"{itemData.PriceCurrent}$";
         txtUpgradeCounter.text = $"{itemData.UpgradeCurrentValue}/{itemData.UpgradeMaxValue}";
+        if (itemData.UpgradeCurrentValue >= itemData.UpgradeMaxValue)
+        {
+            txtPrice.text = "sold";
+        }
+        else
+        {
+            txtPrice.text = $"{itemData.PriceCurrent}$";
+        }
     }
 
     public void ButtonClick()
@@ -66,18 +83,35 @@ public class ItemButton : MonoBehaviour
         }
 
         if (itemData.ButtonClick())
+        {
             SetNewValues();
-        else
-            StartCoroutine(PriceRedIndicator());
+             _sound.PlaySound();
+        }
+        
     }
 
-    private IEnumerator PriceRedIndicator()
-    {
-        txtPrice.color = txtPriceColorError;
+    private IEnumerator PriceChecker()
+    {   
+        while(true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            if (_currenciesWallet.Check(itemData.PriceCurrent))
+            {
+                txtPrice.color = _baseColor;
+            }
+            else
+            {
+                txtPrice.color = _notEnoughColor;
+            }
 
-        yield return new WaitForSeconds(timeForPriceError);
-
-        txtPrice.color = txtPriceColorDefault;
+            if (itemData.UpgradeCurrentValue >= itemData.UpgradeMaxValue)
+            {
+                txtPrice.color = _soldColor;
+                yield break;
+            }
+            yield return new WaitForSeconds(_priceCheckerCooldown);
+            yield return null;
+        }
     }
 
     private void OnDestroy()

@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     public int coinValue { get; private set; }
 
     private CoinMover coinMover;
-
+  
 
     private void Awake()
     {
