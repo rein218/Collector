@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: CoinBronze
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   _isUnlocked: 1
-  _itemName: 0
-  _sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
-  _priceDefault: 0
-  _priceCurrent: 0
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 10
-  _upgradeCurrentValue: 0
+  _itemType: 0
+  _name:
+  - type: 1
+    text: Bronze coin
+    fontSize: 0
+  - type: 0
+    text: "\u0411\u0440\u043E\u043D\u0437\u043E\u0432\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430"
+    fontSize: 0
+  _description: []
+  _sprite: {fileID: 21300000, guid: c513e19b41f4d2b44880ae6c211e18b4, type: 3}
+  _priceDefault: 4
+  _priceCurrent: 4
+  _priceIncrease: 5
+  _magnificationFactor: 2
+  _maxLevelOfUpgrade: 30
+  _currentLevelOfUpgrade: 1
   _specialDefaultValue: 1
   _specialCurrentValue: 1

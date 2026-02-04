@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -18,6 +17,7 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private Transform  containerItems,
                                         containerFeatures,
                                         containerUpgrades;
+    [SerializeField] private List<ItemSorter> sorters; 
     [SerializeField] private List<ItemData> itemsData,
                                             featuresData;
     [SerializeField] private List<ItemUpgradeData> upgradesData;
@@ -29,26 +29,32 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private BusChelixCoins busChelixCoins;
 
-    
 
     [Order(-1)]
     public void Start()
     {
         if (SetDefault) SetDefaultSaves();
         if (load) Load();
+        
         foreach (ItemData itemData in itemsData)
         {
-            AddNewItem(itemData, containerItems);
+            AddNewItem(itemData, containerItems, out GameObject gameObject);
+            //костыль
+            sorters[0].AddItem(itemData,gameObject);
         }
 
         foreach (ItemData upgradeData in upgradesData)
         {
-            AddNewItem(upgradeData, containerUpgrades);
+            AddNewItem(upgradeData, containerUpgrades, out GameObject gameObject);
+            //костыль
+            sorters[1].AddItem(upgradeData,gameObject);
         }
 
         foreach (ItemData featureData in featuresData)
         {
-            AddNewItem(featureData, containerFeatures);
+            AddNewItem(featureData, containerFeatures, out GameObject gameObject);
+            //костыль
+            sorters[2].AddItem(featureData,gameObject);
         }
 
         if (load) LoadGameStuff();
@@ -105,7 +111,12 @@ public class ItemsMenu : MonoBehaviour
 
     public void Load()
     {
-        if (YG2.saves == null || YG2.saves.itemsData == null || YG2.saves.itemsUpdateData == null) return;
+        if (YG2.saves == null || YG2.saves.isThisAFirstStart)
+        {
+            YG2.saves.SetDefault();
+            YG2.saves.isThisAFirstStart = false;
+            spawner.SpawnStartCoin(itemsData.FirstOrDefault(item => item.ItemType == ItemName.NewCoinBronze));
+        }
         Debug.Log("Load: "+ JsonUtility.ToJson(YG2.saves, true));
 
         int id = 0;
@@ -133,19 +144,19 @@ public class ItemsMenu : MonoBehaviour
     {
         if (YG2.saves == null || YG2.saves.itemsData == null || YG2.saves.itemsUpdateData == null) return;
         
-        var linkToBronze = itemsData.FirstOrDefault(coin => coin.ItemName == ItemName.NewCoinBronze);
+        var linkToBronze = itemsData.FirstOrDefault(coin => coin.ItemType == ItemName.NewCoinBronze);
         for (int i = 0; i < YG2.saves.bronzeCount; i++)
         {
             spawner.SpawnNewCoin(linkToBronze, false);
         }
 
-        var linkToSilver = itemsData.FirstOrDefault(coin => coin.ItemName == ItemName.NewCoinSilver);
+        var linkToSilver = itemsData.FirstOrDefault(coin => coin.ItemType == ItemName.NewCoinSilver);
         for (int i = 0; i < YG2.saves.siverCount; i++)
         {
             spawner.SpawnNewCoin(linkToSilver, false);
         }
 
-        var linkToGold = itemsData.FirstOrDefault(coin => coin.ItemName == ItemName.NewCoinGold);
+        var linkToGold = itemsData.FirstOrDefault(coin => coin.ItemType == ItemName.NewCoinGold);
         for (int i = 0; i < YG2.saves.goldCount; i++)
         {
             spawner.SpawnNewCoin(linkToGold, false);
@@ -158,8 +169,9 @@ public class ItemsMenu : MonoBehaviour
         
     }
     
-
-    private void AddNewItem(ItemData itemData, Transform containerT)
+    //тоже костыль
+    private void AddNewItem(ItemData itemData, Transform containerT) =>AddNewItem(itemData, containerT);
+    private void AddNewItem(ItemData itemData, Transform containerT, out GameObject gameObject)
     {
         GameObject newItemButtonGO = Instantiate(itemButtonPrefab, containerT);
         ItemButton newItemButton = newItemButtonGO.GetComponent<ItemButton>();
@@ -167,17 +179,16 @@ public class ItemsMenu : MonoBehaviour
         itemData.Init(ActionOnClick(itemData), UnlockOnClick(itemData));
         newItemButton.Init(itemData);
 
-        if (itemData.IsUnlocked)
-            newItemButtonGO.SetActive(true);
-        else
-            newItemButtonGO.SetActive(false); 
-
         buttonObjectsForItems.Add(itemData, newItemButton);
+        
+
+        //костыль
+        gameObject = newItemButtonGO;
     }
 
     private UnityAction ActionOnClick(ItemData itemData)
     {
-        switch (itemData.ItemName)
+        switch (itemData.ItemType)
         {
             case ItemName.NewCoinBronze:
                 return () => spawner.SpawnNewCoin(itemData);
@@ -198,7 +209,7 @@ public class ItemsMenu : MonoBehaviour
             case ItemName.UpgradeCoinMoveDurationBronze:
             case ItemName.UpgradeCoinMoveDurationSilver:
             case ItemName.UpgradeCoinMoveDurationGold:
-                return () => busChelixCoins.SetAllCoinsMoveDuration(((ItemUpgradeData)itemData).ItemDataToUpgrade, GetCurrentUpgrade(itemData.ItemName));
+                return () => busChelixCoins.SetAllCoinsMoveDuration(((ItemUpgradeData)itemData).ItemDataToUpgrade, GetCurrentUpgrade(itemData.ItemType));
 
             case ItemName.UpgradeChelixSpeed:
                 return () => busChelixCoins.SetSpeedOfAllChelix(((ItemUpgradeData)itemData).ItemDataToUpgrade);
@@ -217,19 +228,19 @@ public class ItemsMenu : MonoBehaviour
 
     private UnityAction UnlockOnClick(ItemData itemData)
     {
-        switch (itemData.ItemName)
+        switch (itemData.ItemType)
         {
             case ItemName.NewCoinBronze:
-                return () => UnlockUpgrade(ItemName.UpgradeCoinBronzeValue, itemData.UpgradeCurrentValue);
+                return () => UnlockUpgrade(ItemName.UpgradeCoinBronzeValue, itemData.CurrentLevelOfUpgrade);
 
             case ItemName.NewCoinSilver:
-                return () => UnlockUpgrade(ItemName.UpgradeCoinSilverValue, itemData.UpgradeCurrentValue);
+                return () => UnlockUpgrade(ItemName.UpgradeCoinSilverValue, itemData.CurrentLevelOfUpgrade);
 
             case ItemName.NewCoinGold:
-                return () => UnlockUpgrade(ItemName.UpgradeCoinGoldValue, itemData.UpgradeCurrentValue);
+                return () => UnlockUpgrade(ItemName.UpgradeCoinGoldValue, itemData.CurrentLevelOfUpgrade);
 
             case ItemName.NewChelix:
-                return () => UnlockUpgrade(ItemName.UpgradeChelixSpeed, itemData.UpgradeCurrentValue);
+                return () => UnlockUpgrade(ItemName.UpgradeChelixSpeed, itemData.CurrentLevelOfUpgrade);
         }
 
         return null;
@@ -237,10 +248,10 @@ public class ItemsMenu : MonoBehaviour
 
     public float GetCurrentUpgrade(ItemName upgradeName)
     {
-        ItemUpgradeData upgradeForRequiredItemData = upgradesData.FirstOrDefault(upgr => upgr.ItemName == upgradeName);
+        ItemUpgradeData upgradeForRequiredItemData = upgradesData.FirstOrDefault(upgr => upgr.ItemType == upgradeName);
 
 
-        return upgradeForRequiredItemData.SpecialModifier * upgradeForRequiredItemData.UpgradeCurrentValue;
+        return upgradeForRequiredItemData.SpecialModifier * upgradeForRequiredItemData.CurrentLevelOfUpgrade;
     }
 
     public float GetCurrentCoinTypeMoveDuration(ItemName coinType)
@@ -261,7 +272,7 @@ public class ItemsMenu : MonoBehaviour
 
     private void UnlockUpgrade(ItemName nameOfUnlocked, int upgrValue)
     {
-        List<ItemUpgradeData> upgradesToUnlock = upgradesData.FindAll(upgr => upgr.ItemName == nameOfUnlocked);
+        List<ItemUpgradeData> upgradesToUnlock = upgradesData.FindAll(upgr => upgr.ItemType == nameOfUnlocked);
 
         foreach (ItemUpgradeData upgradeToUnlock in upgradesToUnlock)
         {

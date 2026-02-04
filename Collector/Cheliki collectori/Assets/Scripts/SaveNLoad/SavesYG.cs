@@ -4,6 +4,7 @@ namespace YG
 {
     public partial class SavesYG
     {
+        public bool isThisAFirstStart = true;
         public int dollarsCount = 0; 
         public int failsCount = 0;
         public int chelixCount = 0;
@@ -17,6 +18,7 @@ namespace YG
 
         public void SetDefault()
         {
+            isThisAFirstStart = true;
             dollarsCount = 0; 
             failsCount = 0;
             chelixCount = 0;

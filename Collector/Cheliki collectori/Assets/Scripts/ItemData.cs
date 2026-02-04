@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
 public class ItemData : ScriptableObject
@@ -9,12 +11,12 @@ public class ItemData : ScriptableObject
     public SaveData GetSaveData() => new SaveData
     {
         isUnlocked = _isUnlocked,
-        itemName = _itemName,
         priceDefault = _priceDefault,
         priceCurrent = _priceCurrent,
-        priceModifierOnUpgrade = _priceModifierOnUpgrade,
-        upgradeMaxValue = _upgradeMaxValue,
-        upgradeCurrentValue = _upgradeCurrentValue,
+        priceIncrease = _priceIncrease,
+        magnificationFactor = _magnificationFactor,
+        upgradeMaxValue = _maxLevelOfUpgrade,
+        upgradeCurrentValue = _currentLevelOfUpgrade,
         specialDefaultValue = _specialDefaultValue,
         specialCurrentValue = _specialCurrentValue
     };
@@ -22,43 +24,62 @@ public class ItemData : ScriptableObject
     public void LoadSaveData(SaveData data)
     {
         _isUnlocked = data.isUnlocked;
-        _itemName = data.itemName;
         _priceDefault = data.priceDefault;
         _priceCurrent = data.priceCurrent;
-        _priceModifierOnUpgrade = data.priceModifierOnUpgrade;
-        _upgradeMaxValue = data.upgradeMaxValue;
-        _upgradeCurrentValue = data.upgradeCurrentValue;
+        _priceIncrease = data.priceIncrease;
+        _magnificationFactor = data.magnificationFactor;
+        _maxLevelOfUpgrade = data.upgradeMaxValue;
+        _currentLevelOfUpgrade = data.upgradeCurrentValue;
         _specialDefaultValue = data.specialDefaultValue;
         _specialCurrentValue = data.specialCurrentValue;
     }
     
     [SerializeField] protected private bool _isUnlocked;
         public bool IsUnlocked => _isUnlocked;
-    [SerializeField] protected private ItemName _itemName;
-        public ItemName ItemName => _itemName;
+
+    [Header("Type")]
+    [FormerlySerializedAs("_itemName")] //временно не удалять, иначе юнити забудет значения
+    [SerializeField] protected private ItemName _itemType;
+        public ItemName ItemType => _itemType;
+    
+    [Header("Badger")]
+    [SerializeField] protected private List<TextPoint>  _name;
+        public List<TextPoint>  Name => _name;
+    [SerializeField] protected private List<TextPoint>  _description;
+    public List<TextPoint>  Description => _description;
     [SerializeField] protected private  Sprite _sprite;
         public Sprite Sprite => _sprite;
+    [Header("Price")]
     [SerializeField] protected private  int _priceDefault;
         public int PriceDefault => _priceDefault;
     [SerializeField]  protected private  int _priceCurrent;
         public int PriceCurrent => _priceCurrent;
-    [SerializeField] protected private  int _priceModifierOnUpgrade;
-        public int PriceModifierOnUpgrade => _priceModifierOnUpgrade;
-    [SerializeField] protected private  int _upgradeMaxValue;
-        public int UpgradeMaxValue => _upgradeMaxValue;
-    [SerializeField] protected private  int _upgradeCurrentValue;
-        public int UpgradeCurrentValue => _upgradeCurrentValue;
+
+    [Header("Price change on every upgrade")]
+    [SerializeField] protected private float _priceIncrease;
+        public float PriceIncrease => _priceIncrease;
+    [SerializeField] protected private int _magnificationFactor;
+        public int MagnificationFactor => _magnificationFactor;
+   
+    [Header("Level and max level of upgrade")]
+    [FormerlySerializedAs("_upgradeMaxValue")] //временно не удалять, иначе слетят значения
+    [SerializeField] protected private  int _maxLevelOfUpgrade;
+        public int MaxLevelOfUpgrade => _maxLevelOfUpgrade;
+    [FormerlySerializedAs("_upgradeCurrentValue")] //временно не удалять, иначе слетят значения
+    [SerializeField] protected private  int _currentLevelOfUpgrade;
+        public int CurrentLevelOfUpgrade => _currentLevelOfUpgrade;
+    [Header("I have no idea")]
     [SerializeField] protected private float _specialDefaultValue;
         public float SpecialDefaultValue => _specialDefaultValue;
     [SerializeField] protected private float _specialCurrentValue;
         public float SpecialCurrentValue => _specialCurrentValue;
 
-
+    protected ItemSorter sorter;
+    protected ItemButton button;
     public UnityEvent eventOnClick {get; protected private set; }
 
     virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
-        //_priceCurrent = _priceDefault;
         _specialCurrentValue = _specialDefaultValue;
 
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
@@ -78,14 +99,28 @@ public class ItemData : ScriptableObject
         return true;
     }
 
+    public void ApplySorter(ItemSorter itemSorter)
+    {
+        sorter = itemSorter;
+    }
+
+    public void ApplyButton(ItemButton itembutton)
+    {
+        button = itembutton;
+    }
+
     public void IncreaseUpgradeCurrentValue()
     {
-        _upgradeCurrentValue++;
+        _currentLevelOfUpgrade++;
     }
     public void IncreasePriceCurrentValue()
     {
-        _priceCurrent += _priceModifierOnUpgrade;
+        if (_magnificationFactor>0)
+        _priceIncrease = _priceIncrease*_magnificationFactor/100;
+        _priceCurrent = (int)(_priceCurrent + _priceIncrease);
     }
+
+
     public void IncreaseSpecialCurrentValueAdd(float specialModifierValue)
     {
         _specialCurrentValue += specialModifierValue;
@@ -98,7 +133,7 @@ public class ItemData : ScriptableObject
 
     public bool IsUpgradedFull()
     {
-        return _upgradeCurrentValue >= _upgradeMaxValue;
+        return _currentLevelOfUpgrade >= _maxLevelOfUpgrade;
     }
 
     private void OnDisable()
@@ -109,32 +144,5 @@ public class ItemData : ScriptableObject
     private void OnDestroy()
     {
         eventOnClick?.RemoveAllListeners();
-    }
-    public void CopyTo(ItemData toWhom)
-    {
-        toWhom._isUnlocked = this._isUnlocked;
-        toWhom._itemName = this._itemName;
-        toWhom._sprite = this._sprite;
-        toWhom._priceDefault = this._priceDefault;
-        toWhom._priceCurrent = this._priceCurrent;
-        toWhom._priceModifierOnUpgrade = this._priceModifierOnUpgrade;
-        toWhom._upgradeMaxValue = this._upgradeMaxValue;
-        toWhom._upgradeCurrentValue = this._upgradeCurrentValue;
-        toWhom._specialDefaultValue = this._specialDefaultValue;
-        toWhom._specialCurrentValue = this._specialCurrentValue;
-    }
-
-    public void CopyFrom(ItemData fromWhom)
-    {
-        this._isUnlocked = fromWhom._isUnlocked;
-        this._itemName = fromWhom._itemName;
-        this._sprite = fromWhom._sprite;
-        this._priceDefault = fromWhom._priceDefault;
-        this._priceCurrent = fromWhom._priceCurrent;
-        this._priceModifierOnUpgrade = fromWhom._priceModifierOnUpgrade;
-        this._upgradeMaxValue = fromWhom._upgradeMaxValue;
-        this._upgradeCurrentValue = fromWhom._upgradeCurrentValue;
-        this._specialDefaultValue = fromWhom._specialDefaultValue;
-        this._specialCurrentValue = fromWhom._specialCurrentValue;
     }
 }

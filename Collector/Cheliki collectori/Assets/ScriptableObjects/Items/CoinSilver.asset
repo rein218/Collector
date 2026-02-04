@@ -13,9 +13,21 @@ MonoBehaviour:
   m_Name: CoinSilver
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   _isUnlocked: 1
-  _itemName: 1
+  _itemType: 1
+  _name:
+  - type: 1
+    text: Silver coin
+    fontSize: 0
+  - type: 0
+    text: "\u0421\u0435\u0440\u0435\u0431\u0440\u044F\u043D\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430"
+    fontSize: 0
+  _description: []
   _sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
   _priceDefault: 5
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 10
+  _priceCurrent: 0
+  _priceIncrease: 0
+  _magnificationFactor: 0
+  _maxLevelOfUpgrade: 30
+  _currentLevelOfUpgrade: 0
   _specialDefaultValue: 5
+  _specialCurrentValue: 5

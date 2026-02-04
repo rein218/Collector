@@ -9,6 +9,7 @@ public class CurrenciesWallet : MonoBehaviour
 {
     private int dollarsCount = 0;
     private int failsCount = 0;
+    private bool doubleReward = false;
 
 
     [SerializeField] public UnityEvent<int> changeDollarsCountEvent = new UnityEvent<int>();
@@ -31,6 +32,17 @@ public class CurrenciesWallet : MonoBehaviour
         Load();
         changeDollarsCountEvent?.Invoke(dollarsCount);
         changeFailsCountEvent?.Invoke(failsCount);
+    }
+
+
+    public void MakeItDouble(float timeDouble)
+    {
+        StartCoroutine(timerForDouble());
+        IEnumerator timerForDouble()
+        {
+            doubleReward = true;
+            yield return new WaitForSeconds(timeDouble);
+        }
     }
 
 
@@ -66,7 +78,9 @@ public class CurrenciesWallet : MonoBehaviour
         {
             return;
         }
-
+        if(doubleReward)
+        dollarsCount = dollarsCount+ dollarsToAdd*2;
+        else
         dollarsCount += dollarsToAdd;
 
         changeDollarsCountEvent?.Invoke(dollarsCount);

@@ -12,12 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b4e3832461b7e5aedbcb7384701ef, type: 3}
   m_Name: UpgradeChelixSpeed
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
+  _isUnlocked: 0
   _itemName: 7
+  _name:
+  - type: 0
+    text: speed
+    fontSize: 0
+  - type: 1
+    text: speed
+    fontSize: 0
+  _description: []
   _sprite: {fileID: 0}
   _priceDefault: 0
+  _priceCurrent: 0
   _priceModifierOnUpgrade: 1
   _upgradeMaxValue: 10
+  _upgradeCurrentValue: 0
   _specialDefaultValue: 0
+  _specialCurrentValue: 0
+  sorter: {fileID: 0}
   itemDataToUpgrade: {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
   _specialModifier: 2
   _multilpyInsteadOfAdding: 0

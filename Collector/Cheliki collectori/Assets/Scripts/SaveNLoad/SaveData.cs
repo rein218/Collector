@@ -8,7 +8,8 @@ public class SaveData
     public Sprite sprite;
     public int priceDefault;
     public int priceCurrent;
-    public int priceModifierOnUpgrade;
+    public float priceIncrease;
+    public int magnificationFactor;
     public int upgradeMaxValue;
     public int upgradeCurrentValue;
     public float specialDefaultValue;   

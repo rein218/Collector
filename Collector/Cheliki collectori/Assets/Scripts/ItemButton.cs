@@ -11,6 +11,7 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private ObjectSound _sound;
 
     [SerializeField] private TextMeshProUGUI txtItemName;
+    [SerializeField] private TextMeshProUGUI txtItemDesc;
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI txtPrice;
     [SerializeField] private TextMeshProUGUI txtUpgradeCounter;
@@ -24,47 +25,55 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private Color _baseColor;
     [SerializeField] private Color _notEnoughColor;
     [SerializeField] private Color _soldColor;
-
+    [SerializeField] private TextLanguageSwitch _languageSwitchForName;
+    [SerializeField] private TextLanguageSwitch _languageSwitchForDescription;
     private void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonClick);
         _currenciesWallet = FindAnyObjectByType<CurrenciesWallet>();
         _baseColor = txtPrice.color;
-        
-       // txtUpgradeValue.transform.parent.gameObject.SetActive(false);
     }
 
     public void Init(ItemData newItemData)
     {
         itemData = newItemData;
-        
-    /*
-        if (itemData is ItemUpgradeData itemUpgradeData)
-        {
-            txtUpgradeValue.transform.parent.gameObject.SetActive(true);
-            txtUpgradeValue.text = $"{itemUpgradeData.SpecialModifier}";
-        }
-        */
-
+        itemData.ApplyButton(this);
         SetNewValues();
         StartCoroutine(PriceChecker());
+        
     }
+
+    public void Tedasst()
+    {
+        Debug.LogError("yes " + itemData.ItemType);
+    }
+
 
     public void SetNewValues()
     {
-        if (itemData == null)
+        if (itemData == null) return;
+
+        if (!itemData.IsUnlocked)
         {
-            Debug.LogError("itemData == null");
+            image.enabled = false;
+            txtItemName.text = "???";
+            txtItemDesc.text = "...";
+            txtPrice.text = "???";
+
+            txtUpgradeCounter.text = "??/??";
             return;
         }
 
-       
+        if(itemData.Name != null)
+        _languageSwitchForName.GetList(itemData.Name);
+        if(itemData.Description != null)
+        _languageSwitchForDescription.GetList(itemData.Description);
 
-        txtItemName.text = $"{itemData.ItemName}";
         image.sprite = itemData.Sprite;
-        txtUpgradeCounter.text = $"{itemData.UpgradeCurrentValue}/{itemData.UpgradeMaxValue}";
-        if (itemData.UpgradeCurrentValue >= itemData.UpgradeMaxValue)
+        image.enabled = true;
+        txtUpgradeCounter.text = $"{itemData.CurrentLevelOfUpgrade}/{itemData.MaxLevelOfUpgrade}";
+        if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
         {
             txtPrice.text = "sold";
         }
@@ -82,10 +91,11 @@ public class ItemButton : MonoBehaviour
             return;
         }
 
+        if(itemData.IsUnlocked)
         if (itemData.ButtonClick())
         {
             SetNewValues();
-             _sound.PlaySound();
+            _sound.PlaySound();
         }
         
     }
@@ -104,7 +114,7 @@ public class ItemButton : MonoBehaviour
                 txtPrice.color = _notEnoughColor;
             }
 
-            if (itemData.UpgradeCurrentValue >= itemData.UpgradeMaxValue)
+            if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
             {
                 txtPrice.color = _soldColor;
                 yield break;

@@ -13,12 +13,29 @@ MonoBehaviour:
   m_Name: Chelix
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   _isUnlocked: 1
-  _itemName: 3
-  _sprite: {fileID: 21300000, guid: 6acb20a9874a9ff4ebc0908118d36059, type: 3}
-  _priceDefault: 0
-  _priceCurrent: 0
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 5
-  _upgradeCurrentValue: 0
+  _itemType: 3
+  _name:
+  - type: 1
+    text: Helper
+    fontSize: 0
+  - type: 0
+    text: "\u041F\u043E\u043C\u043E\u0449\u043D\u0438\u043A"
+    fontSize: 0
+  _description:
+  - type: 1
+    text: Automatically flips coins
+    fontSize: 0
+  - type: 0
+    text: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438
+      \u043F\u0435\u0440\u0435\u0432\u043E\u0440\u0430\u0447\u0438\u0432\u0430\u0435\u0442
+      \u043C\u043E\u043D\u0435\u0442\u044B"
+    fontSize: 0
+  _sprite: {fileID: 7755950312919225012, guid: 557bb5af6d02a6d43be3997584388208, type: 3}
+  _priceDefault: 5
+  _priceCurrent: 5
+  _priceIncrease: 15
+  _magnificationFactor: 10
+  _maxLevelOfUpgrade: 15
+  _currentLevelOfUpgrade: 3
   _specialDefaultValue: 1
   _specialCurrentValue: 1

@@ -13,9 +13,21 @@ MonoBehaviour:
   m_Name: CoinGold
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   _isUnlocked: 1
-  _itemName: 2
+  _itemType: 2
+  _name:
+  - type: 1
+    text: Gold coin
+    fontSize: 0
+  - type: 0
+    text: "\u0417\u043E\u043B\u043E\u0442\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430"
+    fontSize: 0
+  _description: []
   _sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
-  _priceDefault: 10
-  _priceModifierOnUpgrade: 5
-  _upgradeMaxValue: 10
+  _priceDefault: 300
+  _priceCurrent: 300
+  _priceIncrease: 0
+  _magnificationFactor: 0
+  _maxLevelOfUpgrade: 30
+  _currentLevelOfUpgrade: 0
   _specialDefaultValue: 10
+  _specialCurrentValue: 10

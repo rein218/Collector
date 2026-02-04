@@ -2,12 +2,15 @@ using UnityEngine;
 using YG;
 public class Spawner : MonoBehaviour
 {
+    
     [SerializeField] GameObject coinBronzePrefab,
                                 coinSilverPrefab,
                                 coinGoldPrefab;
     [SerializeField] GameObject chelixPrefab;
 
     [SerializeField] private float _spawnPosRadius = 3f;
+    //костыль для обучения
+    [SerializeField] private CameraController _сameraController;
     private GameObject SpawnNewObj(GameObject prefab) 
     {
         return Instantiate(prefab, GeneratePositionInMiddle(), Quaternion.identity);
@@ -39,10 +42,21 @@ public class Spawner : MonoBehaviour
 
         return destination;
     }
+
+    public void SpawnStartCoin(ItemData itemData)
+    {
+        GameObject newCoinObj;
+        newCoinObj = Instantiate(coinBronzePrefab, TableBorders.position, Quaternion.identity);
+        Coin newCoin = newCoinObj.GetComponent<Coin>();
+        newCoin.SetNewCoinValue((int)itemData.SpecialCurrentValue);
+        BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemType);
+
+        _сameraController.FirstStart(newCoin);
+    }
     public void SpawnNewCoin(ItemData itemData, bool yes = true)
     {
         GameObject newCoinObj;
-        switch (itemData.ItemName)
+        switch (itemData.ItemType)
         {
             case ItemName.NewCoinBronze:
                 if(yes) YG2.saves.bronzeCount++;
@@ -69,7 +83,7 @@ public class Spawner : MonoBehaviour
         Coin newCoin = newCoinObj.GetComponent<Coin>();
         newCoin.SetNewCoinValue((int)itemData.SpecialCurrentValue);
 
-        BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemName);
+        BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemType);
     }
 
     public void SpawnNewChelix( bool yes = true)

@@ -12,13 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b4e3832461b7e5aedbcb7384701ef, type: 3}
   m_Name: UpgradeCoinBronze
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
+  _isUnlocked: 1
   _itemName: 4
+  _name:
+  - type: 0
+    text: bronse value1
+    fontSize: 0
+  - type: 1
+    text: bronse value1
+    fontSize: 0
+  _description: []
   _sprite: {fileID: 0}
   _priceDefault: 0
+  _priceCurrent: 0
   _priceModifierOnUpgrade: 1
   _upgradeMaxValue: 10
+  _upgradeCurrentValue: 0
   _specialDefaultValue: 0
+  _specialCurrentValue: 0
+  sorter: {fileID: 0}
   itemDataToUpgrade: {fileID: 11400000, guid: 8e43bd880987023458bd596c2ca545a7, type: 2}
   _specialModifier: 1
   _multilpyInsteadOfAdding: 0
-  _valueToUnlock: 3
+  _valueToUnlock: 2
