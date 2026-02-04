@@ -23,7 +23,7 @@ MonoBehaviour:
     fontSize: 0
   _description: []
   _sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
-  _priceDefault: 5
+  _priceDefault: 300
   _priceCurrent: 0
   _priceIncrease: 0
   _magnificationFactor: 0

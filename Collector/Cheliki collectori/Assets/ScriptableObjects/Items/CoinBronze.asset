@@ -28,6 +28,6 @@ MonoBehaviour:
   _priceIncrease: 5
   _magnificationFactor: 2
   _maxLevelOfUpgrade: 30
-  _currentLevelOfUpgrade: 1
+  _currentLevelOfUpgrade: 0
   _specialDefaultValue: 1
   _specialCurrentValue: 1
