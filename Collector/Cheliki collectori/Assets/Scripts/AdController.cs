@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using YG;
 
@@ -8,6 +9,9 @@ public class AdController : MonoBehaviour
     [SerializeField] private float _rewardedTime;
     [SerializeField] private CurrenciesWallet _wallet;
     [SerializeField] private string rewardID;
+    [SerializeField] private GameObject panel;
+    [SerializeField] private TMP_Text timerText;
+
     void Start()
     {
         StartCoroutine(adCycle());
@@ -22,6 +26,13 @@ public class AdController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(time);
+            panel.SetActive(true);
+            timerText.text = "2";
+            yield return new WaitForSeconds(1);
+            timerText.text = "1";
+            yield return new WaitForSeconds(1);
+            panel.SetActive(false);
+            timerText.text = "0";
             ShowAd();
         }
         

@@ -7,13 +7,13 @@ using YG;
 
 public class CurrenciesWallet : MonoBehaviour
 {
-    private int dollarsCount = 0;
-    private int failsCount = 0;
+    private long dollarsCount = 0;
+    private long failsCount = 0;
     private bool doubleReward = false;
 
 
-    [SerializeField] public UnityEvent<int> changeDollarsCountEvent = new UnityEvent<int>();
-    [SerializeField] public UnityEvent<int> changeFailsCountEvent = new UnityEvent<int>();
+    [SerializeField] public UnityEvent<long> changeDollarsCountEvent = new UnityEvent<long>();
+    [SerializeField] public UnityEvent<long> changeFailsCountEvent = new UnityEvent<long>();
 
     public static CurrenciesWallet Instance { get; private set; }
     void Awake()

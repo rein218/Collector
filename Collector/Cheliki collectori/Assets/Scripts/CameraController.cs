@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -17,28 +18,56 @@ public class CameraController : MonoBehaviour
     public void FirstStart(Coin coin)
     {
         this._coin = coin;
-        _coin.OnCoinFlip += ZoomOut;
+        _coin.OnCoinFlipStart += ZoomOut;
         transform.position = _firstPos;
         cameraComp.orthographicSize= _firstZoom;
     }
 
-    public void ZoomOut()
+    public void ZoomOut(int coinValue, Vector2 position)
     {
         _flipCount++;
-        var currPos = Vector3.Lerp(transform.position, _endPos, _flipCount/_steps);
-        var currZoom = Mathf.Lerp(cameraComp.orthographicSize, _endZoom, _flipCount/_steps);
-        if (_flipCount >= _steps)
+        var currZoom = Mathf.Lerp(cameraComp.orthographicSize, _endZoom, _flipCount/_steps/2.2f);
+        
+        if (_flipCount < _steps)
         {
-            currPos = _endPos;
+            StartCoroutine(ZoomOutSlowly(currZoom));
+        }
+        else    if (_flipCount >= _steps)
+        {
             currZoom = _endZoom;
-            _coin.OnCoinFlip -= ZoomOut;
+            _coin.OnCoinFlipStart -= ZoomOut;
+            StartCoroutine(ZoomOutSlowly(currZoom, 0.6f));
         }  
-        StartCoroutine(FirstStart(currPos, currZoom));
+        
+        if(_flipCount == _steps)
+        {
+            StartCoroutine(MoveSlowly(_endPos, 0.6f));
+        }
+        
     }
-
-    IEnumerator FirstStart(Vector3 currPos, float currZoom, float duration = 0.2f)
+    IEnumerator MoveSlowly(Vector3 currPos, float duration = 0.3f)
     {
         Vector3 startPos = transform.position;
+
+        float elapsed = 0f;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            
+            transform.position = Vector3.Lerp(startPos, currPos, t);
+            
+            yield return null;
+        }
+
+        transform.position = currPos;
+    }
+
+
+    IEnumerator ZoomOutSlowly( float currZoom, float duration = 0.2f)
+    {
+        
         float startZoom = cameraComp.orthographicSize;
         
         float elapsed = 0f;
@@ -48,13 +77,12 @@ public class CameraController : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
             
-            transform.position = Vector3.Lerp(startPos, currPos, t);
             cameraComp.orthographicSize = Mathf.Lerp(startZoom, currZoom, t);
             
             yield return null;
         }
         
-        transform.position = currPos;
+        
         cameraComp.orthographicSize = currZoom;
     }
 }

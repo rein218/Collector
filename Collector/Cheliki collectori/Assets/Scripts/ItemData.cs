@@ -116,7 +116,7 @@ public class ItemData : ScriptableObject
     public void IncreasePriceCurrentValue()
     {
         if (_magnificationFactor>0)
-        _priceIncrease = _priceIncrease*_magnificationFactor/100;
+        _priceIncrease = _priceIncrease+(_priceIncrease*_magnificationFactor/100);
         _priceCurrent = (int)(_priceCurrent + _priceIncrease);
     }
 

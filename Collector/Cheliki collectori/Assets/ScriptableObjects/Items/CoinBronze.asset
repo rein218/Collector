@@ -24,10 +24,10 @@ MonoBehaviour:
   _description: []
   _sprite: {fileID: 21300000, guid: c513e19b41f4d2b44880ae6c211e18b4, type: 3}
   _priceDefault: 4
-  _priceCurrent: 4
-  _priceIncrease: 5
-  _magnificationFactor: 2
+  _priceCurrent: 39
+  _priceIncrease: 5.7434278
+  _magnificationFactor: 5
   _maxLevelOfUpgrade: 30
-  _currentLevelOfUpgrade: 0
+  _currentLevelOfUpgrade: 7
   _specialDefaultValue: 1
   _specialCurrentValue: 1

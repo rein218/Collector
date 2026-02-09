@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e19d5b6fcc71074282ba6eeb973a779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectSound
-  _audioClip: {fileID: 8300000, guid: 533a71e0b44fc4044b887a0eb4985956, type: 3}
-  _volume: 0.2
+  _audioClip: {fileID: 8300000, guid: aa6e7f42e08956f40b37c4d333a0b0e3, type: 3}
+  _volume: 1
   _min: 0.8
   _max: 1.2
 --- !u!1 &3922927598188838619

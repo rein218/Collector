@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _spawnPosRadius = 3f;
     //костыль для обучения
     [SerializeField] private CameraController _сameraController;
+    public delegate void CoinWasSpanwed(GameObject gameObject, Coin script);
+    public event CoinWasSpanwed OnCoinSpawn;
     private GameObject SpawnNewObj(GameObject prefab) 
     {
         return Instantiate(prefab, GeneratePositionInMiddle(), Quaternion.identity);
@@ -52,6 +54,7 @@ public class Spawner : MonoBehaviour
         BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemType);
 
         _сameraController.FirstStart(newCoin);
+        OnCoinSpawn?.Invoke(newCoinObj, newCoin);
     }
     public void SpawnNewCoin(ItemData itemData, bool yes = true)
     {
@@ -82,7 +85,7 @@ public class Spawner : MonoBehaviour
         
         Coin newCoin = newCoinObj.GetComponent<Coin>();
         newCoin.SetNewCoinValue((int)itemData.SpecialCurrentValue);
-
+        OnCoinSpawn?.Invoke(newCoinObj, newCoin);
         BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemType);
     }
 

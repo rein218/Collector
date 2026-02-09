@@ -7,8 +7,11 @@ public class Coin : MonoBehaviour
     public bool isOccupied { get; private set; } = false;
     public int coinValue { get; private set; }
 
-    public delegate void CoinWasFlipped();
-    public event CoinWasFlipped OnCoinFlip;
+    public delegate void FlipStart(int coinValue, Vector2 position);
+    public event FlipStart OnCoinFlipStart;
+
+    public delegate void FlipEnd(int coinValue, Vector2 position);
+    public event FlipEnd OnCoinFlipEnd;
 
     private CoinMover coinMover;
   
@@ -31,19 +34,16 @@ public class Coin : MonoBehaviour
 
     public void Interact(bool isInteractedByNPC = false)
     {
-        if (!coinMover.IsMoving())
-        {
-            OnCoinFlip?.Invoke();
-            coinMover.StartMovement();
-        } 
-
-
+        if (coinMover.IsMoving()) return;
+        OnCoinFlipStart?.Invoke(coinValue, transform.position);
+        coinMover.StartMovement();
         if (isInteractedByNPC) isOccupied = false;
     }
 
     public void GetSideOfCoin()
     {
         CurrenciesWallet.Instance.AddDollars(coinValue);
+        OnCoinFlipEnd?.Invoke(coinValue, transform.position);
         // CurrenciesWallet.Instance.AddFail();
     }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
-using System.ComponentModel.Design;
+using DG.Tweening;
 
 public class CoinMover : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class CoinMover : MonoBehaviour
     private float _moveDuration;
     [Header("Toss Settings")]
     [SerializeField] private float _tossHeight = 2f;
-    private Coroutine moveCoroutine;
+    private bool _isTossed = false;
 
     [SerializeField] private UnityEvent eventTossEnding;
 
@@ -45,14 +45,10 @@ public class CoinMover : MonoBehaviour
 
     public void StartMovement()
     {
-        if (moveCoroutine != null)
-        {
-            StopCoroutine(moveCoroutine);
-        }
-        
+        if (_isTossed) return;
+        _isTossed = true;
         var p =  FindNewPos();
-        
-        moveCoroutine = StartCoroutine(MoveToPosition(transform.position, p, _moveDuration));
+        MoveToPos(p, _moveDuration);
     }
 
     public void SetMoveDuration(float newCoinMoveUpgrade)
@@ -73,51 +69,39 @@ public class CoinMover : MonoBehaviour
 
         return destination;
     }
-
-    private IEnumerator MoveToPosition(Vector3 startPos, Vector3 targetPos, float duration)
+    private void MoveToPos(Vector3 targetPos, float duration)
     {
+        Sequence tossSequence = DOTween.Sequence();
+        Tweener speedUp = DOTween.To(_animationController.ChangeSpeed, _minAnimSpeed, _maxAnimSpeed, duration*0.6f).SetEase(Ease.OutSine);
+        Tweener speedDown = DOTween.To(_animationController.ChangeSpeed, _maxAnimSpeed , _minAnimSpeed, duration*0.4f).SetEase(Ease.OutSine);
+
+
+        tossSequence.Append(_animationController.transform.DOLocalMoveY(_tossHeight, duration*0.6f).SetEase(Ease.OutCubic));
+        tossSequence.Join(speedUp);
+        tossSequence.Append(_animationController.transform.DOLocalMoveY(0, duration*0.4f).SetEase(Ease.InExpo));
+        tossSequence.Join(speedDown);
+        tossSequence.Insert(0,transform.DOMove(targetPos, duration).SetEase(Ease.OutQuart));
+
+        
+        
+        
+
+        
+
         _animationController.StartRotation();
         _soundFlung.PlaySound();
-        float elapsedTime = 0f;
-        
-        while (elapsedTime < duration)
-        {
-            float t = elapsedTime / duration;
-            if (t>1) t=1; if (t<0) t=0; 
-            t = t * t * (3f - 2f * t); //smooth
-            float tLerp = Mathf.Sin(t * Mathf.PI); //stuck in the middle
 
-            //calculate move
-            Vector3 currentMovePos = Vector3.Lerp(startPos, targetPos, t);
-
-            //calculate tossing
-            float currHeight = Mathf.Lerp(0,_tossHeight, tLerp);
-            Vector3 currentTossPos = new Vector3(0, currHeight,0);
-
-            //animations
-            float currentSpeed = Mathf.Lerp(_minAnimSpeed,_maxAnimSpeed, tLerp);
-            currentSpeed=currentSpeed*(defaultMoveDuration/_moveDuration);
-            _animationController.ChangeSpeed(currentSpeed);
-            
-            //change pos
-            _animationController.transform.localPosition = currentTossPos;
-            transform.position = currentMovePos;
-            
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        _soundDrop.PlaySound();
-        _animationController.EndRotation();
-        transform.position = targetPos;
-        moveCoroutine = null;
-
-        eventTossEnding?.Invoke();
+        tossSequence.Play().OnComplete(() => 
+            {
+                _soundDrop.PlaySound();
+                _animationController.EndRotation();
+                _isTossed = false;
+                eventTossEnding?.Invoke();
+            });
     }
-    
 
     public bool IsMoving()
     {
-        return moveCoroutine != null;
+        return _isTossed;
     }
 }
