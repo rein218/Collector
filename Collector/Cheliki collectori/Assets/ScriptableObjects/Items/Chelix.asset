@@ -15,11 +15,11 @@ MonoBehaviour:
   _isUnlocked: 1
   _itemType: 3
   _name:
-  - type: 1
-    text: Helper
-    fontSize: 0
   - type: 0
     text: "\u041F\u043E\u043C\u043E\u0449\u043D\u0438\u043A"
+    fontSize: 0
+  - type: 1
+    text: Helper
     fontSize: 0
   _description:
   - type: 1
@@ -31,9 +31,9 @@ MonoBehaviour:
       \u043C\u043E\u043D\u0435\u0442\u044B"
     fontSize: 0
   _sprite: {fileID: 7755950312919225012, guid: 557bb5af6d02a6d43be3997584388208, type: 3}
-  _priceDefault: 5
-  _priceCurrent: 5
-  _priceIncrease: 15
+  _priceDefault: 10
+  _priceCurrent: 10
+  _priceIncrease: 30
   _magnificationFactor: 10
   _maxLevelOfUpgrade: 15
   _currentLevelOfUpgrade: 0

@@ -25,10 +25,20 @@ public class ItemUpgradeData : ItemData
         public float SpecialModifier => _specialModifier;
     [SerializeField] private int _valueToUnlock;
 
-    override public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
+    override public void Init(UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
         _isUnlocked = false;
 
+        eventOnClick.AddListener(() => UpgradeItem());
+        if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
+
+        if (_valueToUnlock == 0) TryToUnlock(0);
+    }
+
+    override public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick, UnityAction newUnlockOnClick2)
+    {
+        _isUnlocked = false;
+        Debug.Log(ItemDataToUpgrade.name);
         eventOnClick.AddListener(() => UpgradeItem());
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
 
@@ -42,6 +52,7 @@ public class ItemUpgradeData : ItemData
 
     public bool TryToUnlock(int upgrValue)
     {
+        
         if (upgrValue >= _valueToUnlock)
         {
             _isUnlocked = true;

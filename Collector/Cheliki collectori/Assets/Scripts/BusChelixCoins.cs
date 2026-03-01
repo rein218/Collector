@@ -65,10 +65,19 @@ public class BusChelixCoins : MonoBehaviour
 
     public void SetAllCoinsXValue(ItemData itemData)
     {
-        int newCoinValue = (int)itemData.SpecialCurrentValue;
+        float newCoinValue = itemData.SpecialCurrentValue;
         foreach (Coin coinX in coinsXListsByType[itemData.ItemType].coinList)
         {
             coinX.SetNewCoinValue(newCoinValue);
+        }
+    }
+
+    public void SetAllCoinsXValueM(ItemData itemData)
+    {
+        float newCoinValue = itemData.SpecialCurrentValue;
+        foreach (Coin coinX in coinsXListsByType[itemData.ItemType].coinList)
+        {
+            coinX.SetNewCoinValueModifier(newCoinValue);
         }
     }
 

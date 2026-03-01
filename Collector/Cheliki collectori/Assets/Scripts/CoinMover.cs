@@ -26,6 +26,7 @@ public class CoinMover : MonoBehaviour
 
     public void Start()
     {
+        _moveDuration = defaultMoveDuration;
         StartCoroutine(Spawn());
     }
     public IEnumerator Spawn()
@@ -53,7 +54,7 @@ public class CoinMover : MonoBehaviour
 
     public void SetMoveDuration(float newCoinMoveUpgrade)
     {
-        _moveDuration = defaultMoveDuration - newCoinMoveUpgrade;
+        _moveDuration =  _moveDuration - (_moveDuration*newCoinMoveUpgrade/100);
 
     }
 

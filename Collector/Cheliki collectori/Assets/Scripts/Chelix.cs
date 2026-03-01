@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Chelix : MonoBehaviour
@@ -10,6 +9,8 @@ public class Chelix : MonoBehaviour
     private Coin currentGoalCoin;
     [Header("Variables")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float currMoveSpeed;
+    [SerializeField] private float speedMod;
     
     [SerializeField] private float distanceToTriggerGoal = 0.65f;
 
@@ -69,7 +70,7 @@ public class Chelix : MonoBehaviour
         while (distanceToGoal > distanceToTriggerGoal)
         {
             Vector3 direction = (currentGoalCoin.transform.position - transform.position).normalized;
-            transform.Translate(direction * moveSpeed * Time.deltaTime);
+            transform.Translate(direction * currMoveSpeed * Time.deltaTime);
 
             distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
 
@@ -137,7 +138,8 @@ public class Chelix : MonoBehaviour
 
     public void SetNewSpeed(float newSpeed)
     {
-        moveSpeed = newSpeed;
+        speedMod =  speedMod + newSpeed;
+        currMoveSpeed = moveSpeed+(moveSpeed*speedMod/100);
     }
 
     private void InteractWithGoal(Coin coinToInteract)

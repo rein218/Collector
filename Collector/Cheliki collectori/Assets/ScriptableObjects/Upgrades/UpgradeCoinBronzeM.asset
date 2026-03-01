@@ -12,26 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b4e3832461b7e5aedbcb7384701ef, type: 3}
   m_Name: UpgradeCoinBronzeM
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
-  _isUnlocked: 1
-  _itemName: 4
+  _isUnlocked: 0
+  _itemType: 7
   _name:
   - type: 0
-    text: bronse value2
+    text: "\u041C\u0435\u0434\u043D\u0430\u044F \u0430\u043B\u0445\u0438\u043C\u0438\u044F"
     fontSize: 0
   - type: 1
-    text: bronse value2
+    text: Copper alchemy
     fontSize: 0
-  _description: []
-  _sprite: {fileID: 0}
-  _priceDefault: 0
-  _priceCurrent: 0
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 10
-  _upgradeCurrentValue: 0
+  _description:
+  - type: 0
+    text: "\u041C\u0435\u0434\u043D\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430
+      \u0434\u0430\u0435\u0442 \u043D\u0430 +25% \u0431\u043E\u043B\u044C\u0448\u0435
+      $"
+    fontSize: 0
+  - type: 1
+    text: Copper coin gives +25% more $
+    fontSize: 0
+  _sprite: {fileID: 21300000, guid: a62def944303a7a4ab7cbf122895eefa, type: 3}
+  _priceDefault: 1000
+  _priceCurrent: 1000
+  _priceIncrease: 360
+  _magnificationFactor: 12
+  _maxLevelOfUpgrade: 10
+  _currentLevelOfUpgrade: 2
   _specialDefaultValue: 0
   _specialCurrentValue: 0
-  sorter: {fileID: 0}
   itemDataToUpgrade: {fileID: 11400000, guid: 8e43bd880987023458bd596c2ca545a7, type: 2}
-  _specialModifier: 2
-  _multilpyInsteadOfAdding: 1
-  _valueToUnlock: 5
+  _specialModifier: 0.0005
+  _valueToUnlock: 20

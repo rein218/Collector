@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -29,8 +28,6 @@ public class ItemsMenu : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private BusChelixCoins busChelixCoins;
 
-
-    [Order(-1)]
     public void Start()
     {
         if (SetDefault) SetDefaultSaves();
@@ -176,7 +173,9 @@ public class ItemsMenu : MonoBehaviour
         GameObject newItemButtonGO = Instantiate(itemButtonPrefab, containerT);
         ItemButton newItemButton = newItemButtonGO.GetComponent<ItemButton>();
 
-        itemData.Init(ActionOnClick(itemData), UnlockOnClick(itemData));
+        if(UnlockOnClick2(itemData)!=null) itemData.Init(ActionOnClick(itemData), UnlockOnClick(itemData), UnlockOnClick2(itemData));
+        else itemData.Init(ActionOnClick(itemData), UnlockOnClick(itemData));
+
         newItemButton.Init(itemData);
 
         buttonObjectsForItems.Add(itemData, newItemButton);
@@ -205,6 +204,11 @@ public class ItemsMenu : MonoBehaviour
             case ItemName.UpgradeCoinSilverValue:
             case ItemName.UpgradeCoinGoldValue:
                 return () => busChelixCoins.SetAllCoinsXValue(((ItemUpgradeData)itemData).ItemDataToUpgrade);
+            case ItemName.UpgradeCoinBronzeValueM:   // upgrades are set in  ItemUpgradeData.UpgradeItem()
+            case ItemName.UpgradeCoinSilverValueM:
+            case ItemName.UpgradeCoinGoldValueM:
+                return () => busChelixCoins.SetAllCoinsXValueM(((ItemUpgradeData)itemData).ItemDataToUpgrade);
+
 
             case ItemName.UpgradeCoinMoveDurationBronze:
             case ItemName.UpgradeCoinMoveDurationSilver:
@@ -243,6 +247,22 @@ public class ItemsMenu : MonoBehaviour
                 return () => UnlockUpgrade(ItemName.UpgradeChelixSpeed, itemData.CurrentLevelOfUpgrade);
         }
 
+        return null;
+    }
+
+    private UnityAction UnlockOnClick2(ItemData itemData)
+    {
+        switch (itemData.ItemType)
+        {
+            case ItemName.NewCoinBronze:
+                return () => UnlockUpgrade(ItemName.UpgradeCoinBronzeValueM, itemData.CurrentLevelOfUpgrade);
+
+            case ItemName.NewCoinSilver:
+                return () => UnlockUpgrade(ItemName.UpgradeCoinSilverValueM, itemData.CurrentLevelOfUpgrade);
+
+            case ItemName.NewCoinGold:
+                return () => UnlockUpgrade(ItemName.UpgradeCoinGoldValueM, itemData.CurrentLevelOfUpgrade);
+        }
         return null;
     }
 

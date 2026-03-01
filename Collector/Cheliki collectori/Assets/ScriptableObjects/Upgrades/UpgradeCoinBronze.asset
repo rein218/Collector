@@ -16,21 +16,28 @@ MonoBehaviour:
   _itemType: 4
   _name:
   - type: 0
-    text: bronse value1
+    text: "\u041C\u0435\u0434\u043D\u044B\u0439 \u0432\u0441\u043F\u043B\u0435\u0441\u043A"
     fontSize: 0
   - type: 1
-    text: bronse value1
+    text: Copper surge
     fontSize: 0
-  _description: []
+  _description:
+  - type: 0
+    text: "\u041C\u0435\u0434\u043D\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430
+      \u0434\u0430\u0435\u0442 \u043D\u0430 1$ \u0431\u043E\u043B\u044C\u0448\u0435"
+    fontSize: 0
+  - type: 1
+    text: Copper coin gives 1$ more
+    fontSize: 0
   _sprite: {fileID: 21300000, guid: 956ad76eaedc78d499281bd8d994f5b7, type: 3}
-  _priceDefault: 41
-  _priceCurrent: 41
-  _priceIncrease: 20
+  _priceDefault: 80
+  _priceCurrent: 80
+  _priceIncrease: 40
   _magnificationFactor: 5
   _maxLevelOfUpgrade: 10
-  _currentLevelOfUpgrade: 0
+  _currentLevelOfUpgrade: 3
   _specialDefaultValue: 0
   _specialCurrentValue: 0
   itemDataToUpgrade: {fileID: 11400000, guid: 8e43bd880987023458bd596c2ca545a7, type: 2}
   _specialModifier: 1
-  _valueToUnlock: 2
+  _valueToUnlock: 1

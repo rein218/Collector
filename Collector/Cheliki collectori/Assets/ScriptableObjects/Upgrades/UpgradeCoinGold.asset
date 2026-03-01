@@ -13,25 +13,31 @@ MonoBehaviour:
   m_Name: UpgradeCoinGold
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
   _isUnlocked: 0
-  _itemName: 6
+  _itemType: 6
   _name:
   - type: 0
-    text: g
+    text: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u0432\u0441\u043F\u043B\u0435\u0441\u043A"
     fontSize: 0
   - type: 1
-    text: g
+    text: Gold surge
     fontSize: 0
-  _description: []
-  _sprite: {fileID: 0}
-  _priceDefault: 0
-  _priceCurrent: 0
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 10
-  _upgradeCurrentValue: 0
+  _description:
+  - type: 0
+    text: "\u0417\u043E\u043B\u043E\u0442\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430
+      \u0434\u0430\u0435\u0442 \u043D\u0430 1$ \u0431\u043E\u043B\u044C\u0448\u0435"
+    fontSize: 0
+  - type: 1
+    text: Gold coin gives 1$ more
+    fontSize: 0
+  _sprite: {fileID: 21300000, guid: 6b07162b069378243a75080c5bfccd2b, type: 3}
+  _priceDefault: 10000
+  _priceCurrent: 10000
+  _priceIncrease: 4000
+  _magnificationFactor: 2
+  _maxLevelOfUpgrade: 10
+  _currentLevelOfUpgrade: 0
   _specialDefaultValue: 0
   _specialCurrentValue: 0
-  sorter: {fileID: 0}
   itemDataToUpgrade: {fileID: 11400000, guid: 9e9dea1304f02724699ea04065dd93d7, type: 2}
-  _specialModifier: 1
-  _multilpyInsteadOfAdding: 0
-  _valueToUnlock: 3
+  _specialModifier: 30
+  _valueToUnlock: 1

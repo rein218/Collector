@@ -13,25 +13,31 @@ MonoBehaviour:
   m_Name: UpgradeChelixSpeed
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
   _isUnlocked: 0
-  _itemName: 7
+  _itemType: 10
   _name:
   - type: 0
-    text: speed
+    text: "\u0422\u0440\u0443\u0434\u044F\u0433\u0430"
     fontSize: 0
   - type: 1
-    text: speed
+    text: Hard worker
     fontSize: 0
-  _description: []
-  _sprite: {fileID: 0}
-  _priceDefault: 0
-  _priceCurrent: 0
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 10
-  _upgradeCurrentValue: 0
+  _description:
+  - type: 0
+    text: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C
+      \u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A\u0430 \u043D\u0430 15%"
+    fontSize: 0
+  - type: 1
+    text: Increases helper speed by 15%
+    fontSize: 0
+  _sprite: {fileID: 21300000, guid: 4080efd131ffd0f49844f94a4921fddb, type: 3}
+  _priceDefault: 100
+  _priceCurrent: 100
+  _priceIncrease: 600
+  _magnificationFactor: 2
+  _maxLevelOfUpgrade: 20
+  _currentLevelOfUpgrade: 0
   _specialDefaultValue: 0
   _specialCurrentValue: 0
-  sorter: {fileID: 0}
   itemDataToUpgrade: {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
-  _specialModifier: 2
-  _multilpyInsteadOfAdding: 0
-  _valueToUnlock: 3
+  _specialModifier: 15
+  _valueToUnlock: 1

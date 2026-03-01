@@ -375,7 +375,7 @@ MonoBehaviour:
   txtUpgradeCounter: {fileID: 9165618853641018776}
   txtUpgradeValue: {fileID: 1246504924328316829}
   _currenciesWallet: {fileID: 0}
-  _priceCheckerCooldown: 0.25
+  _priceCheckerCooldown: 0.5
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
   _notEnoughColor: {r: 0.59607846, g: 0.14901961, b: 0.14901961, a: 1}
   _soldColor: {r: 0.10980393, g: 0.10980393, b: 0.1764706, a: 1}

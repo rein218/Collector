@@ -13,25 +13,32 @@ MonoBehaviour:
   m_Name: UpgradeCoinSilverM
   m_EditorClassIdentifier: Assembly-CSharp::ItemUpgradeData
   _isUnlocked: 0
-  _itemName: 5
+  _itemType: 8
   _name:
   - type: 0
-    text: ueewq
+    text: "\u0421\u0435\u0440\u0435\u0431\u0440\u044F\u043D\u0430\u044F \u0430\u043B\u0445\u0438\u043C\u0438\u044F"
     fontSize: 0
   - type: 1
-    text: eqew
+    text: Silver alchemy
     fontSize: 0
-  _description: []
-  _sprite: {fileID: 0}
-  _priceDefault: 0
-  _priceCurrent: 0
-  _priceModifierOnUpgrade: 1
-  _upgradeMaxValue: 10
-  _upgradeCurrentValue: 0
+  _description:
+  - type: 0
+    text: "\u0421\u0435\u0440\u0435\u0431\u0440\u044F\u043D\u0430\u044F \u043C\u043E\u043D\u0435\u0442\u0430
+      \u0434\u0430\u0435\u0442 \u043D\u0430 +25% \u0431\u043E\u043B\u044C\u0448\u0435
+      $"
+    fontSize: 0
+  - type: 1
+    text: Silver coin gives +25% more $
+    fontSize: 0
+  _sprite: {fileID: 21300000, guid: f1481ddfc6444704e9d9643f4c993d41, type: 3}
+  _priceDefault: 2000
+  _priceCurrent: 2000
+  _priceIncrease: 1000
+  _magnificationFactor: 10
+  _maxLevelOfUpgrade: 10
+  _currentLevelOfUpgrade: 0
   _specialDefaultValue: 0
   _specialCurrentValue: 0
-  sorter: {fileID: 0}
   itemDataToUpgrade: {fileID: 11400000, guid: 287cfa5d8779bc4459d292a3c53b5ee9, type: 2}
-  _specialModifier: 2
-  _multilpyInsteadOfAdding: 1
-  _valueToUnlock: 10
+  _specialModifier: 0.0005
+  _valueToUnlock: 15

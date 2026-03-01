@@ -85,6 +85,7 @@ public class Spawner : MonoBehaviour
         
         Coin newCoin = newCoinObj.GetComponent<Coin>();
         newCoin.SetNewCoinValue((int)itemData.SpecialCurrentValue);
+        
         OnCoinSpawn?.Invoke(newCoinObj, newCoin);
         BusChelixCoins.Instance.AddToCoinsXList(newCoin, itemData.ItemType);
     }

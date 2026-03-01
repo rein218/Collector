@@ -1,9 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using YG;
 
 public class ItemButton : MonoBehaviour
 {
@@ -40,13 +38,6 @@ public class ItemButton : MonoBehaviour
         itemData = newItemData;
         itemData.ApplyButton(this);
         SetNewValues();
-        StartCoroutine(PriceChecker());
-        
-    }
-
-    public void Tedasst()
-    {
-        Debug.LogError("yes " + itemData.ItemType);
     }
 
 
@@ -79,8 +70,54 @@ public class ItemButton : MonoBehaviour
         }
         else
         {
-            txtPrice.text = $"{itemData.PriceCurrent}$";
+            txtPrice.text = MoneyToText(itemData.PriceCurrent) +"$";
+            
         }
+    }
+
+    public string MoneyToText(long newCount)
+    {
+        string final = ""+newCount;
+        if(newCount>=1000000000000)
+        {
+            newCount/=1000000000;
+            final = newCount/1000+"";
+            if (newCount%1000/10>0)
+            {
+                final+="."+ newCount%1000/10;
+            }
+            final +="t";
+        }
+        else if(newCount>=1000000000)
+        {
+            newCount/=1000000;
+            final = newCount/1000+"";
+            if (newCount%1000/10>0)
+            {
+                final+="."+ newCount%1000/10;
+            }
+            final +="b";
+        }
+        else if(newCount>=1000000)
+        {
+            newCount/=1000;
+            final = newCount/1000+"";
+            if (newCount%1000/10>0)
+            {
+                final+="."+ newCount%1000/10;
+            }
+            final +="m";
+        }
+        else if(newCount>=1000)
+        {
+            final = newCount/1000+"";
+            if (newCount%1000/10>0)
+            {
+                final+="."+ newCount%1000/10;
+            }
+            final +="k";
+        }
+        return final;
     }
 
     public void ButtonClick()
@@ -105,28 +142,38 @@ public class ItemButton : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(0.1f);
-            if (_currenciesWallet.Check(itemData.PriceCurrent))
+            if (_currenciesWallet.InEnough(itemData.PriceCurrent))
             {
                 txtPrice.color = _baseColor;
+            }
+            else if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
+            {
+                txtPrice.color = _soldColor;
+                yield break;
             }
             else
             {
                 txtPrice.color = _notEnoughColor;
             }
-
-            if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
-            {
-                txtPrice.color = _soldColor;
-                yield break;
-            }
+            
             yield return new WaitForSeconds(_priceCheckerCooldown);
             yield return null;
         }
     }
 
+    void OnDisable()
+    {
+        StopCoroutine(PriceChecker());
+    }
+
+    void OnEnable()
+    {
+       StartCoroutine(PriceChecker());
+    }
+
     private void OnDestroy()
     {
         button.onClick.RemoveAllListeners();
-        StopAllCoroutines();
+        StopCoroutine(PriceChecker());
     }
 }
