@@ -8,7 +8,7 @@ public class Chelix : MonoBehaviour
     [SerializeField] private ChelixAnimationController _animationController;
     private Coin currentGoalCoin;
     [Header("Variables")]
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed = 2;
     [SerializeField] private float currMoveSpeed;
     [SerializeField] private float speedMod;
     
@@ -53,6 +53,7 @@ public class Chelix : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnTime);
         currentState = ChelixState.Idle;
+        currMoveSpeed = moveSpeed;
          DoStateAction();
     }
 

@@ -5,6 +5,7 @@ namespace YG
     public partial class SavesYG
     {
         public bool isThisAFirstStart = true;
+        public long allTimeDollarsCount = 0;
         public long dollarsCount = 0; 
         public long failsCount = 0;
         public int chelixCount = 0;

@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 using YG;
 
 public class AdController : MonoBehaviour
@@ -11,6 +12,8 @@ public class AdController : MonoBehaviour
     [SerializeField] private string rewardID;
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text timerText;
+
+    [SerializeField] private List<GameObject> requareToBeClosed;
 
     void Start()
     {
@@ -25,7 +28,14 @@ public class AdController : MonoBehaviour
 
         while (true)
         {
+            
             yield return new WaitForSeconds(time);
+
+            while(CheckIfOpen())
+            {
+                yield return new WaitForSeconds(3);
+            }
+
             panel.SetActive(true);
             timerText.text = "2";
             yield return new WaitForSeconds(1);
@@ -36,6 +46,18 @@ public class AdController : MonoBehaviour
             ShowAd();
         }
         
+    }
+
+    public bool CheckIfOpen()
+    {
+        foreach (var ch in requareToBeClosed)
+        {
+            if(ch.active)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     [ContextMenu("Show ad")]

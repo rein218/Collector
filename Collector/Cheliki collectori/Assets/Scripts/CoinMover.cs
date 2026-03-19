@@ -91,14 +91,17 @@ public class CoinMover : MonoBehaviour
 
         _animationController.StartRotation();
         _soundFlung.PlaySound();
+        tossSequence.Play();
+        StartCoroutine(PlayOnEnd(duration));
+    }
 
-        tossSequence.Play().OnComplete(() => 
-            {
-                _soundDrop.PlaySound();
-                _animationController.EndRotation();
-                _isTossed = false;
-                eventTossEnding?.Invoke();
-            });
+    IEnumerator PlayOnEnd(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _soundDrop.PlaySound();
+        _animationController.EndRotation();
+        _isTossed = false;
+        eventTossEnding?.Invoke();
     }
 
     public bool IsMoving()

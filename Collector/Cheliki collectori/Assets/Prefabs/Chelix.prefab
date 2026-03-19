@@ -326,6 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chelix
   _animationController: {fileID: 1266189356070568111}
   moveSpeed: 2
+  currMoveSpeed: 2
+  speedMod: 0
   distanceToTriggerGoal: 0.6
   spawnTime: 0.3
 --- !u!61 &3804275019156273499

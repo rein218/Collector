@@ -36,7 +36,6 @@ public class Coin : MonoBehaviour
     {
         baseCoinValue = (int)(newCoinValue/1);
         coinValueMod = Mathf.RoundToInt(newCoinValue%1/0.0005f*25);
-         Debug.Log((newCoinValue%1/0.001f*50)+ " " +coinValueMod);
         currCoinValue = baseCoinValue + (baseCoinValue*coinValueMod/100);
     }
 

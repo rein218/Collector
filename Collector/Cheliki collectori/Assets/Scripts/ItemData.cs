@@ -1,10 +1,12 @@
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Scripting;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
+[Preserve]
 public class ItemData : ScriptableObject
 {
     
@@ -76,7 +78,7 @@ public class ItemData : ScriptableObject
 
     protected ItemSorter sorter;
     protected ItemButton button;
-    public UnityEvent eventOnClick {get; protected private set; }
+    public UnityEvent eventOnClick = new UnityEvent();
 
     virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick)
     {
@@ -88,11 +90,35 @@ public class ItemData : ScriptableObject
 
     virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick, UnityAction newUnlockOnClick2)
     {
+        try{
         _specialCurrentValue = _specialDefaultValue;
 
         if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
         if (newUnlockOnClick != null) eventOnClick.AddListener(newUnlockOnClick);
         if (newUnlockOnClick2 != null) eventOnClick.AddListener(newUnlockOnClick2);
+        }
+        catch
+        {
+            Debug.LogError("init ");
+            Debug.Log(newActionOnClick + " " + newUnlockOnClick+ " " +newUnlockOnClick2);
+        }
+    }
+
+    virtual public void Init (UnityAction newActionOnClick, UnityAction newUnlockOnClick, UnityAction newUnlockOnClick2, UnityAction newUnlockOnClick3)
+    {
+        try{
+        _specialCurrentValue = _specialDefaultValue;
+
+        if (newActionOnClick != null) eventOnClick.AddListener(newActionOnClick);
+        if (newUnlockOnClick != null) eventOnClick.AddListener(newUnlockOnClick);
+        if (newUnlockOnClick2 != null) eventOnClick.AddListener(newUnlockOnClick2);
+        if (newUnlockOnClick2 != null) eventOnClick.AddListener(newUnlockOnClick3);
+        }
+        catch
+        {
+            Debug.LogError("init ");
+            Debug.Log(newActionOnClick + " " + newUnlockOnClick+ " " +newUnlockOnClick2);
+        }
     }
 
 

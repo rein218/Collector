@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class ItemButton : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class ItemButton : MonoBehaviour
 
     public void SetNewValues()
     {
+        if(itemData.ItemType==ItemName.UpgradeCoinMoveDurationBronze)
+        Debug.Log("Duratio unlock "+itemData.IsUnlocked);
+        if(itemData.ItemType==ItemName.NewCoinBronze)
+        Debug.Log("Coin unlock "+itemData.IsUnlocked);
         if (itemData == null) return;
 
         if (!itemData.IsUnlocked)
@@ -66,7 +71,10 @@ public class ItemButton : MonoBehaviour
         txtUpgradeCounter.text = $"{itemData.CurrentLevelOfUpgrade}/{itemData.MaxLevelOfUpgrade}";
         if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
         {
+            if(YG2.lang=="en")
             txtPrice.text = "sold";
+            if(YG2.lang=="ru")
+            txtPrice.text = "продано";
         }
         else
         {
@@ -132,7 +140,9 @@ public class ItemButton : MonoBehaviour
         if (itemData.ButtonClick())
         {
             SetNewValues();
-            _sound.PlaySound();
+            _sound.PlaySound(); 
+            if(ItemsMenu.instance!=null) 
+            ItemsMenu.instance.Save();
         }
         
     }
@@ -142,14 +152,15 @@ public class ItemButton : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(0.1f);
-            if (_currenciesWallet.InEnough(itemData.PriceCurrent))
-            {
-                txtPrice.color = _baseColor;
-            }
-            else if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
+            
+            if (itemData.CurrentLevelOfUpgrade >= itemData.MaxLevelOfUpgrade)
             {
                 txtPrice.color = _soldColor;
                 yield break;
+            }
+            else if (_currenciesWallet.InEnough(itemData.PriceCurrent))
+            {
+                txtPrice.color = _baseColor;
             }
             else
             {
