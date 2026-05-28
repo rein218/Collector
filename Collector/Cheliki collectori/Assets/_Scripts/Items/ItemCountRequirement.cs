@@ -8,7 +8,7 @@ public class ItemCountRequirement : UnlockRequirement
 
     public override bool IsMet(GameState state)
     {
-        var itemState = state.GetItemState(Item.id);
-        return itemState != null && itemState.UpgradeLevel >= RequiredCount;
+        var itemState = state.GetItemState(Item.itemType);
+        return itemState != null && itemState.upgradeLevel >= RequiredCount;
     }
 }

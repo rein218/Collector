@@ -1,15 +1,12 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
 
 public class ItemButton : MonoBehaviour
 {
     private Button button;
     [SerializeField] private ObjectSound _sound;
-
     [SerializeField] private TextMeshProUGUI txtItemName;
     [SerializeField] private TextMeshProUGUI txtItemDesc;
     [SerializeField] private Image image;
@@ -18,24 +15,20 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtUpgradeValue;
 
     public ItemConfig itemData { get; protected private set; }
-    [Header("костыль")]
-    [SerializeField] private CurrenciesWallet _currenciesWallet;
+
     [Header("price visual")]
     [SerializeField] private float _priceCheckerCooldown = 0.25f;
     [SerializeField] private Color _baseColor;
     [SerializeField] private Color _notEnoughColor;
     [SerializeField] private Color _soldColor;
-    [SerializeField] private TextLanguageSwitch _languageSwitchForName;
-    [SerializeField] private TextLanguageSwitch _languageSwitchForDescription;
+
     private void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonClick);
-        _currenciesWallet = FindAnyObjectByType<CurrenciesWallet>();
+        EventBus.OnStateChanged+=UpdateValues;
         _baseColor = txtPrice.color;
     }
-
-
 
     public void Init(ItemConfig newItemData)
     {
@@ -47,23 +40,44 @@ public class ItemButton : MonoBehaviour
     public void UpdateValues()
     {
         if (itemData == null) return;
-
-        /*
-        if (!itemData.IsUnlocked)
+        if (GameManager.instance.IsItemUnlocked(itemData.itemType))
         {
-            image.enabled = false;
-            txtItemName.text = "???";
-            txtItemDesc.text = "...";
-            txtPrice.text = "???";
+            UpdateData();
+            RecountPrice();
+            Debug.Log("Show " + itemData.itemType.ToString());
+        }
+        else
+        {
+            Debug.Log("Hide " + itemData.itemType.ToString());
+            Hide();
+        }
+    }
 
-            txtUpgradeCounter.text = "??/??";
-            return;
-        }*/
-
-        txtItemName.text = itemData.DisplayName;
+    private void UpdateData()
+    {
+        txtItemName.text = itemData.itemType.ToString();
         image.enabled = true;
-        //txtUpgradeCounter.text = $"{itemData.CurrentLevelOfUpgrade}/{itemData.MaxLevelOfUpgrade}";
-        txtPrice.text = MoneyToText((long)itemData.BaseCost) +"$";
+        txtItemName.text = "idk";
+        txtItemDesc.text = "idk";
+        txtPrice.text = "idk";
+
+        txtUpgradeCounter.text = "idk/idk";
+    }
+
+    private void Hide()
+    {
+        image.enabled = false;
+        txtItemName.text = "???";
+        txtItemDesc.text = "...";
+        txtPrice.text = "???";
+        txtUpgradeCounter.text = "??/??";
+    }
+
+    private void RecountPrice()
+    {
+        if (itemData == null) return;
+        var cost = GameManager.instance?.GetActualPrice(itemData.itemType);
+        txtPrice.text = MoneyToText((long)cost) +"$";
     }
 
     public string MoneyToText(long newCount)
@@ -113,22 +127,18 @@ public class ItemButton : MonoBehaviour
 
     public void ButtonClick()
     {
-        /*
         if (itemData == null)
         {
             Debug.LogError("itemData == null");
             return;
         }
 
-        if(itemData.IsUnlocked)
-        if (itemData.ButtonClick())
+        if(GameManager.instance.IsItemUnlocked(itemData.itemType))
         {
-            SetNewValues();
+
             _sound.PlaySound(); 
-            if(ItemsMenu.instance!=null) 
-            ItemsMenu.instance.Save();
         }
-        */
     }
+
 
 }

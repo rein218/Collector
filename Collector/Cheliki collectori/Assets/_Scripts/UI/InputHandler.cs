@@ -5,7 +5,6 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask layerMaskInteractable;
-    [SerializeField] CurrenciesWallet currenciesWallet;
     [SerializeField] private bool clickIsRequired = true;
 
     private void Start()

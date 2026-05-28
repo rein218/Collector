@@ -441,7 +441,6 @@ GameObject:
   - component: {fileID: 202770924}
   - component: {fileID: 202770926}
   - component: {fileID: 202770925}
-  - component: {fileID: 202770927}
   m_Layer: 5
   m_Name: ContentItems
   m_TagString: Untagged
@@ -508,21 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &202770927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202770923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04319883ee1453b459d25c0a1b87eb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSorter
-  itemsToSort: []
-  layoutGroup: {fileID: 0}
-  sortOnStart: 1
 --- !u!1 &323567102
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +583,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323567102}
   m_CullTransparentMesh: 1
+--- !u!1 &353756354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353756355}
+  - component: {fileID: 353756356}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353756355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353756354}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &353756356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353756354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f434f944b77b7242aafc5f90b9c3252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  _gameConfig: {fileID: 11400000, guid: 4a76801462ba86c40b3b1a8516683341, type: 2}
 --- !u!1 &432779327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,10 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1c2728f6240347194c9cefe06930dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsMenu
-  allItemConfigs:
-  - {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
-  - {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
-  - {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
+  _gameConfig: {fileID: 11400000, guid: 4a76801462ba86c40b3b1a8516683341, type: 2}
   allUpgradeConfigs: []
   purchaseButtonPrefab: {fileID: 1132074546010025786, guid: 9c008129005b597e3808cb9921d74241, type: 3}
   upgradeButtonPrefab: {fileID: 1132074546010025786, guid: 9c008129005b597e3808cb9921d74241, type: 3}
@@ -2763,7 +2789,6 @@ GameObject:
   - component: {fileID: 1110247109}
   - component: {fileID: 1110247111}
   - component: {fileID: 1110247110}
-  - component: {fileID: 1110247112}
   m_Layer: 5
   m_Name: ContentFeatures
   m_TagString: Untagged
@@ -2830,21 +2855,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &1110247112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110247108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04319883ee1453b459d25c0a1b87eb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSorter
-  itemsToSort: []
-  layoutGroup: {fileID: 0}
-  sortOnStart: 1
 --- !u!1 &1117407532
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,7 +4884,6 @@ GameObject:
   - component: {fileID: 2119258943}
   - component: {fileID: 2119258945}
   - component: {fileID: 2119258944}
-  - component: {fileID: 2119258946}
   m_Layer: 5
   m_Name: ContentUpgrades
   m_TagString: Untagged
@@ -4941,66 +4950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &2119258946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119258942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04319883ee1453b459d25c0a1b87eb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSorter
-  itemsToSort: []
-  layoutGroup: {fileID: 0}
-  sortOnStart: 1
---- !u!1 &2132814458
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2132814460}
-  - component: {fileID: 2132814459}
-  m_Layer: 0
-  m_Name: EntryPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2132814459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132814458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9beb4e850d2c0439b28747a081cf69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _itemsMenu: {fileID: 704656968}
---- !u!4 &2132814460
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132814458}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133612165
 GameObject:
   m_ObjectHideFlags: 0
@@ -5034,7 +4983,6 @@ MonoBehaviour:
   layerMaskInteractable:
     serializedVersion: 2
     m_Bits: 8
-  currenciesWallet: {fileID: 0}
   clickIsRequired: 1
 --- !u!4 &2133612167
 Transform:
@@ -5210,12 +5158,12 @@ SceneRoots:
   - {fileID: 887825847}
   - {fileID: 4706472016826324195}
   - {fileID: 1268847893}
-  - {fileID: 2132814460}
   - {fileID: 101092848}
   - {fileID: 474984728}
   - {fileID: 1121314361}
   - {fileID: 728840491}
   - {fileID: 1943848140}
   - {fileID: 1977362636}
+  - {fileID: 353756355}
   - {fileID: 868804184}
   - {fileID: 1230161649}

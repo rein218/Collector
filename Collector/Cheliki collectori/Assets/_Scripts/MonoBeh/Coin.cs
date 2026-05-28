@@ -54,9 +54,8 @@ public class Coin : MonoBehaviour
 
     public void GetSideOfCoin()
     {
-        CurrenciesWallet.Instance.AddDollars(currCoinValue);
+        GameManager.instance?.TryToAddDollars(currCoinValue);
         OnCoinFlipEnd?.Invoke(currCoinValue, transform.position);
-        // CurrenciesWallet.Instance.AddFail();
     }
 
     public void SetIsOcupied(bool newBool)

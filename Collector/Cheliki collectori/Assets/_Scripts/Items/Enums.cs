@@ -7,10 +7,9 @@ public enum ItemName
 {
     NewCoinBronze, NewCoinSilver, NewCoinGold,
     NewChelix,
+    FeatureMouseHover, FeatureUnlockCoinSilverForChelix, FeatureUnlockCoinGoldForChelix,
     UpgradeCoinBronzeValue, UpgradeCoinSilverValue, UpgradeCoinGoldValue,
     UpgradeCoinBronzeValueM, UpgradeCoinSilverValueM, UpgradeCoinGoldValueM,
     UpgradeChelixSpeed,
     UpgradeCoinMoveDurationBronze, UpgradeCoinMoveDurationSilver, UpgradeCoinMoveDurationGold,
-    FeatureMouseHover,
-    FeatureUnlockCoinSilverForChelix, FeatureUnlockCoinGoldForChelix
 }

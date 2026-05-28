@@ -1,14 +1,28 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
 public class ItemConfig : ScriptableObject
 {
-    public string  id;
+    [SerializeField, ReadOnly(true)] private string id; 
+    public string Id => id;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(id))
+        {
+            id = System.Guid.NewGuid().ToString().Substring(0, 8); 
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+    }
+#endif
+
     public ItemName itemType;
-    public string DisplayName;
+    public Sprite Icon;
     public float BaseCost;
-    public float CostMultiplier = 1.15f;
-    public List<UpgradeConfig> Upgrades;
+    public float CostAdd;
+    public float CostAddMultiplier = 1.05f;
     public List<UnlockRequirement> UnlockRequirements;
 }

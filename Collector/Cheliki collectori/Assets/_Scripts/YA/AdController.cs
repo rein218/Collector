@@ -8,7 +8,6 @@ public class AdController : MonoBehaviour
 {
     [SerializeField] private float _adDefaultCooldown;
     [SerializeField] private float _rewardedTime;
-    [SerializeField] private CurrenciesWallet _wallet;
     [SerializeField] private string rewardID;
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text timerText;
@@ -71,8 +70,6 @@ public class AdController : MonoBehaviour
     {
         YG2.RewardedAdvShow(rewardID, () =>
         {
-			if (true)
-				_wallet.MakeItDouble(_rewardedTime);
         });
     }
 }

@@ -12,7 +12,7 @@ public class LeaderBoardUnlocker : MonoBehaviour
     [SerializeField] private GameObject ledearBoardButton;
     public void Start()
     {
-        CurrenciesWallet.Instance.changeAllTimeDollarsCountEvent.AddListener(CheckStatus);
+        EventBus.changeAllTimeDollarsCountEvent+=CheckStatus;
         CheckStatus(YG2.saves.allTimeDollarsCount);
     }
 
@@ -22,7 +22,7 @@ public class LeaderBoardUnlocker : MonoBehaviour
         if(ammount<min) Hide();
         else if (summToReach<=ammount)
         {
-            CurrenciesWallet.Instance.changeAllTimeDollarsCountEvent.RemoveListener(CheckStatus);
+            EventBus.changeAllTimeDollarsCountEvent-=CheckStatus;
             Hide();
             UnlockLeaderBoard();
         }

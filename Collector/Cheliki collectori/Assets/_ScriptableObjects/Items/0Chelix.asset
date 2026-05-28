@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
   m_Name: 0Chelix
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  id: 2
+  id: 618327cf
   itemType: 3
-  DisplayName: 3213213
-  BaseCost: 0
-  CostMultiplier: 1.15
-  Upgrades: []
+  Icon: {fileID: 0}
+  BaseCost: 100
+  CostAdd: 100
+  CostAddMultiplier: 1.05
   UnlockRequirements: []

@@ -5,13 +5,22 @@ using System.Linq;
 [Serializable]
 public class GameState
 {
-    public float gold;
-    public List<ItemState> Items; 
-    public List<ItemState> Upgrades;
+    public long dollarsCount = 0;
+    public long allTimeDollarsCount = 0;
+    public long failsCount = 0;
+    public List<ItemState> AllItems; 
 
-    // Вспомогательные методы
-    public ItemState GetItemState(string itemId) => Items.FirstOrDefault(i => i.Id == itemId);
-    public ItemState GetUpgradeState(string upgradeId) => Upgrades.FirstOrDefault(u => u.Id == upgradeId);
+    public ItemState GetItemState(ItemName type)
+    {
+        var state = AllItems.FirstOrDefault(i => i.itemType == type);
+        if (state == null)
+        {
+            state = new ItemState { itemType = type, upgradeLevel = 0 };
+            AllItems.Add(state);
+        }
+        return state;
+    }
+
 
     // Проверка требований
     public bool CheckRequirements(List<UnlockRequirement> requirements) =>
@@ -20,7 +29,6 @@ public class GameState
 
     public GameState()
     {
-        Items = new List<ItemState>();
-        Upgrades = new List<ItemState>();
+        AllItems = new List<ItemState>();
     }
 }
