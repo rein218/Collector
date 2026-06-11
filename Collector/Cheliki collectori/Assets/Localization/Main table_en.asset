@@ -18,20 +18,192 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 74859581108224
-    m_Localized: Bying this shit {speed}% fastter
+  - m_Id: 834044283416576
+    m_Localized: Earn 50k$ to unlock the leaderboard
     m_Metadata:
       m_Items: []
-  - m_Id: 85563956621312
-    m_Localized: eng
+  - m_Id: 810755167186944
+    m_Localized: Bronze coin
     m_Metadata:
       m_Items: []
-  - m_Id: 756112328323072
-    m_Localized: eng
+  - m_Id: 812168639246336
+    m_Localized: '-'
     m_Metadata:
       m_Items: []
-  - m_Id: 756154992783360
-    m_Localized: eng
+  - m_Id: 812448386740224
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812788007923712
+    m_Localized: Bronse coin gives 1$ more
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812786665746432
+    m_Localized: Bronse surge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813981169971200
+    m_Localized: Bronse coin gives +25% more $
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813979420946432
+    m_Localized: Bronse alchemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816992281784320
+    m_Localized: Increase speed of bronse coin by 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816990738280448
+    m_Localized: Quick bronse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543116636160
+    m_Localized: Silver surge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543963885568
+    m_Localized: Silver coin gives 5$ more
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472180137984
+    m_Localized: Silver alchemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472779923456
+    m_Localized: Silver coin gives +25% more $
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822089510383616
+    m_Localized: Increase speed of silver coin by 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822088809934848
+    m_Localized: Quick silver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822565962346496
+    m_Localized: Gold surge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822567333883904
+    m_Localized: Gold coin gives 300$ more
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656842096640
+    m_Localized: Gold coin gives +25% more $
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656259088384
+    m_Localized: Gold alchemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824455894757376
+    m_Localized: Increase speed of gold coin by 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824451322966016
+    m_Localized: Quick gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810749077057536
+    m_Localized: Helper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810751119683584
+    m_Localized: Automatically flips coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812166932164608
+    m_Localized: Silver coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812447724040192
+    m_Localized: Gold coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824708719013888
+    m_Localized: Hard worker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824710019248128
+    m_Localized: Increases helper speed by 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824825589100544
+    m_Localized: Muscles (silver)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824826264383488
+    m_Localized: Helpers can now flip silver coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827497402691584
+    m_Localized: Muscles (gold)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827498417713152
+    m_Localized: Helpers can now flip gold coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829396508045312
+    m_Localized: Bronse coins can now be flipped just by hovering over them
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829395820179456
+    m_Localized: Quick flip (bronse)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398290624512
+    m_Localized: Quick flip (silver)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829391336468480
+    m_Localized: Quick flip (gold)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398970101760
+    m_Localized: Silver coins can now be flipped just by hovering over them
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829393777553408
+    m_Localized: Gold coins can now be flipped just by hovering over them
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833404266180608
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810867754889216
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 849971263664128
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819931566141440
+    m_Localized: Double flip chance (bronse)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819933034147840
+    m_Localized: Increases the chance of re-flip a bronze coin by 5%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851298853154816
+    m_Localized: Double flip chance (silver)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851418470510592
+    m_Localized: Increases the chance of re-flip a silver coin by 5%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851552990228480
+    m_Localized: Double flip chance (gold)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851555196432384
+    m_Localized: Increases the chance of re-flip a gold coin by 5%
     m_Metadata:
       m_Items: []
   references:

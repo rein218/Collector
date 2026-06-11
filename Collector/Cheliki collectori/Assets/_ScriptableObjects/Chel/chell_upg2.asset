@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: chell_upg2
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: helper_gold
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 1bdac59df790e2248b0c4728a6a49b4a, type: 3}
   shopTab: 2
-  itemType: 0
+  nameKey: helper_gold_name
+  descKey: helper_gold_desc
   MaxLevel: 1
-  BaseCost: 0
+  BaseCost: 15000
   CostAdd: 0
   CostAddMultiplier: 1.05
   Upgrades: []

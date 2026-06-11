@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<xliff xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" srcLang="ru" trgLang="ru" xmlns="urn:oasis:names:tc:xliff:document:2.0">
+  <file id="2a9b38ce3a486ea4c953e3a477aab4dd" original="Assets/Localization/Main table_ru.asset">
+    <group id="5e289eb7cac5d234da7f96ed6e615cad" name="Main table">
+      <unit id="74859581108224" name="testBullShit" xml:space="preserve">
+        <segment>
+          <source>Приобретая этот предмет ресурсы будут собираться на {speed}% быстрее</source>
+          <target>Приобретая этот предмет ресурсы будут собираться на {speed}% быстрее</target>
+        </segment>
+      </unit>
+      <unit id="85563956621312" name="dasdas" xml:space="preserve">
+        <segment>
+          <source>ru</source>
+          <target>ru</target>
+        </segment>
+      </unit>
+      <unit id="756112328323072" name="testname" xml:space="preserve">
+        <segment>
+          <source>ru</source>
+          <target>ru</target>
+        </segment>
+      </unit>
+      <unit id="756154992783360" name="testdesc" xml:space="preserve">
+        <segment>
+          <source>ru</source>
+          <target>ru</target>
+        </segment>
+      </unit>
+      <unit id="810654147375104" name="New Entry" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="810749077057536" name="New Entry 1" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="810751119683584" name="New Entry 2" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="810755167186944" name="coin_bronse_name" xml:space="preserve">
+        <segment>
+          <source>Бронзовая монета</source>
+          <target>Бронзовая монета</target>
+        </segment>
+      </unit>
+      <unit id="810867754889216" name="coin_bronse_desc" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="812166932164608" name="coin_silver_name" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="812168639246336" name="coin_silver_desc" xml:space="preserve">
+        <segment>
+          <source>Серебряная монета</source>
+          <target>Серебряная монета</target>
+        </segment>
+      </unit>
+      <unit id="812447724040192" name="coin_gold_name" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="812448386740224" name="coin_gold_desc" xml:space="preserve">
+        <segment>
+          <source>Золотая монета</source>
+          <target>Золотая монета</target>
+        </segment>
+      </unit>
+      <unit id="812786665746432" name="coin_bronse_upgAdd_name" xml:space="preserve">
+        <segment>
+          <source>Медный всплеск</source>
+          <target>Медный всплеск</target>
+        </segment>
+      </unit>
+      <unit id="812788007923712" name="coin_bronse_upgAdd_desc" xml:space="preserve">
+        <segment>
+          <source>Медная монета дает на 1$ больше</source>
+          <target>Медная монета дает на 1$ больше</target>
+        </segment>
+      </unit>
+      <unit id="813979420946432" name="New Entry 3" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+      <unit id="813981169971200" name="New Entry 4" xml:space="preserve">
+        <segment>
+          <source />
+        </segment>
+      </unit>
+    </group>
+  </file>
+</xliff>

@@ -51,6 +51,7 @@ public class ItemButton : MonoBehaviour
         localizedName.RefreshString();
         localizedDesc.RefreshString();
         UpdateValues();
+        CheckPrice(GameManager.Instance.GetMoneyCount());
     }
     
     void OnDisable()

@@ -15,11 +15,12 @@ MonoBehaviour:
   id: coin_bronse
   Icon: {fileID: 21300000, guid: c513e19b41f4d2b44880ae6c211e18b4, type: 3}
   shopTab: 0
-  itemType: 0
-  MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  nameKey: coin_bronse_name
+  descKey: coin_bronse_desc
+  MaxLevel: 30
+  BaseCost: 6
+  CostAdd: 8
+  CostAddMultiplier: 1.1
   Upgrades:
   - {fileID: 11400000, guid: c6ed25ea99e983545a717c99d6b0b0ae, type: 2}
   - {fileID: 11400000, guid: 6d28f2336da5d4a49a62c3323ac290b9, type: 2}

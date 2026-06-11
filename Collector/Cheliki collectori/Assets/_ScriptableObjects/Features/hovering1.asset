@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: hovering1
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: hovering_silver
-  Icon: {fileID: 0}
+  Icon: {fileID: -1077743041688218955, guid: f64dc8c616d419f47a3eef8194282b50, type: 3}
   shopTab: 2
+  nameKey: hovering_silver_name
+  descKey: hovering_silver_desc
   MaxLevel: 1
-  BaseCost: 0
+  BaseCost: 100000
   CostAdd: 0
   CostAddMultiplier: 1.05
   Upgrades: []

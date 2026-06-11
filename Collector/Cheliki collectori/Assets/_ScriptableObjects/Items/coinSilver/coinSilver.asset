@@ -15,11 +15,17 @@ MonoBehaviour:
   id: coin_silver
   Icon: {fileID: 21300000, guid: 07dc9cf346efe3b4585be525d123a889, type: 3}
   shopTab: 0
-  MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
-  Upgrades: []
+  nameKey: coin_silver_name
+  descKey: coin_silver_desc
+  MaxLevel: 30
+  BaseCost: 500
+  CostAdd: 260
+  CostAddMultiplier: 1.08
+  Upgrades:
+  - {fileID: 11400000, guid: d28de809298e2254d91e72194636e433, type: 2}
+  - {fileID: 11400000, guid: 623f47c9c8194904db95d0205fdd3a3f, type: 2}
+  - {fileID: 11400000, guid: a6f5d0d451dded24e97c9796959e5789, type: 2}
+  - {fileID: 11400000, guid: 5ee11f415391914468f8621a6a66fbb7, type: 2}
   UnlockRequirements: []
   BaseIncome: 1
   BaseTossDuration: 2

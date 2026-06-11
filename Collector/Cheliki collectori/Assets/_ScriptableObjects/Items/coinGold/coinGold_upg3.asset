@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
+  m_Name: coinGold_upg3
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
+  id: coin_gold_doubleFlipChance
+  Icon: {fileID: 8643678183963986838, guid: 8b816dfa438735d46a0dfd116bc4faa9, type: 3}
+  shopTab: 1
+  nameKey: coin_gold__doubleFlipChance_name
+  descKey: coin_gold__doubleFlipChance_desc
+  MaxLevel: 5
+  BaseCost: 10000
+  CostAdd: 10000
+  CostAddMultiplier: 2
+  Upgrades: []
+  UnlockRequirements: []
+  BaseIncome: 1
+  BaseTossDuration: 0
+  Add: 0
+  MultAdd: 0
+  MoveDurMinus: 0
+  DoubleFlipChance: 5
+  BaseMoveSpeed: 0
+  MoveAdd: 0

@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: coinSilver_upg2
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: coin_silver_upgDur
-  Icon: {fileID: 0}
-  itemType: 0
+  Icon: {fileID: 21300000, guid: bf7c925640392ac4a945e4cc2a502f6c, type: 3}
+  shopTab: 1
+  nameKey: coin_silver_upgDur_name
+  descKey: coin_silver_upgDur_desc
   MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  BaseCost: 6000
+  CostAdd: 5000
+  CostAddMultiplier: 1.1
   Upgrades: []
   UnlockRequirements: []
-  BaseIncome: 1
+  BaseIncome: 0
   BaseTossDuration: 0
   Add: 0
   MultAdd: 0
   MoveDurMinus: 0.1
+  DoubleFlipChance: 0
   BaseMoveSpeed: 0
   MoveAdd: 0

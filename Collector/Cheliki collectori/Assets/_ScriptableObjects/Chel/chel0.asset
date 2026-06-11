@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: chel0
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: chel
-  Icon: {fileID: 0}
+  Icon: {fileID: 7755950312919225012, guid: 557bb5af6d02a6d43be3997584388208, type: 3}
   shopTab: 0
-  itemType: 0
-  MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  nameKey: chel_name
+  descKey: chel_desc
+  MaxLevel: 30
+  BaseCost: 8
+  CostAdd: 25
+  CostAddMultiplier: 1.1
   Upgrades: []
   UnlockRequirements: []
   BaseIncome: 0

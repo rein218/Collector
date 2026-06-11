@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: chell_upg0
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: chel_upgSpeedAdd
-  Icon: {fileID: 0}
-  itemType: 0
+  Icon: {fileID: 21300000, guid: 4080efd131ffd0f49844f94a4921fddb, type: 3}
+  shopTab: 1
+  nameKey: chel_upgSpeedAdd_name
+  descKey: chel_upgSpeedAdd_desc
   MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  BaseCost: 100
+  CostAdd: 600
+  CostAddMultiplier: 1.1
   Upgrades: []
   UnlockRequirements: []
   BaseIncome: 0
@@ -26,5 +28,6 @@ MonoBehaviour:
   Add: 0
   MultAdd: 0
   MoveDurMinus: 0
+  DoubleFlipChance: 0
   BaseMoveSpeed: 0
   MoveAdd: 15

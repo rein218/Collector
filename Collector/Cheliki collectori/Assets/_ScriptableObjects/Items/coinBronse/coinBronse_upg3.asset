@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: coinBronse_upg3
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: coin_bronse_doubleFlipChance
-  Icon: {fileID: 0}
-  itemType: 0
+  Icon: {fileID: -5383283530579121938, guid: 6a0d2b6e69a97dd4d9e33aa589ae7110, type: 3}
+  shopTab: 1
+  nameKey: coin_bronse_doubleFlipChance_name
+  descKey: coin_bronse_doubleFlipChance_desc
   MaxLevel: 5
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  BaseCost: 200
+  CostAdd: 1000
+  CostAddMultiplier: 2.4
   Upgrades: []
   UnlockRequirements: []
   BaseIncome: 1

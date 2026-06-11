@@ -15,11 +15,17 @@ MonoBehaviour:
   id: coin_gold
   Icon: {fileID: 21300000, guid: 34bf40ff20df9e9469b9b44fea5e3208, type: 3}
   shopTab: 0
-  MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
-  Upgrades: []
+  nameKey: coin_gold_name
+  descKey: coin_gold_desc
+  MaxLevel: 30
+  BaseCost: 18000
+  CostAdd: 14000
+  CostAddMultiplier: 1.08
+  Upgrades:
+  - {fileID: 11400000, guid: d67b3f94199f886459eb92c4a34ce32a, type: 2}
+  - {fileID: 11400000, guid: 2836fb61ce2096640a5d5b948a3de826, type: 2}
+  - {fileID: 11400000, guid: c061aab0291fba348ae54a4b4a264cdb, type: 2}
+  - {fileID: 11400000, guid: 46e49c343ba5eb845b004433101c160e, type: 2}
   UnlockRequirements: []
   BaseIncome: 1
   BaseTossDuration: 2

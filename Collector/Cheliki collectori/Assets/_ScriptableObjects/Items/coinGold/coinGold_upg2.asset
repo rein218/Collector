@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: coinGold_upg2
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: coin_gold_upgDur
-  Icon: {fileID: 0}
-  itemType: 0
+  Icon: {fileID: 21300000, guid: 7c17c0d68ef38ef40b1835247a6f62ed, type: 3}
+  shopTab: 1
+  nameKey: coin_gold_upgDur_name
+  descKey: coin_gold_upgDur_desc
   MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  BaseCost: 10000
+  CostAdd: 8000
+  CostAddMultiplier: 1.1
   Upgrades: []
   UnlockRequirements: []
-  BaseIncome: 1
+  BaseIncome: 0
   BaseTossDuration: 0
   Add: 0
   MultAdd: 0
   MoveDurMinus: 0.1
+  DoubleFlipChance: 0
   BaseMoveSpeed: 0
   MoveAdd: 0

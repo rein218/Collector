@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: coinBronse_upg2
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
   id: coin_bronse_upgDur
-  Icon: {fileID: 0}
-  itemType: 0
+  Icon: {fileID: 21300000, guid: db93956c8bce40d499b9fb6eefa5186d, type: 3}
+  shopTab: 1
+  nameKey: coin_bronse_upgDur_name
+  descKey: coin_bronse_upgDur_desc
   MaxLevel: 10
-  BaseCost: 0
-  CostAdd: 0
-  CostAddMultiplier: 1.05
+  BaseCost: 600
+  CostAdd: 700
+  CostAddMultiplier: 1.1
   Upgrades: []
   UnlockRequirements: []
-  BaseIncome: 1
-  BaseMove: 0
+  BaseIncome: 0
+  BaseTossDuration: 0
   Add: 0
   MultAdd: 0
   MoveDurMinus: 0.1
-  BaseMoveDuration: 0
-  BaseMoveAdd: 0
+  DoubleFlipChance: 0
+  BaseMoveSpeed: 0
+  MoveAdd: 0

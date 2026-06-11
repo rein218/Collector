@@ -15,20 +15,192 @@ MonoBehaviour:
   m_TableCollectionName: Main table
   m_TableCollectionNameGuidString: 5e289eb7cac5d234da7f96ed6e615cad
   m_Entries:
-  - m_Id: 74859581108224
-    m_Key: testBullShit
+  - m_Id: 833404266180608
+    m_Key: settingsPanel_tittle
     m_Metadata:
       m_Items: []
-  - m_Id: 85563956621312
-    m_Key: dasdas
+  - m_Id: 810749077057536
+    m_Key: chel_name
     m_Metadata:
       m_Items: []
-  - m_Id: 756112328323072
-    m_Key: testname
+  - m_Id: 810751119683584
+    m_Key: chel_desc
     m_Metadata:
       m_Items: []
-  - m_Id: 756154992783360
-    m_Key: testdesc
+  - m_Id: 810755167186944
+    m_Key: coin_bronse_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810867754889216
+    m_Key: coin_bronse_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812166932164608
+    m_Key: coin_silver_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812168639246336
+    m_Key: coin_silver_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812447724040192
+    m_Key: coin_gold_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812448386740224
+    m_Key: coin_gold_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812786665746432
+    m_Key: coin_bronse_upgAdd_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812788007923712
+    m_Key: coin_bronse_upgAdd_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813979420946432
+    m_Key: coin_bronse_upgMult_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813981169971200
+    m_Key: coin_bronse_upgMult_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816990738280448
+    m_Key: coin_bronse_upgDur_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816992281784320
+    m_Key: coin_bronse_upgDur_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819931566141440
+    m_Key: coin_bronse_doubleFlipChance_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819933034147840
+    m_Key: coin_bronse_doubleFlipChance_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543116636160
+    m_Key: coin_silver_upgAdd_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543963885568
+    m_Key: coin_silver_upgAdd_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472180137984
+    m_Key: coin_silver_upgMult_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472779923456
+    m_Key: coin_silver_upgMult_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822088809934848
+    m_Key: coin_silver_upgDur_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822089510383616
+    m_Key: coin_silver_upgDur_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851298853154816
+    m_Key: coin_silver__doubleFlipChance_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851418470510592
+    m_Key: coin_silver__doubleFlipChance_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822565962346496
+    m_Key: coin_gold_upgAdd_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822567333883904
+    m_Key: coin_gold_upgAdd_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656259088384
+    m_Key: coin_gold_upgMult_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656842096640
+    m_Key: coin_gold_upgMult_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824451322966016
+    m_Key: coin_gold_upgDur_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824455894757376
+    m_Key: coin_gold_upgDur_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851552990228480
+    m_Key: coin_gold__doubleFlipChance_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851555196432384
+    m_Key: coin_gold__doubleFlipChance_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824708719013888
+    m_Key: chel_upgSpeedAdd_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824710019248128
+    m_Key: chel_upgSpeedAdd_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824825589100544
+    m_Key: helper_silver_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824826264383488
+    m_Key: helper_silver_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827497402691584
+    m_Key: helper_gold_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827498417713152
+    m_Key: helper_gold_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829395820179456
+    m_Key: hovering_bronse_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829396508045312
+    m_Key: hovering_bronse_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398290624512
+    m_Key: hovering_silver_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398970101760
+    m_Key: hovering_silver_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829391336468480
+    m_Key: hovering_gold_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829393777553408
+    m_Key: hovering_gold_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 834044283416576
+    m_Key: leaderboard_unlock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 849971263664128
+    m_Key: leaderboard_title
     m_Metadata:
       m_Items: []
   m_Metadata:

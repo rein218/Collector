@@ -106,6 +106,11 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public long GetMoneyCount()
+    {
+        return _gameState.dollarsCount;
+    }
+
     public int GetCurrLevel(string id)
     {
         var item = _gameState.GetItemState(id);
@@ -130,7 +135,7 @@ public class GameManager : MonoBehaviour
         var itemConfig = _gameConfig.GetItemConfig(id);
         float cost = 0;
         if(state.upgradeLevel == 0) cost = itemConfig.BaseCost;
-        else                        cost = itemConfig.BaseCost +(itemConfig.CostAdd * Mathf.Pow(itemConfig.CostAddMultiplier, state.upgradeLevel));
+        else                        cost = itemConfig.BaseCost +(itemConfig.CostAdd * Mathf.Pow(itemConfig.CostAddMultiplier, state.upgradeLevel-1));
         return cost;
     }
 
