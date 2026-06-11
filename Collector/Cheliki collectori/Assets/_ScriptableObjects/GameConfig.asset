@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
   allItems:
-  - {fileID: 11400000, guid: c6d14883b6432fb45b1c9efc781d2070, type: 2}
-  - {fileID: 11400000, guid: 8e43bd880987023458bd596c2ca545a7, type: 2}
-  - {fileID: 11400000, guid: 287cfa5d8779bc4459d292a3c53b5ee9, type: 2}
-  - {fileID: 11400000, guid: 9e9dea1304f02724699ea04065dd93d7, type: 2}
+  - {fileID: 11400000, guid: d5c371d1d17b6de489d65fe7b5f7f30b, type: 2}
+  - {fileID: 11400000, guid: c6ed25ea99e983545a717c99d6b0b0ae, type: 2}
+  - {fileID: 11400000, guid: 6d28f2336da5d4a49a62c3323ac290b9, type: 2}
+  - {fileID: 11400000, guid: ba77afb0351831d4d8d39e4b9adb44bc, type: 2}
+  - {fileID: 11400000, guid: 83693d79a8eff9e42ba20600b5f29674, type: 2}
+  - {fileID: 11400000, guid: 8e2ca427fc37d9a44966c9541f5ac9f3, type: 2}
+  - {fileID: 11400000, guid: d28de809298e2254d91e72194636e433, type: 2}
+  - {fileID: 11400000, guid: 623f47c9c8194904db95d0205fdd3a3f, type: 2}
+  - {fileID: 11400000, guid: a6f5d0d451dded24e97c9796959e5789, type: 2}
+  - {fileID: 11400000, guid: a97d2f12ab2dcad4a9fec9895c2f2002, type: 2}
+  - {fileID: 11400000, guid: d67b3f94199f886459eb92c4a34ce32a, type: 2}
+  - {fileID: 11400000, guid: 2836fb61ce2096640a5d5b948a3de826, type: 2}
+  - {fileID: 11400000, guid: c061aab0291fba348ae54a4b4a264cdb, type: 2}
+  - {fileID: 11400000, guid: 2aa8ee131bf6d3d448ea06d78f40ad05, type: 2}
+  - {fileID: 11400000, guid: 7d8ac2fa9347feb49b19d4ad6815f490, type: 2}
+  - {fileID: 11400000, guid: 5d1fce238e05fb7439a82d4f87fd73e3, type: 2}
+  - {fileID: 11400000, guid: 95fc7416ac4bd10418d01f978a19b190, type: 2}
+  - {fileID: 11400000, guid: 985347961d7025a4c97198a1a1bea1df, type: 2}
+  - {fileID: 11400000, guid: a0703cfa6b4c02644b2a971fa6930a31, type: 2}
+  - {fileID: 11400000, guid: 165a70afea5487542831b90df03ffdae, type: 2}

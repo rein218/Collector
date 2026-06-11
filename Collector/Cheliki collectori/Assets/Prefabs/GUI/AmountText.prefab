@@ -26,8 +26,8 @@ RectTransform:
   m_GameObject: {fileID: 2411581735506189012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1186590591972485851}
   - {fileID: 5850837170088118049}
@@ -54,7 +54,6 @@ MonoBehaviour:
   _dolarSign: {fileID: 8732434641667370753}
   _animDurration: 0.5
   _animHeight: 0.8
-  test: 1232
 --- !u!1 &6044538838291938460
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +232,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

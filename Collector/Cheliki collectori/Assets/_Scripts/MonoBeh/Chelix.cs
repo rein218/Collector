@@ -1,26 +1,26 @@
 using System;
 using System.Collections;
+using System.Data.Common;
 using UnityEngine;
 
-public class Chelix : MonoBehaviour
+public class Chelix : MonoBehaviour, ISpawnable
 {
     [Header("Links")]
     [SerializeField] private ChelixAnimationController _animationController;
     private Coin currentGoalCoin;
     [Header("Variables")]
-    [SerializeField] private float moveSpeed = 2;
-    [SerializeField] private float currMoveSpeed;
-    [SerializeField] private float speedMod;
     
     [SerializeField] private float distanceToTriggerGoal = 0.65f;
 
     [SerializeField] private float spawnTime = 0.3f;
     private float distanceToGoal;
+    public string Id {get; private set;}
 
     private ChelixState currentState = ChelixState.Spawning;
 
-    private void Awake()
+    public void Init(string id)
     {
+        Id = id;
         DoStateAction();
     }
 
@@ -53,14 +53,13 @@ public class Chelix : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnTime);
         currentState = ChelixState.Idle;
-        currMoveSpeed = moveSpeed;
-         DoStateAction();
+        DoStateAction();
     }
 
     private IEnumerator MoveToGoalIE()
     {
         distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
-
+        var speed = GameManager.Instance.GetCurrentHelperSpeed(Id);
 
         var sidetomove = (currentGoalCoin.transform.position - transform.position).normalized;
         if      (sidetomove.y<0 && sidetomove.x<0) _animationController.MoveTopLeft();
@@ -71,7 +70,7 @@ public class Chelix : MonoBehaviour
         while (distanceToGoal > distanceToTriggerGoal)
         {
             Vector3 direction = (currentGoalCoin.transform.position - transform.position).normalized;
-            transform.Translate(direction * currMoveSpeed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
 
             distanceToGoal = Vector3.Distance(transform.position, currentGoalCoin.transform.position);
 
@@ -79,10 +78,8 @@ public class Chelix : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(0.3f);
-
-
-        InteractWithGoal(currentGoalCoin);
+        yield return new WaitForSeconds(0.15f);
+        if(!currentGoalCoin.isOccupied) InteractWithGoal(currentGoalCoin);
 
         currentState = ChelixState.Idle;
         DoStateAction();
@@ -113,42 +110,33 @@ public class Chelix : MonoBehaviour
 
     public void SetNewGoal()
     {
-        /*
-        if (BusChelixCoins.Instance.CoinsAvailableListsIsEmpty())
+        var newCoin = CoinRegistry.Instance.GetRandomAvailableCoinForHelper();
+        if (newCoin  == null)
         {
-            currentState = ChelixState.Sleeping;
-            DoStateAction();
+            SleepIE();
             return;
         }
 
-        Coin newGoalCoin = BusChelixCoins.Instance.FindGoalForChelix();
 
-        if (newGoalCoin == currentGoalCoin || newGoalCoin == null)
-        {
-            currentGoalCoin = null;
-            SetNewGoal();
-        }
-        //newGoalCoin.SetIsOcupied(true);
-
-        currentGoalCoin = newGoalCoin;
+        currentGoalCoin = newCoin;
 
         if (currentGoalCoin != null)
             currentState = ChelixState.MovingToGoal;
         else
             currentState = ChelixState.Sleeping;
-            */
+            
     }
-
+    /*
     public void SetNewSpeed(float newSpeed)
     {
         speedMod =  speedMod + newSpeed;
         currMoveSpeed = moveSpeed+(moveSpeed*speedMod/100);
     }
-
+    */
     private void InteractWithGoal(Coin coinToInteract)
     {
         _animationController.DoFlip();
-        coinToInteract.Interact(true);
+        coinToInteract.Interact();
 
         currentState = ChelixState.Idle;
 

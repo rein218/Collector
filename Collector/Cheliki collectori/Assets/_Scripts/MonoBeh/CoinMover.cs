@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Events;
 using DG.Tweening;
+using System;
+using Random = UnityEngine.Random;
+
 
 public class CoinMover : MonoBehaviour
 {
@@ -16,17 +18,14 @@ public class CoinMover : MonoBehaviour
 
     [Header("Move Settings")]
     [SerializeField] private float _movementRadius = 2f;
-    [SerializeField] private float defaultMoveDuration = 2f;
-    private float _moveDuration;
     [Header("Toss Settings")]
     [SerializeField] private float _tossHeight = 2f;
     private bool _isTossed = false;
 
-    [SerializeField] private UnityEvent eventTossEnding;
+    public Action eventTossEnding;
 
     public void Start()
     {
-        _moveDuration = defaultMoveDuration;
         StartCoroutine(Spawn());
     }
     public IEnumerator Spawn()
@@ -42,21 +41,16 @@ public class CoinMover : MonoBehaviour
             elapsedTime+=Time.deltaTime;
         }
         _animationController.transform.localPosition = Vector3.zero;
+        eventTossEnding?.Invoke();
     }
 
-    public void StartMovement()
+    public void StartMovement(float moveDuration, float doubleFipChance)
     {
         if (_isTossed) return;
-        _isTossed = true;
-        var p =  FindNewPos();
-        MoveToPos(p, _moveDuration);
+        StartCoroutine(DoingFliping(moveDuration, doubleFipChance));
     }
 
-    public void SetMoveDuration(float newCoinMoveUpgrade)
-    {
-        _moveDuration =  _moveDuration - (_moveDuration*newCoinMoveUpgrade/100);
 
-    }
 
     private Vector3 FindNewPos()
     {
@@ -70,6 +64,33 @@ public class CoinMover : MonoBehaviour
 
         return destination;
     }
+
+
+    IEnumerator DoingFliping(float duration, float doubleFipChance)
+    {
+        _isTossed = true;
+        while (true)
+        {
+            var p =  FindNewPos();
+            MoveToPos(p, duration);
+            yield return new WaitForSeconds(duration);
+            _soundDrop.PlaySound();
+            _animationController.EndRotation();
+            eventTossEnding?.Invoke();
+
+            if(Random.Range(0,100) > doubleFipChance)
+            {
+                break;
+            }
+        }
+
+
+         _isTossed = false;
+    }
+
+
+
+
     private void MoveToPos(Vector3 targetPos, float duration)
     {
         Sequence tossSequence = DOTween.Sequence();
@@ -82,26 +103,11 @@ public class CoinMover : MonoBehaviour
         tossSequence.Append(_animationController.transform.DOLocalMoveY(0, duration*0.4f).SetEase(Ease.InExpo));
         tossSequence.Join(speedDown);
         tossSequence.Insert(0,transform.DOMove(targetPos, duration).SetEase(Ease.OutQuart));
-
-        
-        
-        
-
         
 
         _animationController.StartRotation();
         _soundFlung.PlaySound();
         tossSequence.Play();
-        StartCoroutine(PlayOnEnd(duration));
-    }
-
-    IEnumerator PlayOnEnd(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        _soundDrop.PlaySound();
-        _animationController.EndRotation();
-        _isTossed = false;
-        eventTossEnding?.Invoke();
     }
 
     public bool IsMoving()

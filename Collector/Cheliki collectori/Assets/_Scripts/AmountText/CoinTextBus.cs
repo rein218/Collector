@@ -4,13 +4,17 @@ using UnityEngine;
 public class CoinTextBus : MonoBehaviour
 {
     [SerializeField] private ObjectPool _objectPool;
-
-    private List<Coin> coins = new List<Coin>();
     
     
-    private void Awake()
+    private void OnEnable()
     {
-        FindAnyObjectByType<Spawner>().OnCoinSpawn+=RegisterCoin;
+       EventBus.OnCoinFlipEnd+=OnCoinFlipped;
+    }
+
+
+    void OnDisable()
+    {
+        EventBus.OnCoinFlipEnd-=OnCoinFlipped;
     }
 
     private void OnCoinFlipped(int value, Vector2 position)
@@ -31,33 +35,4 @@ public class CoinTextBus : MonoBehaviour
         _objectPool.Return(amountText.gameObject);
         amountText.OnComplete-=ReturnText;
     }
-
-
-    public void RegisterCoin(GameObject gameObject, Coin coin)
-    {
-        if (!coins.Contains(coin))
-        {
-            coins.Add(coin);
-            coin.OnCoinFlipEnd+=OnCoinFlipped;
-        }
-    }
-
-    private void UnregisterCoin(Coin coin)
-    {
-        if (coins.Contains(coin))
-        {
-            coins.Remove(coin);
-            coin.OnCoinFlipEnd-=OnCoinFlipped;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        foreach (Coin coin in coins)
-        {
-            coin.OnCoinFlipEnd-=OnCoinFlipped;
-        }
-    }
-
-
 }

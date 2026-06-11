@@ -10,22 +10,26 @@ public class GameState
     public long failsCount = 0;
     public List<ItemState> AllItems; 
 
-    public ItemState GetItemState(ItemName type)
+    public ItemState GetItemState(string id)
     {
-        var state = AllItems.FirstOrDefault(i => i.itemType == type);
+        var state = AllItems.FirstOrDefault(i => i.id == id);
         if (state == null)
         {
-            state = new ItemState { itemType = type, upgradeLevel = 0 };
+            state = new ItemState {id = id, upgradeLevel = 0};
             AllItems.Add(state);
         }
         return state;
     }
-
-
-    // Проверка требований
-    public bool CheckRequirements(List<UnlockRequirement> requirements) =>
-        requirements.All(r => r.IsMet(this));
-
+    public int GetItemLevel(string id)
+    {
+        var state = AllItems.FirstOrDefault(i => i.id == id);
+        if (state == null)
+        {
+            state = new ItemState {id = id, upgradeLevel = 0};
+            AllItems.Add(state);
+        }
+        return state.upgradeLevel;
+    }
 
     public GameState()
     {

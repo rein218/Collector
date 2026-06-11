@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TestUnlockReq : MonoBehaviour
 {
-    [SerializeField] private ItemConfig _itemConfig;
+    [SerializeField] private ShopItemConfig _itemConfig;
     [SerializeField] private UpgradeConfig _upgradeConfig;
 
     public void Start()

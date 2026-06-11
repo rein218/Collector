@@ -4,7 +4,6 @@ using System;
 public class SaveData
 {
     public bool isUnlocked;
-    public ItemName itemName;
     public Sprite sprite;
     public int priceDefault;
     public int priceCurrent;

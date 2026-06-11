@@ -1,67 +1,48 @@
 using System;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : MonoBehaviour, ISpawnable
 {
-    private ItemConfig itemData;
+    private CoinMover _coinMover;
+    public string id {get; private set;}
+    public bool isOccupied {get; private set;}
 
-    public bool isOccupied { get; private set; } = false;
-    public int baseCoinValue;
-    private int currCoinValue =0;
-    private int coinValueMod =0;
-
-    public delegate void FlipStart(int coinValue, Vector2 position);
-    public event FlipStart OnCoinFlipStart;
-
-    public delegate void FlipEnd(int coinValue, Vector2 position);
-    public event FlipEnd OnCoinFlipEnd;
-
-    private CoinMover coinMover;
-  
-
-    private void Awake()
+    public void Init(string id)
     {
-        coinMover = GetComponent<CoinMover>();
-        coinMover.SetMoveDuration(0);
+        this.id = id;
+
+        _coinMover = GetComponent<CoinMover>();
+        _coinMover.eventTossEnding+=GetSideOfCoin;
+        isOccupied = true;
     }
 
-    public void SetNewCoinValue(float newCoinValue)
+    void OnDisable()
     {
-        baseCoinValue = (int)(newCoinValue/1);
-        coinValueMod =  Mathf.RoundToInt(newCoinValue%1/0.0005f*25);
-        currCoinValue = baseCoinValue + (baseCoinValue*coinValueMod/100);
+        _coinMover.eventTossEnding-=GetSideOfCoin;
     }
 
-    public void SetNewCoinValueModifier(float newCoinValue)
+    public void Interact()
     {
-        baseCoinValue = (int)(newCoinValue/1);
-        coinValueMod = Mathf.RoundToInt(newCoinValue%1/0.0005f*25);
-        currCoinValue = baseCoinValue + (baseCoinValue*coinValueMod/100);
-    }
-
-    public void SetNewMoveDuration(float newCoinMoveUpgrade)
-    {
-        coinMover.SetMoveDuration(newCoinMoveUpgrade);
-    }
-
-    public void Interact(bool isInteractedByNPC = false)
-    {
-        if (coinMover.IsMoving()) return;
-        OnCoinFlipStart?.Invoke(currCoinValue, transform.position);
-        coinMover.StartMovement();
-        if (isInteractedByNPC) isOccupied = false;
+        if(id == null) return;
+        if (_coinMover.IsMoving()) return;
+        EventBus.OnCoinFlipStart?.Invoke(transform.position);
+        
+        _coinMover.StartMovement(GameManager.Instance.GetCurrentCoinMoveDuration(id), GameManager.Instance.GetCurrentDoubleFlipChance(id));
+        isOccupied = true;
     }
 
     public void GetSideOfCoin()
     {
-        GameManager.instance?.TryToAddDollars(currCoinValue);
-        OnCoinFlipEnd?.Invoke(currCoinValue, transform.position);
+        if(id == null) return;
+        var value = GameManager.Instance?.GetCurrentCoinValue(id);
+        GameManager.Instance?.TryToAddDollars((int)value);
+        EventBus.OnCoinFlipEnd?.Invoke((int)value, transform.position);
+        isOccupied = false;
     }
 
     public void SetIsOcupied(bool newBool)
     {
         isOccupied = newBool;
     }
-
-
 }
+

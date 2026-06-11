@@ -3,6 +3,6 @@ using System;
 [Serializable]
 public class ItemState
 {
-    public ItemName itemType;    
+    public string id;    
     public int upgradeLevel;   
 }

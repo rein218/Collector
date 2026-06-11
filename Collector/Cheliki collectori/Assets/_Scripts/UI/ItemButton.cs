@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
@@ -9,59 +11,104 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private ObjectSound _sound;
     [SerializeField] private TextMeshProUGUI txtItemName;
     [SerializeField] private TextMeshProUGUI txtItemDesc;
+
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI txtPrice;
     [SerializeField] private TextMeshProUGUI txtUpgradeCounter;
     [SerializeField] private TextMeshProUGUI txtUpgradeValue;
 
-    public ItemConfig itemData { get; protected private set; }
+    public ShopItemConfig itemData { get; protected private set; }
 
     [Header("price visual")]
     [SerializeField] private float _priceCheckerCooldown = 0.25f;
     [SerializeField] private Color _baseColor;
     [SerializeField] private Color _notEnoughColor;
     [SerializeField] private Color _soldColor;
+    private LocalizedString localizedName;
+    private LocalizedString localizedDesc;
+    private string currname;
+    private string currdesk;
 
-    private void Awake()
+    private bool _isVisible = true;
+
+    public void Init(ShopItemConfig newItemData)
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ButtonClick);
-        EventBus.OnStateChanged+=UpdateValues;
+        itemData = newItemData;
         _baseColor = txtPrice.color;
     }
 
-    public void Init(ItemConfig newItemData)
+
+    void OnEnable()
     {
-        itemData = newItemData;
+        EventBus.OnStateChanged+=UpdateValues;
+        EventBus.changeDollarsCountEvent+=CheckPrice;
+        localizedName = new LocalizedString("Main table", itemData.nameKey);
+        localizedDesc = new LocalizedString("Main table", itemData.descKey);
+        localizedName.StringChanged+=UpdateName;
+        localizedDesc.StringChanged+=UpdateDesc;
+        localizedName.RefreshString();
+        localizedDesc.RefreshString();
         UpdateValues();
     }
-
+    
+    void OnDisable()
+    {
+        EventBus.OnStateChanged-=UpdateValues;
+        EventBus.changeDollarsCountEvent-=CheckPrice;
+        localizedName.StringChanged-=UpdateName;
+        localizedDesc.StringChanged-=UpdateDesc;
+    } 
 
     public void UpdateValues()
     {
         if (itemData == null) return;
-        if (GameManager.instance.IsItemUnlocked(itemData.itemType))
+        if (GameManager.Instance.CheckRequirements(itemData.UnlockRequirements))
         {
-            UpdateData();
-            RecountPrice();
-            Debug.Log("Show " + itemData.itemType.ToString());
+            UpdateCover();
         }
         else
         {
-            Debug.Log("Hide " + itemData.itemType.ToString());
             Hide();
         }
     }
 
-    private void UpdateData()
+    private void UpdateName(string str)
     {
-        txtItemName.text = itemData.itemType.ToString();
-        image.enabled = true;
-        txtItemName.text = "idk";
-        txtItemDesc.text = "idk";
-        txtPrice.text = "idk";
+        currname = str;
+        UpdateValues();
+    }
 
-        txtUpgradeCounter.text = "idk/idk";
+    private void UpdateDesc(string str)
+    {
+        currdesk = str;
+        UpdateValues();
+    }
+
+
+    private void UpdateCover()
+    {
+        image.enabled = true;
+        image.sprite = itemData.Icon;
+        txtItemName.text = currname;
+        txtItemDesc.text = currdesk;
+
+
+        var currLevel = GameManager.Instance?.GetCurrLevel(itemData.Id);
+        if(currLevel>=itemData.MaxLevel)
+        {
+            txtUpgradeCounter.text = "max";
+            txtPrice.color = _soldColor;
+            txtPrice.text = "sold";
+        }
+        else
+        {
+            txtUpgradeCounter.text = GameManager.Instance?.GetCurrLevel(itemData.Id)+"/"+itemData.MaxLevel;
+            var cost = GameManager.Instance?.GetActualPrice(itemData.Id);
+            txtPrice.text = Utils.MoneyToText((long)cost) +"$";
+        }
+        _isVisible = true;
     }
 
     private void Hide()
@@ -71,74 +118,40 @@ public class ItemButton : MonoBehaviour
         txtItemDesc.text = "...";
         txtPrice.text = "???";
         txtUpgradeCounter.text = "??/??";
+        _isVisible = false;
     }
 
-    private void RecountPrice()
+    private void CheckPrice(long currMoney)
     {
-        if (itemData == null) return;
-        var cost = GameManager.instance?.GetActualPrice(itemData.itemType);
-        txtPrice.text = MoneyToText((long)cost) +"$";
-    }
+        if (IsVisible() == false) return;
 
-    public string MoneyToText(long newCount)
-    {
-        string final = ""+newCount;
-        if(newCount>=1000000000000)
+        var cost = GameManager.Instance?.GetActualPrice(itemData.Id);
+        if (currMoney >= cost)
         {
-            newCount/=1000000000;
-            final = newCount/1000+"";
-            if (newCount%1000/10>0)
-            {
-                final+="."+ newCount%1000/10;
-            }
-            final +="t";
+            txtPrice.color = _baseColor;
         }
-        else if(newCount>=1000000000)
+        else
         {
-            newCount/=1000000;
-            final = newCount/1000+"";
-            if (newCount%1000/10>0)
-            {
-                final+="."+ newCount%1000/10;
-            }
-            final +="b";
+            txtPrice.color = _notEnoughColor;
         }
-        else if(newCount>=1000000)
-        {
-            newCount/=1000;
-            final = newCount/1000+"";
-            if (newCount%1000/10>0)
-            {
-                final+="."+ newCount%1000/10;
-            }
-            final +="m";
-        }
-        else if(newCount>=1000)
-        {
-            final = newCount/1000+"";
-            if (newCount%1000/10>0)
-            {
-                final+="."+ newCount%1000/10;
-            }
-            final +="k";
-        }
-        return final;
     }
-
+    
     public void ButtonClick()
     {
-        if (itemData == null)
+        if (IsVisible() == false) return;
+        if (GameManager.Instance.LevelUpItem(itemData.Id))
         {
-            Debug.LogError("itemData == null");
-            return;
-        }
-
-        if(GameManager.instance.IsItemUnlocked(itemData.itemType))
-        {
-
             _sound.PlaySound(); 
         }
     }
 
+
+
+    public bool IsVisible()
+    {
+        if (itemData.Id == null) return false; 
+        if (_isVisible == false) return false; 
+        return true;
+    }
 
 }

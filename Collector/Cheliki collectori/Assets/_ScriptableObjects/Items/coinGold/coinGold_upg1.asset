@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c67b9524162d6bda90c77e7ae2bbf9, type: 3}
+  m_Name: coinGold_upg1
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemConfig
+  id: coin_gold_upgMult
+  Icon: {fileID: 0}
+  itemType: 0
+  MaxLevel: 10
+  BaseCost: 1
+  CostAdd: 1
+  CostAddMultiplier: 1.05
+  Upgrades: []
+  UnlockRequirements: []
+  BaseIncome: 1
+  BaseTossDuration: 0
+  Add: 0
+  MultAdd: 20
+  MoveDurMinus: 0
+  BaseMoveSpeed: 0
+  MoveAdd: 0

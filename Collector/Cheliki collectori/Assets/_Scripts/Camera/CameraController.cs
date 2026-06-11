@@ -37,12 +37,11 @@ public class CameraController : MonoBehaviour
         AdjustCamera();
     }
 
-    public void FirstStart(Coin coin)
+    public void FirstStart()
     {
         if(cam == null) return;
         _doNotAdjustCam = true;
-        this._coin = coin;
-        _coin.OnCoinFlipStart += ZoomOut;
+        EventBus.OnCoinFlipStart += ZoomOut;
         cam.transform.position = _firstPos;
         cam.orthographicSize= _firstZoom;
     }
@@ -59,9 +58,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    
-
-    public void ZoomOut(int coinValue, Vector2 position)
+    public void ZoomOut(Vector2 position)
     {
         
         _flipCount++;
@@ -74,7 +71,7 @@ public class CameraController : MonoBehaviour
         else if (_flipCount >= _steps)
         {
             currZoom = _endZoom;
-            _coin.OnCoinFlipStart -= ZoomOut;
+            EventBus.OnCoinFlipStart -= ZoomOut;
             AdjustCamera(true); 
         }  
         
@@ -82,9 +79,8 @@ public class CameraController : MonoBehaviour
         {
             StartCoroutine(MoveSlowly(_endPos, 0.6f));
         }
-        
-        
     }
+
     IEnumerator MoveSlowly(Vector3 currPos, float duration = 0.3f)
     {
         Vector3 startPos = cam.transform.position;
@@ -103,7 +99,6 @@ public class CameraController : MonoBehaviour
 
         cam.transform.position = currPos;
     }
-
 
     IEnumerator ZoomOutSlowly( float currZoom, float duration = 0.2f)
     {

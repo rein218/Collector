@@ -1,26 +1,50 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using YG;
+using Random = UnityEngine.Random;
+
 public class Spawner : MonoBehaviour
 {
-    
-    [SerializeField] GameObject coinBronzePrefab,
-                                coinSilverPrefab,
-                                coinGoldPrefab;
-    [SerializeField] GameObject chelixPrefab;
+    public List<SpawnerObj> prefabsObjs;
 
     [SerializeField] private float _spawnPosRadius = 3f;
-    public delegate void CoinWasSpanwed(GameObject gameObject, Coin script);
-    public event CoinWasSpanwed OnCoinSpawn;
-    private GameObject SpawnNewObj(GameObject prefab) 
+    void OnEnable() => EventBus.OnItemsChanged += OnItemChanged;
+    void OnDisable() => EventBus.OnItemsChanged -= OnItemChanged;
+
+    private void OnItemChanged(string itemId)
     {
-        return Instantiate(prefab, GeneratePositionInMiddle(), Quaternion.identity);
+        SpawnerObj obj = prefabsObjs.FirstOrDefault(i=> i.id == itemId);
+        if (obj != null)
+        {
+            int count = GameManager.Instance.GetItemLevel(itemId);
+            int diff = count - obj.count;
+            if(diff>0)
+            {
+                for (int i = 0; diff>i;i++)
+                {
+                    SpawnNewObj(obj.prefab, itemId);
+                    obj.count++;
+                }
+            }
+        }
+    }
+
+    private void SpawnNewObj(GameObject prefab, string itemId) 
+    {
+        var gm = Instantiate(prefab, GeneratePositionInMiddle(), Quaternion.identity);
+        gm.GetComponent<ISpawnable>().Init(itemId);
+        if(gm.TryGetComponent<Coin>(out var c))
+        {
+            CoinRegistry.Instance?.Register(c);
+        }
     }
 
     private Vector3 GenerateNewPosition()
     {
         float posX, posY;
-
-        //needs to find bounds instead 20
 
         posX = Random.Range(TableBorders.leftBorder, TableBorders.rightBorder); 
         posY = Random.Range(TableBorders.bottomBorder, TableBorders.topBorder);
@@ -42,22 +66,13 @@ public class Spawner : MonoBehaviour
 
         return destination;
     }
+}
 
-    public Coin SpawnStartCoin(ItemConfig itemData)
-    {
-        GameObject newCoinObj;
-        newCoinObj = Instantiate(coinBronzePrefab, TableBorders.position, Quaternion.identity);
-        Coin newCoin = newCoinObj.GetComponent<Coin>();
-        OnCoinSpawn?.Invoke(newCoinObj, newCoin);
 
-        return newCoin;
-        
-    }
-    public void SpawnNewCoin(ItemConfig itemData, bool yes = true)
-    {
-    }
-
-    public void SpawnNewChelix( bool yes = true)
-    {
-    }
+[Serializable]
+public class SpawnerObj
+{
+    public GameObject prefab;
+    public string id;
+    public int count;
 }

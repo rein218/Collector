@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems; // Add this namespace
 
@@ -5,12 +6,37 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask layerMaskInteractable;
-    [SerializeField] private bool clickIsRequired = true;
+
+    Dictionary<string,bool> features = new Dictionary<string,bool>
+    {
+        {"coin_bronse", false},
+        {"coin_silver", false},
+        {"coin_gold", false},
+    };
 
     private void Start()
     {
         if (cam == null) cam = Camera.main;
     }
+
+    private void OnEnable()
+    {
+        EventBus.OnStateChanged += UpdateCoinMask;
+    }
+
+    private void OnDisable()
+    {
+        EventBus.OnStateChanged -= UpdateCoinMask;
+    }
+
+    public void UpdateCoinMask()
+    {
+        if(GameManager.Instance.IsFeatureUnlocked("hovering_bronse")) features["coin_bronse"] = true;
+        if(GameManager.Instance.IsFeatureUnlocked("hovering_silver")) features["coin_silver"] = true;
+        if(GameManager.Instance.IsFeatureUnlocked("hovering_gold")) features["coin_gold"] = true;
+    }
+
+
 
     private void Update()
     {
@@ -20,12 +46,9 @@ public class InputHandler : MonoBehaviour
 
     private void HandleMouse()
     {
-        if (Input.GetMouseButtonDown(0) || !clickIsRequired)
+        if (!IsPointerOverUI(Input.mousePosition))
         {
-            if (!IsPointerOverUI(Input.mousePosition))
-            {
-                TouchProcessing(Input.mousePosition);
-            }
+            TouchProcessing(Input.mousePosition);
         }
     }
 
@@ -34,13 +57,9 @@ public class InputHandler : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began || !clickIsRequired)
+            if (!IsPointerOverUI(touch.position))
             {
-                if (!IsPointerOverUI(touch.position))
-                {
-                    TouchProcessing(touch.position);
-                }
+                TouchProcessing(touch.position);
             }
         }
     }
@@ -66,21 +85,17 @@ public class InputHandler : MonoBehaviour
         
         if (hit.collider != null)
         {
-            if (hit.collider.CompareTag("Coin"))
+            if (hit.collider.TryGetComponent<Coin>(out var coin))
             {
-                Coin clickedCoin = hit.collider.GetComponent<Coin>();
-                clickedCoin.Interact();
+                if(Input.GetMouseButtonDown(0) || features[coin.id] == true)
+                {
+                    coin.Interact();
+                }
             }
-            else if (hit.collider.CompareTag("Chelix"))
+            else if (hit.collider.TryGetComponent<Chelix>(out var chelix))
             {
-                Chelix clickedChelix = hit.collider.GetComponent<Chelix>();
-                clickedChelix.SetNewGoal();
+                chelix.SetNewGoal();
             }
         }
-    }
-
-    public void SetClickNotRequired()
-    {
-        clickIsRequired = false;
     }
 }
