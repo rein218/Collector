@@ -79,7 +79,7 @@ public class Chelix : MonoBehaviour, ISpawnable
 
 
         yield return new WaitForSeconds(0.15f);
-        if(!currentGoalCoin.isOccupied) InteractWithGoal(currentGoalCoin);
+        InteractWithGoal(currentGoalCoin);
 
         currentState = ChelixState.Idle;
         DoStateAction();
@@ -87,7 +87,7 @@ public class Chelix : MonoBehaviour, ISpawnable
 
     private IEnumerator IdleIE()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1f);
 
         SetNewGoal();
 

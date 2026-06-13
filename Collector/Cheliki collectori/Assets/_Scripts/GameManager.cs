@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 using YG;
 
@@ -8,7 +9,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private GameConfig _gameConfig;
+    [SerializeField] private ItemsMenu _itemsMenu;
+    [SerializeField] private Spawner _spawner;
+    [SerializeField] private CameraController _cameraController;
     private GameState _gameState;
+
+    
+
 
 
     //cache  
@@ -29,11 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
         Instance = this; 
-
-        _gameState = new GameState();
-        InitializeNewGameState();
     }
-
     private void InitializeNewGameState()
     {
         foreach (var itemConfig in _gameConfig.GetAllItems())
@@ -49,11 +52,19 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        _gameState = SaveManager.Instance.Load();
+        InitializeNewGameState();
+        _itemsMenu.Init();
+        _spawner.Init();
+        _cameraController.Init();
+
         EventBus.changeDollarsCountEvent?.Invoke(_gameState.dollarsCount);
         EventBus.changeAllTimeDollarsCountEvent?.Invoke(_gameState.allTimeDollarsCount);
         EventBus.changeFailsCountEvent?.Invoke(_gameState.failsCount);
         EventBus.OnStateChanged?.Invoke();
     }
+
+
 
     internal bool IsFeatureUnlocked(string id)
     {
@@ -70,6 +81,8 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetItemLevel(string itemId) => _gameState.GetItemLevel(itemId);
+    public long GetAllTimeMoney() => _gameState.allTimeDollarsCount;
+    public bool FirstStart() => _gameState.allTimeDollarsCount<10;
 
     public bool IsEnough(int dollarToSpend)
     {
@@ -247,7 +260,6 @@ public class GameManager : MonoBehaviour
             value = RecountDoubleFlipChance(id);
             _cachedCoinDoubleFlipChance[id] = value;
         }
-        Debug.Log(value);
         return value;
     }
     public float RecountDoubleFlipChance(string id)

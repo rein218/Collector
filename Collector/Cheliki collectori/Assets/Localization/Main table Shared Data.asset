@@ -15,10 +15,6 @@ MonoBehaviour:
   m_TableCollectionName: Main table
   m_TableCollectionNameGuidString: 5e289eb7cac5d234da7f96ed6e615cad
   m_Entries:
-  - m_Id: 833404266180608
-    m_Key: settingsPanel_tittle
-    m_Metadata:
-      m_Items: []
   - m_Id: 810749077057536
     m_Key: chel_name
     m_Metadata:
@@ -199,8 +195,28 @@ MonoBehaviour:
     m_Key: leaderboard_unlock
     m_Metadata:
       m_Items: []
-  - m_Id: 849971263664128
+  - m_Id: 862026884542464
     m_Key: leaderboard_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833404266180608
+    m_Key: settingsPanel_tittle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087572457385984
+    m_Key: settingsPanel_openResetProgressPanel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092908710981632
+    m_Key: ResetProgressPanel_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093090655694848
+    m_Key: "ResetProgressPanel_reset\u0421onfirmation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093142870585344
+    m_Key: ResetProgressPanel_resetDenial
     m_Metadata:
       m_Items: []
   m_Metadata:

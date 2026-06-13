@@ -16,6 +16,7 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(prefab, _canvas);
+            obj.transform.position = new Vector3(0,1000,0);
             obj.SetActive(false);
             pool.Enqueue(obj);
         }

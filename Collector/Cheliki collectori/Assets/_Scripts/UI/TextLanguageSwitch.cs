@@ -1,84 +1,47 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using TMPro;
 using UnityEngine;
 using YG;
+using UnityEngine.Localization.Settings;
 
 [Serializable]
 public class TextLanguageSwitch : MonoBehaviour
 {
-    public List<TextPoint> textsList;
-    public TMP_Text tMP_Text;
 
-    public void GetAsset(TMP_Text tMP_Text)
+    void Start()
     {
-        this.tMP_Text = tMP_Text;
-        SwitchLanguage(YG2.lang);
-    }
-
-    public void GetList(List<TextPoint> textsList)
-    {
-        this.textsList = textsList;
-        SwitchLanguage(YG2.lang);
-    }
-
-
-    void OnEnable()
-    {
-        YG2.onSwitchLang += SwitchLanguage;
-        SwitchLanguage(YG2.lang);
+        YG2.onSwitchLang += SetLanguageFromYG2;
+        SetLanguageFromYG2(YG2.lang);
     }
 
     void OnDisable()
     {
-        YG2.onSwitchLang -= SwitchLanguage;
+        YG2.onSwitchLang -= SetLanguageFromYG2;
     }
 
-    private void SwitchLanguage(string obj)
+    private void SetLanguageFromYG2(string yandexLanguageCode)
     {
-        if (tMP_Text==null) return;
-        if (textsList==null) return;
-        var type = StringToLanguage(obj);
-        var newText = textsList.FirstOrDefault(q => q.type == type);
-
-        if (newText == null|| newText.text == null) return;
-        tMP_Text.text = newText.text;
-        if(newText.fontSize!=0)
-        tMP_Text.fontSize = newText.fontSize;
-    }
-
-
-
-    public LanguageType StringToLanguage(string languageString)
-    {
-        if (string.IsNullOrEmpty(languageString))
-            return LanguageType.en; // Значение по умолчанию
-        
-        // Безопасная конвертация с игнорированием регистра
-        if (Enum.TryParse<LanguageType>(languageString, true, out LanguageType language))
+        var locale = GetLocaleByCode(yandexLanguageCode);
+        if (locale != null)
         {
-            return language;
+            // 4. Переключаем Unity Localization на эту Locale
+            LocalizationSettings.SelectedLocale = locale;
         }
-        
-        // Если строка не распознана - возвращаем значение по умолчанию
-        Debug.LogWarning($"Unknown language: '{languageString}', defaulting to 'en'");
-        return LanguageType.en;
+        else
+        {
+            Debug.LogWarning($"Локаль для кода '{yandexLanguageCode}' не найдена.");
+        }
+
     }
-}
-
-[Serializable]
-public class TextPoint
-{
-    public LanguageType type;
-    public string text;
-    public float fontSize;
-}
-
-
-
-public enum LanguageType
-{
-    ru,
-    en
+    private UnityEngine.Localization.Locale GetLocaleByCode(string code)
+    {
+        foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
+        {
+            // Сравниваем коды, приводя к нижнему регистру для надежности
+            if (string.Equals(locale.Identifier.Code, code, System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return locale;
+            }
+        }
+        return null;
+    }
 }

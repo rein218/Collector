@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,14 +21,20 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float minHeight = 10f;  // чтобы на узких экранах объекты не мельчали
     [SerializeField] private float maxHeight = 30f;  // чтобы на широких экранах не было слишком много пустоты
     private float _flipCount;
-    private Coin _coin;
-    private bool _doNotAdjustCam;
+    private bool _doNotAdjustCam = false;
 
     public void Awake()
     {
         if(instance == null) instance = this;
         if(cam == null) cam = FindAnyObjectByType<Camera>();
     }
+
+    public void Init()
+    {
+        if(GameManager.Instance.FirstStart()) FirstStart();
+        else NormalStart();
+    }
+
 
     public void NormalStart()
     {
@@ -46,10 +51,15 @@ public class CameraController : MonoBehaviour
         cam.orthographicSize= _firstZoom;
     }
 
+    void OnDisable()
+    {
+        EventBus.OnCoinFlipStart -= ZoomOut;
+    }
+
     void Update()
     {
         if(cam == null) return;
-        if(_doNotAdjustCam) return;
+        if (_doNotAdjustCam) return;
         if (Screen.width != prevWidth || Screen.height != prevHeight)
         {
             AdjustCamera();
@@ -139,8 +149,7 @@ public class CameraController : MonoBehaviour
         if (likeSlow)
         StartCoroutine(ZoomOutSlowly(size, 0.6f));
         else
-        cam.orthographicSize = size;
-         _doNotAdjustCam = false;    
-
+        cam.orthographicSize = size;  
+        _doNotAdjustCam = false;
     }
 }

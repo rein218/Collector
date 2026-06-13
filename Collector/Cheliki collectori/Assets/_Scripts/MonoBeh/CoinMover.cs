@@ -23,6 +23,7 @@ public class CoinMover : MonoBehaviour
     private bool _isTossed = false;
 
     public Action eventTossEnding;
+    public Action eventSpawned;
 
     public void Start()
     {
@@ -41,7 +42,7 @@ public class CoinMover : MonoBehaviour
             elapsedTime+=Time.deltaTime;
         }
         _animationController.transform.localPosition = Vector3.zero;
-        eventTossEnding?.Invoke();
+        eventSpawned?.Invoke();
     }
 
     public void StartMovement(float moveDuration, float doubleFipChance)

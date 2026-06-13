@@ -22,7 +22,8 @@ MonoBehaviour:
   CostAdd: 400
   CostAddMultiplier: 1.04
   Upgrades: []
-  UnlockRequirements: []
+  UnlockRequirements:
+  - {fileID: 11400000, guid: 26bf666e48fa9f5489ce2fe00aa44a9c, type: 2}
   BaseIncome: 0
   BaseTossDuration: 0
   Add: 5

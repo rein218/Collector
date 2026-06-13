@@ -14,6 +14,26 @@ public class Spawner : MonoBehaviour
     void OnEnable() => EventBus.OnItemsChanged += OnItemChanged;
     void OnDisable() => EventBus.OnItemsChanged -= OnItemChanged;
 
+    public void Init()
+    {
+        foreach (var pref in prefabsObjs)
+        {
+            OnItemChanged(pref.id);
+        }
+        SpawnFirstCoing(); 
+    }
+
+    private void SpawnFirstCoing()
+    {
+        if(prefabsObjs.Count<1) return;
+        var gm = Instantiate(prefabsObjs[0].prefab, TableBorders.position, Quaternion.identity);
+        gm.GetComponent<ISpawnable>().Init(prefabsObjs[0].id);
+        if(gm.TryGetComponent<Coin>(out var c))
+        {
+            CoinRegistry.Instance?.Register(c);
+        }
+    }
+
     private void OnItemChanged(string itemId)
     {
         SpawnerObj obj = prefabsObjs.FirstOrDefault(i=> i.id == itemId);
@@ -31,7 +51,7 @@ public class Spawner : MonoBehaviour
             }
         }
     }
-
+    
     private void SpawnNewObj(GameObject prefab, string itemId) 
     {
         var gm = Instantiate(prefab, GeneratePositionInMiddle(), Quaternion.identity);

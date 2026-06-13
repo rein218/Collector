@@ -28,7 +28,7 @@ public class ItemsMenu : MonoBehaviour
 
 
 
-    public void Start() 
+    public void Init() 
     {
         itemsRect.SetActive(false);
         upgradesRect.SetActive(false);
@@ -37,10 +37,6 @@ public class ItemsMenu : MonoBehaviour
         itemsRect.SetActive(true);
     }
     
-
-    void OnEnable() => EventBus.OnStateChanged += Sort;
-    void OnDisable() => EventBus.OnStateChanged -= Sort;
-
     private void CreateButtons()
     {
         foreach (var itemConfig in _gameConfig.allItems)
@@ -65,7 +61,7 @@ public class ItemsMenu : MonoBehaviour
                     break;
             }
         }
-        Sort();
+        SortAll();
     }
 
     private ItemButton CreateItemButton(ShopItemConfig itemConfig, Transform container)
@@ -76,11 +72,18 @@ public class ItemsMenu : MonoBehaviour
         return btn;
     }
 
-    public void Sort()
+    public void SortAll()
     {
         SortList(orderedItems, items, itemsContainer);
         SortList(orderedUpgrades, upgrades, upgradesContainer);
         SortList(orderedFeatures, features, featuresContainer);
+    }
+
+    public void Sort(int num)
+    {
+        if(num == 0) SortList(orderedItems, items, itemsContainer);
+        else if(num == 1)SortList(orderedUpgrades, upgrades, upgradesContainer);
+        else SortList(orderedFeatures, features, featuresContainer);
     }
 
     private void SortList(List<ShopItemConfig> orderedConfigs, Dictionary<ShopItemConfig, ItemButton> dict, Transform container)

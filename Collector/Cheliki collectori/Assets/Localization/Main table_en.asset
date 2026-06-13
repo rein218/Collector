@@ -178,10 +178,6 @@ MonoBehaviour:
     m_Localized: '-'
     m_Metadata:
       m_Items: []
-  - m_Id: 849971263664128
-    m_Localized: Leaderboard
-    m_Metadata:
-      m_Items: []
   - m_Id: 819931566141440
     m_Localized: Double flip chance (bronse)
     m_Metadata:
@@ -204,6 +200,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 851555196432384
     m_Localized: Increases the chance of re-flip a gold coin by 5%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 862026884542464
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087572457385984
+    m_Localized: Reset progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092908710981632
+    m_Localized: 'Are you sure you want to reset your progress? '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093090655694848
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093142870585344
+    m_Localized: No
     m_Metadata:
       m_Items: []
   references:

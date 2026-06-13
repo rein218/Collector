@@ -8,7 +8,14 @@ public class GameConfig : ScriptableObject
 {
     public List<ShopItemConfig> allItems;
     private Dictionary<string, ShopItemConfig> _allItems;
-
+    private void Awake()
+    {
+        _allItems = new Dictionary<string, ShopItemConfig>();
+        foreach (var item in allItems)
+        {
+            _allItems.Add(item.Id,item);
+        }
+    }
 
     //public ShopItemConfig GetItemConfig(ShopItemConfig config) => _allItems.FirstOrDefault(i => i.Value == config).Value;
     public ShopItemConfig GetItemConfig(string id) => _allItems[id];

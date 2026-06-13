@@ -38,7 +38,7 @@ public class CoinRegistry : MonoBehaviour
 
         foreach (var coin in _allCoins)
         {
-            if (coin.isOccupied) continue;
+            if (!coin.isOccupied) continue;
 
             if (IsCoinAllowed(coin, silverUnlocked, goldUnlocked))
             {
@@ -60,13 +60,11 @@ public class CoinRegistry : MonoBehaviour
         var candidates = new List<Coin>();
         foreach (var coin in _allCoins)
         {
-            if (coin.isOccupied) continue;
-            if (IsCoinAllowed(coin, silverUnlocked, goldUnlocked))
+            if (!coin.isOccupied && IsCoinAllowed(coin, silverUnlocked, goldUnlocked))
             {
                 candidates.Add(coin);
             }
         }
-
         if (candidates.Count == 0) return null;
         return candidates[Random.Range(0, candidates.Count)];
     }

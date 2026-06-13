@@ -10,10 +10,14 @@ public class LeaderBoardUnlocker : MonoBehaviour
 
     [SerializeField] private TMP_Text ammountText;
     [SerializeField] private GameObject ledearBoardButton;
-    public void Start()
+    public void OnEnable()
     {
         EventBus.changeAllTimeDollarsCountEvent+=CheckStatus;
-        CheckStatus(YG2.saves.allTimeDollarsCount);
+    }
+
+    void OnDisable()
+    {
+        EventBus.changeAllTimeDollarsCountEvent-=CheckStatus;
     }
 
     public void CheckStatus(long ammount)
