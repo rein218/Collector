@@ -1,25 +1,91 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 using YG;
 
 public class AdController : MonoBehaviour
 {
-    [SerializeField] private float _adDefaultCooldown;
-    [SerializeField] private float _rewardedTime;
-    [SerializeField] private string rewardID;
-    [SerializeField] private GameObject panel;
-    [SerializeField] private TMP_Text timerText;
-
-    [SerializeField] private List<GameObject> requareToBeClosed;
-
-    void Start()
+    public static AdController Instance;
+    private void Awake()
     {
-        StartCoroutine(adCycle());
+        if(Instance == null)
+        Instance = this; 
     }
 
-    public IEnumerator adCycle()
+    [Header("inter ad")]
+    [SerializeField] private bool skipNextAd = false;
+    [SerializeField] private float _adDefaultCooldown = 90;
+    [SerializeField] private GameObject interPanel;
+
+    [Header("rewarded ad")]
+
+    [SerializeField] private int baseRewardedPause = 30;
+    [SerializeField] private int timeForTick = 10;
+    [SerializeField] private int spawnChancePerTick = 7;
+    [SerializeField] private GameObject RewardedAd;
+    [Header("rewarded ad1")]
+    [SerializeField] private int timeForTick1 = 25;
+    [SerializeField] private int spawnChancePerTick1 = 15;
+     [SerializeField] private GameObject RewardedAd1;
+    [Header("dada")]
+    [SerializeField] private List<GameObject> requareToBeClosed;
+
+    public void Init()
+    {
+        if(GameManager.Instance.FirstStart())
+        {
+            skipNextAd = true;
+        }
+        else
+        {
+            baseRewardedPause = 0;
+        }
+        StartCoroutine(InterAdCycle());
+        StartCoroutine(RewardedAdCycle());
+        StartCoroutine(RewardedAdCycle1());
+        YG2.onCloseRewardedAdv += SkipNextInter;
+    }
+
+    public void StartAD(int num)
+    {
+        if(num == 0) RewardedAd.SetActive(true);
+        else RewardedAd1.SetActive(true);
+    }
+
+    public void SkipNextInter()
+    {
+        skipNextAd = true;  
+    }
+
+    void OnDisable() => StopAllCoroutines();
+
+    private IEnumerator RewardedAdCycle()
+    {
+        yield return new WaitForSeconds(baseRewardedPause);
+        while (true)
+        {   
+            yield return new WaitForSeconds(timeForTick);
+            if(spawnChancePerTick>= Random.Range(0f,100f))
+            {
+                EventBus.OnAdTrigger?.Invoke(0);
+            }
+        }
+    }
+    private IEnumerator RewardedAdCycle1()
+    {
+        yield return new WaitForSeconds(baseRewardedPause);
+        while (true)
+        {   
+            yield return new WaitForSeconds(timeForTick1);
+            if(spawnChancePerTick1>= Random.Range(0f,100f))
+            {
+                EventBus.OnAdTrigger?.Invoke(1);
+            }
+        }
+    }
+
+
+    public IEnumerator InterAdCycle()
     {
         float time = _adDefaultCooldown;
         if(YG2.interAdvInterval>1)
@@ -29,20 +95,19 @@ public class AdController : MonoBehaviour
         {
             
             yield return new WaitForSeconds(time);
-
-            while(CheckIfOpen())
+            while (CheckIfOpen())
             {
                 yield return new WaitForSeconds(3);
             }
-
-            panel.SetActive(true);
-            timerText.text = "2";
-            yield return new WaitForSeconds(1);
-            timerText.text = "1";
-            yield return new WaitForSeconds(1);
-            panel.SetActive(false);
-            timerText.text = "0";
-            ShowAd();
+            if(skipNextAd)
+            {
+                skipNextAd = false;
+                Debug.Log("adskipped");
+            }
+            else
+            {
+                interPanel.SetActive(true);
+            }
         }
         
     }
@@ -51,25 +116,11 @@ public class AdController : MonoBehaviour
     {
         foreach (var ch in requareToBeClosed)
         {
-            if(ch.active)
+            if(ch.activeSelf)
             {
                 return true;
             }
         }
         return false;
-    }
-
-    [ContextMenu("Show ad")]
-    public void ShowAd()
-    {
-        YG2.InterstitialAdvShow();
-    }
-
-    [ContextMenu("Show rewarded ad")]
-    public void RewardAdvShow()
-    {
-        YG2.RewardedAdvShow(rewardID, () =>
-        {
-        });
     }
 }

@@ -19,8 +19,8 @@ MonoBehaviour:
   descKey: coin_bronse_upgAdd_desc
   MaxLevel: 30
   BaseCost: 50
-  CostAdd: 40
-  CostAddMultiplier: 1.06
+  CostAdd: 50
+  CostAddMultiplier: 1.08
   Upgrades: []
   UnlockRequirements:
   - {fileID: 11400000, guid: 5f8f8dfe393b0184f858b9ff7ec9dc23, type: 2}

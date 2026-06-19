@@ -15,6 +15,36 @@ MonoBehaviour:
   m_GroupName: Localization-Locales
   m_GUID: d5e7c94c382e6ba4e8c649706b3c2659
   m_SerializeEntries:
+  - m_GUID: 0b5d15a7b305b5a4d9aeb4d0798ba109
+    m_Address: French (France) (fr-FR)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16532bec3066a4845a240b72ed496a95
+    m_Address: Italian (Italy) (it-IT)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e854d3251af58540820d30a609dab4e
+    m_Address: Portuguese (Brazil) (pt-BR)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 782e34a49eb7ba246bdeebe025c1cb5a
+    m_Address: Turkish (Turkey) (tr-TR)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79a8628a45240344289bd47589c648ed
+    m_Address: Polish (Poland) (pl-PL)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7bfb7dcaa03210f4cbce133198b57422
     m_Address: Russian (ru)
     m_ReadOnly: 1
@@ -23,6 +53,36 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 91940ad860bdbd641bcdd346ee1a303d
     m_Address: English (en)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bdbf4f4f1d616e4db011f86dd631f94
+    m_Address: German (Germany) (de-DE)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6b5d49675612a347995590a3f84d6c4
+    m_Address: Japanese (Japan) (ja-JP)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc470ca513d5d834ab1ffe687ea376a1
+    m_Address: Vietnamese (Vietnam) (vi-VN)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf9163c66be37a14c85500e58175f363
+    m_Address: Uzbek (uz)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df2ae1d0a288620449aceb11c542b7ca
+    m_Address: Spanish (Spain) (es-ES)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

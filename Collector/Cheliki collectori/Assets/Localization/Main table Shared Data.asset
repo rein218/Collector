@@ -18,11 +18,13 @@ MonoBehaviour:
   - m_Id: 810749077057536
     m_Key: chel_name
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 5201695287574004036
   - m_Id: 810751119683584
     m_Key: chel_desc
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 5201695287574004037
   - m_Id: 810755167186944
     m_Key: coin_bronse_name
     m_Metadata:
@@ -30,7 +32,8 @@ MonoBehaviour:
   - m_Id: 810867754889216
     m_Key: coin_bronse_desc
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 5201695287574004038
   - m_Id: 812166932164608
     m_Key: coin_silver_name
     m_Metadata:
@@ -46,7 +49,8 @@ MonoBehaviour:
   - m_Id: 812448386740224
     m_Key: coin_gold_desc
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 5201695287574004039
   - m_Id: 812786665746432
     m_Key: coin_bronse_upgAdd_name
     m_Metadata:
@@ -70,7 +74,8 @@ MonoBehaviour:
   - m_Id: 816992281784320
     m_Key: coin_bronse_upgDur_desc
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 5201695287574004040
   - m_Id: 819931566141440
     m_Key: coin_bronse_doubleFlipChance_name
     m_Metadata:
@@ -94,7 +99,8 @@ MonoBehaviour:
   - m_Id: 821472779923456
     m_Key: coin_silver_upgMult_desc
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 5201695287574004041
   - m_Id: 822088809934848
     m_Key: coin_silver_upgDur_name
     m_Metadata:
@@ -219,6 +225,26 @@ MonoBehaviour:
     m_Key: ResetProgressPanel_resetDenial
     m_Metadata:
       m_Items: []
+  - m_Id: 1532757679108096
+    m_Key: adPanel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629052452302848
+    m_Key: adRewardedPanel_watchAdToGetMoney
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629447098560512
+    m_Key: adRewardedPanel_toSkipAd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1958979324178432
+    m_Key: adRewardedPanel_toGetLowMult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1959301652246528
+    m_Key: Game/AdCanvas/RewardedPanel2/Panel/ResetProgres_btn (1)/LameReward_text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -230,3 +256,27 @@ MonoBehaviour:
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1781003725258
+    - rid: 5201695287574004036
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 12
+    - rid: 5201695287574004037
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 12321
+    - rid: 5201695287574004038
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 31212
+    - rid: 5201695287574004039
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 3123
+    - rid: 5201695287574004040
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 312321
+    - rid: 5201695287574004041
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 21312

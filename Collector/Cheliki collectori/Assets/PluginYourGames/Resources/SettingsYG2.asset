@@ -13,135 +13,19 @@ MonoBehaviour:
   m_Name: SettingsYG2
   m_EditorClassIdentifier: Assembly-CSharp::YG.InfoYG
   Authorization:
-    playerPhotoSize: 1
+    playerPhotoSize: 0
     authorized: 1
     playerName: Player current
     uniqueID: 000
     playerPhoto: demo image
     payingStatus: 0
-  AutoTranslateLangs:
-    domainAutoLocalization: com
-    languages:
-      ru: 1
-      en: 1
-      tr: 0
-      az: 0
-      be: 0
-      he: 0
-      hy: 0
-      ka: 0
-      et: 0
-      fr: 0
-      kk: 0
-      ky: 0
-      lt: 0
-      lv: 0
-      ro: 0
-      tg: 0
-      tk: 0
-      uk: 0
-      uz: 0
-      es: 0
-      pt: 0
-      ar: 0
-      id: 0
-      ja: 0
-      it: 0
-      de: 0
-      hi: 0
-    fonts:
-      defaultFont: []
-      ru: []
-      en: []
-      tr: []
-      az: []
-      be: []
-      he: []
-      hy: []
-      ka: []
-      et: []
-      fr: []
-      kk: []
-      ky: []
-      lt: []
-      lv: []
-      ro: []
-      tg: []
-      tk: []
-      uk: []
-      uz: []
-      es: []
-      pt: []
-      ar: []
-      id: []
-      ja: []
-      it: []
-      de: []
-      hi: []
-    fontsTMP:
-      defaultFont: []
-      ru: []
-      en: []
-      tr: []
-      az: []
-      be: []
-      he: []
-      hy: []
-      ka: []
-      et: []
-      fr: []
-      kk: []
-      ky: []
-      lt: []
-      lv: []
-      ro: []
-      tg: []
-      tk: []
-      uk: []
-      uz: []
-      es: []
-      pt: []
-      ar: []
-      id: []
-      ja: []
-      it: []
-      de: []
-      hi: []
-    fontsSizeCorrect:
-      ru: 
-      en: 
-      tr: 
-      az: 
-      be: 
-      he: 
-      hy: 
-      ka: 
-      et: 
-      fr: 
-      kk: 
-      ky: 
-      lt: 
-      lv: 
-      ro: 
-      tg: 
-      tk: 
-      uk: 
-      uz: 
-      es: 
-      pt: 
-      ar: 
-      id: 
-      ja: 
-      it: 
-      de: 
-      hi: 
   BannerAdv:
     simulationInEditor: 1
     size: 100
     color: {r: 0, g: 1, b: 0, a: 0.5}
   InterstitialAdv:
     showFirstAdv: 0
-    interAdvInterval: 120
+    interAdvInterval: 90
     postponeCallByFail: 0
     postponeCallTimer: 10
     labelAdvSimLabel: 0
@@ -323,12 +207,12 @@ MonoBehaviour:
     loadSceneIfSDKLate: 0
     loadSceneIndex: 0
     initDelaySimulation: 0
-    buildNumber: 44
+    buildNumber: 51
   Simulation:
     device: 0
-    language: ru
-    enableInterAdv: 1
-    advIntervalSimulation: 60
+    language: tr
+    enableInterAdv: 0
+    advIntervalSimulation: 90
     durationAdv: 0.5
     loadAdv: 0
     testFailAds: 0
@@ -367,9 +251,9 @@ MonoBehaviour:
     ownHost: 0
   platformToggles:
     showFirstAdv: 0
-    interAdvInterval: 0
+    interAdvInterval: 1
     postponeCallByFail: 0
-    setLanguageMod: 0
+    setLanguageMod: 1
     skipInterAdvAfterReward: 0
     saveLocal: 0
     saveCloud: 0

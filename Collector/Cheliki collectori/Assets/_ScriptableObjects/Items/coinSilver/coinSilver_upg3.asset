@@ -18,9 +18,9 @@ MonoBehaviour:
   nameKey: coin_silver__doubleFlipChance_name
   descKey: coin_silver__doubleFlipChance_desc
   MaxLevel: 5
-  BaseCost: 1000
-  CostAdd: 3000
-  CostAddMultiplier: 2.2
+  BaseCost: 1500
+  CostAdd: 4000
+  CostAddMultiplier: 2.6
   Upgrades: []
   UnlockRequirements:
   - {fileID: 11400000, guid: 3fd528671eede0148adbdd82261a1ec0, type: 2}

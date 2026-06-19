@@ -9,10 +9,19 @@ using Random = UnityEngine.Random;
 public class Spawner : MonoBehaviour
 {
     public List<SpawnerObj> prefabsObjs;
+    public List<GameObject> prefabsAds;
 
     [SerializeField] private float _spawnPosRadius = 3f;
-    void OnEnable() => EventBus.OnItemsChanged += OnItemChanged;
-    void OnDisable() => EventBus.OnItemsChanged -= OnItemChanged;
+    void OnEnable()
+    {
+        EventBus.OnItemsChanged += OnItemChanged;
+        EventBus.OnAdTrigger +=SpawnAdThing;
+    } 
+    void OnDisable()
+    {
+        EventBus.OnItemsChanged -= OnItemChanged;
+        EventBus.OnAdTrigger -=SpawnAdThing;
+    } 
 
     public void Init()
     {
@@ -33,6 +42,13 @@ public class Spawner : MonoBehaviour
             CoinRegistry.Instance?.Register(c);
         }
     }
+
+    private void SpawnAdThing(int n)
+    {
+        if(prefabsAds.Count()>=n)
+        Instantiate(prefabsAds[n], GenerateNewPosition(), Quaternion.identity);
+    }
+
 
     private void OnItemChanged(string itemId)
     {

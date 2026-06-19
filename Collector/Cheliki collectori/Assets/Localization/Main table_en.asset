@@ -16,10 +16,11 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 5e289eb7cac5d234da7f96ed6e615cad, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 5201695221303738877
   m_TableData:
   - m_Id: 834044283416576
-    m_Localized: Earn 50k$ to unlock the leaderboard
+    m_Localized: Earn 20k$ to unlock the leaderboard
     m_Metadata:
       m_Items: []
   - m_Id: 810755167186944
@@ -222,6 +223,33 @@ MonoBehaviour:
     m_Localized: No
     m_Metadata:
       m_Items: []
+  - m_Id: 1532757679108096
+    m_Localized: Ad in {0} seconds
+    m_Metadata:
+      m_Items:
+      - rid: 5201695221303738877
+  - m_Id: 1629052452302848
+    m_Localized: 'Watch video and get:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629447098560512
+    m_Localized: Or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1959301652246528
+    m_Localized: X2 profit within 10 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1958979324178432
+    m_Localized: X4 profit within 15 seconds
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5201695221303738877
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1532757679108096

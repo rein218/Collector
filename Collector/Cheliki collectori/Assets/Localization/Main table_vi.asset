@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main table_vi
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: vi
+  m_SharedData: {fileID: 11400000, guid: 5e289eb7cac5d234da7f96ed6e615cad, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5201695287574004033
+  m_TableData:
+  - m_Id: 1532757679108096
+    m_Localized: "Qu\u1EA3ng c\xE1o trong {0} gi\xE2y"
+    m_Metadata:
+      m_Items:
+      - rid: 5201695287574004033
+  - m_Id: 810749077057536
+    m_Localized: "Ng\u01B0\u1EDDi tr\u1EE3 gi\xFAp"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810751119683584
+    m_Localized: "T\u1EF1 \u0111\u1ED9ng l\u1EADt \u0111\u1ED3ng xu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810755167186944
+    m_Localized: "\u0110\u1ED3ng xu \u0111\u1ED3ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810867754889216
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812166932164608
+    m_Localized: "\u0110\u1ED3ng xu b\u1EA1c"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812168639246336
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812447724040192
+    m_Localized: "\u0110\u1ED3ng xu v\xE0ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812448386740224
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812786665746432
+    m_Localized: "\u0110\u1ED3ng t\u0103ng v\u1ECDt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812788007923712
+    m_Localized: "\u0110\u1ED3ng xu \u0111\u1ED3ng cho th\xEAm 1$"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813979420946432
+    m_Localized: "Gi\u1EA3 kim \u0111\u1ED3ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813981169971200
+    m_Localized: "\u0110\u1ED3ng xu \u0111\u1ED3ng cho th\xEAm +25% $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816990738280448
+    m_Localized: "\u0110\u1ED3ng nhanh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816992281784320
+    m_Localized: "T\u0103ng t\u1ED1c \u0111\u1ED9 \u0111\u1ED3ng xu \u0111\u1ED3ng
+      th\xEAm 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819931566141440
+    m_Localized: "C\u01A1 h\u1ED9i l\u1EADt k\xE9p (\u0111\u1ED3ng)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819933034147840
+    m_Localized: "T\u0103ng c\u01A1 h\u1ED9i l\u1EADt l\u1EA1i \u0111\u1ED3ng xu
+      \u0111\u1ED3ng th\xEAm 5%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543116636160
+    m_Localized: "B\u1EA1c t\u0103ng v\u1ECDt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543963885568
+    m_Localized: "\u0110\u1ED3ng xu b\u1EA1c cho th\xEAm 5$"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472180137984
+    m_Localized: "Gi\u1EA3 kim b\u1EA1c"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472779923456
+    m_Localized: "\u0110\u1ED3ng xu b\u1EA1c cho th\xEAm +25% $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822088809934848
+    m_Localized: "B\u1EA1c nhanh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822089510383616
+    m_Localized: "T\u0103ng t\u1ED1c \u0111\u1ED9 \u0111\u1ED3ng xu b\u1EA1c th\xEAm
+      10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851298853154816
+    m_Localized: "C\u01A1 h\u1ED9i l\u1EADt k\xE9p (b\u1EA1c)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851418470510592
+    m_Localized: "T\u0103ng c\u01A1 h\u1ED9i l\u1EADt l\u1EA1i \u0111\u1ED3ng xu
+      b\u1EA1c th\xEAm 5%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822565962346496
+    m_Localized: "V\xE0ng t\u0103ng v\u1ECDt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822567333883904
+    m_Localized: "\u0110\u1ED3ng xu v\xE0ng cho th\xEAm 300$"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656259088384
+    m_Localized: "Gi\u1EA3 kim v\xE0ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656842096640
+    m_Localized: "\u0110\u1ED3ng xu v\xE0ng cho th\xEAm +25% $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824451322966016
+    m_Localized: "V\xE0ng nhanh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824455894757376
+    m_Localized: "T\u0103ng t\u1ED1c \u0111\u1ED9 \u0111\u1ED3ng xu v\xE0ng th\xEAm
+      10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851552990228480
+    m_Localized: "C\u01A1 h\u1ED9i l\u1EADt k\xE9p (v\xE0ng)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851555196432384
+    m_Localized: "T\u0103ng c\u01A1 h\u1ED9i l\u1EADt l\u1EA1i \u0111\u1ED3ng xu
+      v\xE0ng th\xEAm 5%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824708719013888
+    m_Localized: "C\u1EA7n c\xF9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824710019248128
+    m_Localized: "T\u0103ng t\u1ED1c \u0111\u1ED9 ng\u01B0\u1EDDi tr\u1EE3 gi\xFAp
+      th\xEAm 15%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824825589100544
+    m_Localized: "C\u01A1 b\u1EAFp (b\u1EA1c)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824826264383488
+    m_Localized: "Ng\u01B0\u1EDDi tr\u1EE3 gi\xFAp gi\u1EDD c\xF3 th\u1EC3 l\u1EADt
+      \u0111\u1ED3ng xu b\u1EA1c"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827497402691584
+    m_Localized: "C\u01A1 b\u1EAFp (v\xE0ng)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827498417713152
+    m_Localized: "Ng\u01B0\u1EDDi tr\u1EE3 gi\xFAp gi\u1EDD c\xF3 th\u1EC3 l\u1EADt
+      \u0111\u1ED3ng xu v\xE0ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829395820179456
+    m_Localized: "L\u1EADt nhanh (\u0111\u1ED3ng)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829396508045312
+    m_Localized: "\u0110\u1ED3ng xu \u0111\u1ED3ng gi\u1EDD c\xF3 th\u1EC3 \u0111\u01B0\u1EE3c
+      l\u1EADt ch\u1EC9 b\u1EB1ng c\xE1ch di chu\u1ED9t qua"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398290624512
+    m_Localized: "L\u1EADt nhanh (b\u1EA1c)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398970101760
+    m_Localized: "\u0110\u1ED3ng xu b\u1EA1c gi\u1EDD c\xF3 th\u1EC3 \u0111\u01B0\u1EE3c
+      l\u1EADt ch\u1EC9 b\u1EB1ng c\xE1ch di chu\u1ED9t qua"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829391336468480
+    m_Localized: "L\u1EADt nhanh (v\xE0ng)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829393777553408
+    m_Localized: "\u0110\u1ED3ng xu v\xE0ng gi\u1EDD c\xF3 th\u1EC3 \u0111\u01B0\u1EE3c
+      l\u1EADt ch\u1EC9 b\u1EB1ng c\xE1ch di chu\u1ED9t qua"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 834044283416576
+    m_Localized: "Ki\u1EBFm 20k$ \u0111\u1EC3 m\u1EDF b\u1EA3ng x\u1EBFp h\u1EA1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 862026884542464
+    m_Localized: "B\u1EA3ng x\u1EBFp h\u1EA1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833404266180608
+    m_Localized: "C\xE0i \u0111\u1EB7t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087572457385984
+    m_Localized: "\u0110\u1EB7t l\u1EA1i ti\u1EBFn tr\xECnh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092908710981632
+    m_Localized: "B\u1EA1n c\xF3 ch\u1EAFc mu\u1ED1n \u0111\u1EB7t l\u1EA1i ti\u1EBFn
+      tr\xECnh kh\xF4ng?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093090655694848
+    m_Localized: "C\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093142870585344
+    m_Localized: "Kh\xF4ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629052452302848
+    m_Localized: "Xem video v\xE0 nh\u1EADn:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629447098560512
+    m_Localized: "Ho\u1EB7c"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1958979324178432
+    m_Localized: "L\u1EE3i nhu\u1EADn X4 trong v\xF2ng 15 gi\xE2y"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1959301652246528
+    m_Localized: "L\u1EE3i nhu\u1EADn X2 trong v\xF2ng 10 gi\xE2y"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5201695287574004033
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1532757679108096

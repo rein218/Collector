@@ -1,0 +1,259 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main table_fr
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 5e289eb7cac5d234da7f96ed6e615cad, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5201695287574004028
+  m_TableData:
+  - m_Id: 1532757679108096
+    m_Localized: "Publicit\xE9 dans {0} secondes"
+    m_Metadata:
+      m_Items:
+      - rid: 5201695287574004028
+  - m_Id: 810749077057536
+    m_Localized: Assistant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810751119683584
+    m_Localized: "Retourne automatiquement les pi\xE8ces"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810755167186944
+    m_Localized: "Pi\xE8ce de bronze"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810867754889216
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812166932164608
+    m_Localized: "Pi\xE8ce d'argent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812168639246336
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812447724040192
+    m_Localized: "Pi\xE8ce d'or"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812448386740224
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812786665746432
+    m_Localized: Afflux de bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812788007923712
+    m_Localized: "La pi\xE8ce de bronze donne 1$ de plus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813979420946432
+    m_Localized: Alchimie du bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813981169971200
+    m_Localized: "La pi\xE8ce de bronze donne +25% de $ en plus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816990738280448
+    m_Localized: Bronze rapide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816992281784320
+    m_Localized: "Augmente la vitesse de la pi\xE8ce de bronze de 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819931566141440
+    m_Localized: Chance de double lancer (bronze)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819933034147840
+    m_Localized: "Augmente de 5% la chance de relancer une pi\xE8ce de bronze"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543116636160
+    m_Localized: Afflux d'argent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543963885568
+    m_Localized: "La pi\xE8ce d'argent donne 5$ de plus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472180137984
+    m_Localized: Alchimie de l'argent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472779923456
+    m_Localized: "La pi\xE8ce d'argent donne +25% de $ en plus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822088809934848
+    m_Localized: Argent rapide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822089510383616
+    m_Localized: "Augmente la vitesse de la pi\xE8ce d'argent de 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851298853154816
+    m_Localized: Chance de double lancer (argent)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851418470510592
+    m_Localized: "Augmente de 5% la chance de relancer une pi\xE8ce d'argent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822565962346496
+    m_Localized: Afflux d'or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822567333883904
+    m_Localized: "La pi\xE8ce d'or donne 300$ de plus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656259088384
+    m_Localized: Alchimie de l'or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656842096640
+    m_Localized: "La pi\xE8ce d'or donne +25% de $ en plus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824451322966016
+    m_Localized: Or rapide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824455894757376
+    m_Localized: "Augmente la vitesse de la pi\xE8ce d'or de 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851552990228480
+    m_Localized: Chance de double lancer (or)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851555196432384
+    m_Localized: "Augmente de 5% la chance de relancer une pi\xE8ce d'or"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824708719013888
+    m_Localized: "Travailleur acharn\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824710019248128
+    m_Localized: Augmente la vitesse de l'assistant de 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824825589100544
+    m_Localized: Muscles (argent)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824826264383488
+    m_Localized: "Les assistants peuvent maintenant retourner les pi\xE8ces d'argent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827497402691584
+    m_Localized: Muscles (or)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827498417713152
+    m_Localized: "Les assistants peuvent maintenant retourner les pi\xE8ces d'or"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829395820179456
+    m_Localized: Lancer rapide (bronze)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829396508045312
+    m_Localized: "Les pi\xE8ces de bronze peuvent d\xE9sormais \xEAtre retourn\xE9es
+      simplement en passant le curseur dessus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398290624512
+    m_Localized: Lancer rapide (argent)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398970101760
+    m_Localized: "Les pi\xE8ces d'argent peuvent d\xE9sormais \xEAtre retourn\xE9es
+      simplement en passant le curseur dessus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829391336468480
+    m_Localized: Lancer rapide (or)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829393777553408
+    m_Localized: "Les pi\xE8ces d'or peuvent d\xE9sormais \xEAtre retourn\xE9es simplement
+      en passant le curseur dessus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 834044283416576
+    m_Localized: "Gagnez 20k$ pour d\xE9bloquer le classement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 862026884542464
+    m_Localized: Classement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833404266180608
+    m_Localized: "Param\xE8tres"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087572457385984
+    m_Localized: "R\xE9initialiser la progression"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092908710981632
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir r\xE9initialiser votre progression
+      ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093090655694848
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093142870585344
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629052452302848
+    m_Localized: "Regardez la vid\xE9o et obtenez :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629447098560512
+    m_Localized: Ou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1958979324178432
+    m_Localized: Profit x4 pendant 15 secondes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1959301652246528
+    m_Localized: Profit x2 pendant 10 secondes
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5201695287574004028
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1532757679108096

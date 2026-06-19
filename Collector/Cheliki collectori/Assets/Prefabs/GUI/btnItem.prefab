@@ -143,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Desc Desc Desc Desc Desc Desc Desc Desc Desc Desc Desc Desc Desc Desc '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a1e0afd62a504b2409cd6d83ed43f31a, type: 2}
-  m_sharedMaterial: {fileID: 6054879151806390144, guid: a1e0afd62a504b2409cd6d83ed43f31a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 771bc7f09c449484ab4cd202de47dcc9, type: 2}
+  m_sharedMaterial: {fileID: 779757390865146394, guid: 771bc7f09c449484ab4cd202de47dcc9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -360,7 +360,6 @@ MonoBehaviour:
   txtPrice: {fileID: 6503278717803787901}
   txtUpgradeCounter: {fileID: 9165618853641018776}
   txtUpgradeValue: {fileID: 1246504924328316829}
-  _priceCheckerCooldown: 0.5
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
   _notEnoughColor: {r: 0.59607846, g: 0.14901961, b: 0.14901961, a: 1}
   _soldColor: {r: 0.10980393, g: 0.10980393, b: 0.1764706, a: 1}
@@ -1023,8 +1022,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Item name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a1e0afd62a504b2409cd6d83ed43f31a, type: 2}
-  m_sharedMaterial: {fileID: 6054879151806390144, guid: a1e0afd62a504b2409cd6d83ed43f31a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 771bc7f09c449484ab4cd202de47dcc9, type: 2}
+  m_sharedMaterial: {fileID: 779757390865146394, guid: 771bc7f09c449484ab4cd202de47dcc9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

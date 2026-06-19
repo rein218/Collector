@@ -15,7 +15,6 @@ public class Coin : MonoBehaviour, ISpawnable
         _coinMover.eventTossEnding+=GetSideOfCoin;
         _coinMover.eventSpawned+=Spawned;
         isOccupied = true;
-        Debug.Log(isOccupied);
     }
 
     void OnDisable()
@@ -40,7 +39,6 @@ public class Coin : MonoBehaviour, ISpawnable
         GameManager.Instance?.TryToAddDollars((int)value);
         EventBus.OnCoinFlipEnd?.Invoke((int)value, transform.position);
         isOccupied = false;
-        Debug.Log(isOccupied);
     }
 
     public void Spawned()

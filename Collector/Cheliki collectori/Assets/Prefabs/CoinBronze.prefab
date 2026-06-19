@@ -34,6 +34,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3159342740565237143
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -79,16 +80,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 2757851488383748270, guid: f21fdce0dad88e345b3b9945f3cbf9e7, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8.0199995, y: 6.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1511301167355647920
 GameObject:
@@ -277,6 +278,7 @@ Animator:
   m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &5349000782723039824
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -321,7 +323,8 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 4542612334576437513, guid: c773f17d77a0e384ab0e3704e8000fa0, type: 3}
   m_Color: {r: 0.9056604, g: 0.66941524, b: 0.508366, a: 1}
   m_FlipX: 0
@@ -331,7 +334,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6985667036232071052
 MonoBehaviour:
@@ -386,6 +388,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4874634064287752017
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -431,6 +434,7 @@ SpriteRenderer:
   m_SortingLayerID: -854733751
   m_SortingLayer: 1
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.90588236, g: 0.67058825, b: 0.50980395, a: 1}
   m_FlipX: 0
@@ -440,7 +444,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2546564674925992837
 MonoBehaviour:
@@ -454,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce67d79a96ce87399080f271140e36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
-  baseCoinValue: 0
 --- !u!114 &8183806840059877523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,23 +475,7 @@ MonoBehaviour:
   _soundFlung: {fileID: 597757424382509606}
   _soundDrop: {fileID: 6643559242062221783}
   _movementRadius: 2
-  defaultMoveDuration: 1.8
   _tossHeight: 2
-  eventTossEnding:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2546564674925992837}
-        m_TargetAssemblyTypeName: Coin, Assembly-CSharp
-        m_MethodName: GetSideOfCoin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!58 &7589441050472958461
 CircleCollider2D:
   m_ObjectHideFlags: 0

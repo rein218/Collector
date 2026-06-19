@@ -9,11 +9,10 @@ public class EventBus : MonoBehaviour
     
     public static Action OnStateChanged;
     public static Action<string> OnItemsChanged;
-
+    public static Action<int> OnAdTrigger;
+    public static Action<int> OnMultiplyTrigger;
 
     public static Action<Vector2> OnCoinFlipStart;
     public static Action<int, Vector2> OnCoinFlipEnd;
-
-
     public static Action OnAvailableCoinsChanged;
 }

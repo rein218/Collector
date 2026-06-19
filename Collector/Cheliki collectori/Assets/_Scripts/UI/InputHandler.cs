@@ -96,6 +96,10 @@ public class InputHandler : MonoBehaviour
             {
                 chelix.SetNewGoal();
             }
+            else if(hit.collider.TryGetComponent<AdThing>(out var AdThing))
+            {
+                if(Input.GetMouseButtonDown(0)) AdThing.Interact();
+            }
         }
     }
 }

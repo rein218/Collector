@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -20,7 +18,6 @@ public class ItemButton : MonoBehaviour
     public ShopItemConfig itemData { get; protected private set; }
 
     [Header("price visual")]
-    [SerializeField] private float _priceCheckerCooldown = 0.25f;
     [SerializeField] private Color _baseColor;
     [SerializeField] private Color _notEnoughColor;
     [SerializeField] private Color _soldColor;

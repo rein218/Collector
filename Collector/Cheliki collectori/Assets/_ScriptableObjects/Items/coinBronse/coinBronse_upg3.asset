@@ -19,8 +19,8 @@ MonoBehaviour:
   descKey: coin_bronse_doubleFlipChance_desc
   MaxLevel: 5
   BaseCost: 200
-  CostAdd: 1000
-  CostAddMultiplier: 2.4
+  CostAdd: 1250
+  CostAddMultiplier: 2.6
   Upgrades: []
   UnlockRequirements:
   - {fileID: 11400000, guid: c50890e2f53757545add9769956d522c, type: 2}

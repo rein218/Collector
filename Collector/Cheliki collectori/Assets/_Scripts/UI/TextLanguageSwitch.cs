@@ -1,46 +1,64 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using YG;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using YG;
 
-[Serializable]
 public class TextLanguageSwitch : MonoBehaviour
 {
-
-    void Start()
+    private string _pendingLanguageCode;
+    private void Awake()
     {
-        YG2.onSwitchLang += SetLanguageFromYG2;
-        SetLanguageFromYG2(YG2.lang);
+        YG2.onSwitchLang += OnYandexLanguageChanged;
+        if (!string.IsNullOrEmpty(YG2.lang))
+            _pendingLanguageCode = YG2.lang;
+
+        StartCoroutine(InitLocalizationAndApply());
     }
 
-    void OnDisable()
+
+    private void OnDestroy()
     {
-        YG2.onSwitchLang -= SetLanguageFromYG2;
+        YG2.onSwitchLang -= OnYandexLanguageChanged;
     }
 
-    private void SetLanguageFromYG2(string yandexLanguageCode)
+    private void OnYandexLanguageChanged(string newLang)
     {
-        var locale = GetLocaleByCode(yandexLanguageCode);
+        _pendingLanguageCode = newLang;
+        // Если локализация уже готова, применяем сразу
+        if (LocalizationSettings.InitializationOperation.IsValid() && LocalizationSettings.InitializationOperation.IsDone)
+            ApplyLanguage(_pendingLanguageCode);
+        
+    }
+
+    private IEnumerator InitLocalizationAndApply()
+    {
+        var initOp = LocalizationSettings.InitializationOperation;
+        if (initOp.IsValid() && !initOp.IsDone)
+            yield return initOp;
+
+        if (!string.IsNullOrEmpty(_pendingLanguageCode))
+            ApplyLanguage(_pendingLanguageCode);
+    }
+
+    private void ApplyLanguage(string code)
+    {
+        var locale = GetLocaleByCode(code);
         if (locale != null)
-        {
-            // 4. Переключаем Unity Localization на эту Locale
             LocalizationSettings.SelectedLocale = locale;
-        }
-        else
-        {
-            Debug.LogWarning($"Локаль для кода '{yandexLanguageCode}' не найдена.");
-        }
-
     }
-    private UnityEngine.Localization.Locale GetLocaleByCode(string code)
+
+
+    private Locale GetLocaleByCode(string code)
     {
+        code = code.Trim();
         foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
         {
-            // Сравниваем коды, приводя к нижнему регистру для надежности
-            if (string.Equals(locale.Identifier.Code, code, System.StringComparison.InvariantCultureIgnoreCase))
-            {
+            if (string.Equals(locale.Identifier.Code, code, StringComparison.InvariantCultureIgnoreCase))
                 return locale;
-            }
         }
         return null;
     }

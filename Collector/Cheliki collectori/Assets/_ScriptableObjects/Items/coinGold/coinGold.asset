@@ -28,7 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46e49c343ba5eb845b004433101c160e, type: 2}
   UnlockRequirements:
   - {fileID: 11400000, guid: 3fd528671eede0148adbdd82261a1ec0, type: 2}
-  BaseIncome: 1
+  BaseIncome: 300
   BaseTossDuration: 2
   Add: 0
   MultAdd: 0

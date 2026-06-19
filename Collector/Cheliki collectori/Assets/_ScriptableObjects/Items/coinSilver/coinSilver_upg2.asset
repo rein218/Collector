@@ -20,7 +20,7 @@ MonoBehaviour:
   MaxLevel: 10
   BaseCost: 6000
   CostAdd: 5000
-  CostAddMultiplier: 1.1
+  CostAddMultiplier: 1.3
   Upgrades: []
   UnlockRequirements:
   - {fileID: 11400000, guid: 3fd528671eede0148adbdd82261a1ec0, type: 2}

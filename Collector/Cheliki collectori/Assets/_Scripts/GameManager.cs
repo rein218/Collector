@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using Unity.Mathematics;
 using UnityEngine;
 using YG;
 
@@ -12,17 +14,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemsMenu _itemsMenu;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private CameraController _cameraController;
+    [SerializeField] private AdController _adController;
     private GameState _gameState;
-
-    
-
-
 
     //cache  
     private Dictionary<string, int> _cachedCoinIncome = new();
     private Dictionary<string, float> _cachedCoinMoveDur = new();
     private Dictionary<string, float> _cachedCoinDoubleFlipChance = new();
+    private readonly Queue<(float time, int amount)> _incomeQueue = new Queue<(float time, int amount)>();
+    private long _cachedRecentIncome;
     private float _cachedChelSpeedMoveDur;
+
+    private float _mult = 1;
     public void ClearCache()
     {
         _cachedCoinIncome.Clear();
@@ -57,11 +60,26 @@ public class GameManager : MonoBehaviour
         _itemsMenu.Init();
         _spawner.Init();
         _cameraController.Init();
+        _adController.Init();
 
         EventBus.changeDollarsCountEvent?.Invoke(_gameState.dollarsCount);
         EventBus.changeAllTimeDollarsCountEvent?.Invoke(_gameState.allTimeDollarsCount);
         EventBus.changeFailsCountEvent?.Invoke(_gameState.failsCount);
         EventBus.OnStateChanged?.Invoke();
+    }
+
+
+    public void SetMult(int mult, float duration)
+    {
+        StartCoroutine(multThing());
+        IEnumerator multThing()
+        {
+            _mult = mult; 
+            EventBus.OnStateChanged?.Invoke();
+            yield return new WaitForSeconds(duration);
+            _mult = 1; 
+            EventBus.OnStateChanged?.Invoke();
+        }
     }
 
 
@@ -84,6 +102,23 @@ public class GameManager : MonoBehaviour
     public long GetAllTimeMoney() => _gameState.allTimeDollarsCount;
     public bool FirstStart() => _gameState.allTimeDollarsCount<10;
 
+    public long GetAverageIncome() 
+    {
+        PurgeOldIncome();
+        return _cachedRecentIncome;
+    }
+
+    private void PurgeOldIncome()
+    {
+        float currentTime = Time.realtimeSinceStartup;
+        while (_incomeQueue.Count > 0 && currentTime - _incomeQueue.Peek().time > 60f)
+        {
+            var removed = _incomeQueue.Dequeue();
+            _cachedRecentIncome -= removed.amount;
+        }
+    }
+
+
     public bool IsEnough(int dollarToSpend)
     {
         if (_gameState.dollarsCount >= dollarToSpend)
@@ -93,19 +128,29 @@ public class GameManager : MonoBehaviour
         return false;
     }
     
-    public bool TryToAddDollars(int dollarsToAdd)
+    public bool TryToAddDollars(int dollarsToAdd, bool countInQuevue = true)
     {
         if (dollarsToAdd <= 0)
         {
             return false;
         }
-
+        
         _gameState.dollarsCount += dollarsToAdd;
         _gameState.allTimeDollarsCount+= dollarsToAdd;
+
+        if(countInQuevue)
+        {
+            TrackIncome((int)(dollarsToAdd/_mult)); 
+        } 
 
         EventBus.changeDollarsCountEvent?.Invoke(_gameState.dollarsCount);
         EventBus.changeAllTimeDollarsCountEvent?.Invoke(_gameState.allTimeDollarsCount);
         return true;
+    }
+    private void TrackIncome(int amount)
+    {
+        _incomeQueue.Enqueue((Time.realtimeSinceStartup, amount));
+        _cachedRecentIncome += amount;
     }
 
     public bool TryToSpendDollars(int dollarToSpend)
@@ -148,7 +193,7 @@ public class GameManager : MonoBehaviour
         var itemConfig = _gameConfig.GetItemConfig(id);
         float cost = 0;
         if(state.upgradeLevel == 0) cost = itemConfig.BaseCost;
-        else                        cost = itemConfig.BaseCost +(itemConfig.CostAdd * Mathf.Pow(itemConfig.CostAddMultiplier, state.upgradeLevel-1));
+        else                        cost = itemConfig.BaseCost +(itemConfig.CostAdd * (Mathf.Pow(itemConfig.CostAddMultiplier, state.upgradeLevel-1)-1)/(itemConfig.CostAddMultiplier-1));
         return cost;
     }
 
@@ -188,7 +233,7 @@ public class GameManager : MonoBehaviour
             value = RecountConValue(id);
             _cachedCoinIncome[id] = value;
         }
-        return value;
+        return (int)(value*_mult);
     }
 
     private int RecountConValue(string id)

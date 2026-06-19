@@ -20,7 +20,7 @@ MonoBehaviour:
   MaxLevel: 30
   BaseCost: 500
   CostAdd: 260
-  CostAddMultiplier: 1.1
+  CostAddMultiplier: 1.2
   Upgrades:
   - {fileID: 11400000, guid: d28de809298e2254d91e72194636e433, type: 2}
   - {fileID: 11400000, guid: 623f47c9c8194904db95d0205fdd3a3f, type: 2}
@@ -28,7 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ee11f415391914468f8621a6a66fbb7, type: 2}
   UnlockRequirements:
   - {fileID: 11400000, guid: c50890e2f53757545add9769956d522c, type: 2}
-  BaseIncome: 1
+  BaseIncome: 20
   BaseTossDuration: 2
   Add: 0
   MultAdd: 0

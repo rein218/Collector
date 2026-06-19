@@ -1,0 +1,258 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main table_pt
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pt
+  m_SharedData: {fileID: 11400000, guid: 5e289eb7cac5d234da7f96ed6e615cad, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5201695287574004030
+  m_TableData:
+  - m_Id: 1532757679108096
+    m_Localized: "An\xFAncio em {0} segundos"
+    m_Metadata:
+      m_Items:
+      - rid: 5201695287574004030
+  - m_Id: 810749077057536
+    m_Localized: Ajudante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810751119683584
+    m_Localized: Vira moedas automaticamente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810755167186944
+    m_Localized: Moeda de bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810867754889216
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812166932164608
+    m_Localized: Moeda de prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812168639246336
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812447724040192
+    m_Localized: Moeda de ouro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812448386740224
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812786665746432
+    m_Localized: Surto de bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812788007923712
+    m_Localized: "Moeda de bronze d\xE1 1$ a mais"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813979420946432
+    m_Localized: Alquimia de bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813981169971200
+    m_Localized: "Moeda de bronze d\xE1 +25% mais $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816990738280448
+    m_Localized: "Bronze r\xE1pido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816992281784320
+    m_Localized: Aumenta a velocidade da moeda de bronze em 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819931566141440
+    m_Localized: Chance de giro duplo (bronze)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819933034147840
+    m_Localized: Aumenta em 5% a chance de virar novamente uma moeda de bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543116636160
+    m_Localized: Surto de prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543963885568
+    m_Localized: "Moeda de prata d\xE1 5$ a mais"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472180137984
+    m_Localized: Alquimia de prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472779923456
+    m_Localized: "Moeda de prata d\xE1 +25% mais $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822088809934848
+    m_Localized: "Prata r\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822089510383616
+    m_Localized: Aumenta a velocidade da moeda de prata em 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851298853154816
+    m_Localized: Chance de giro duplo (prata)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851418470510592
+    m_Localized: Aumenta em 5% a chance de virar novamente uma moeda de prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822565962346496
+    m_Localized: Surto de ouro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822567333883904
+    m_Localized: "Moeda de ouro d\xE1 300$ a mais"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656259088384
+    m_Localized: Alquimia de ouro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656842096640
+    m_Localized: "Moeda de ouro d\xE1 +25% mais $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824451322966016
+    m_Localized: "Ouro r\xE1pido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824455894757376
+    m_Localized: Aumenta a velocidade da moeda de ouro em 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851552990228480
+    m_Localized: Chance de giro duplo (ouro)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851555196432384
+    m_Localized: Aumenta em 5% a chance de virar novamente uma moeda de ouro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824708719013888
+    m_Localized: "Trabalhador esfor\xE7ado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824710019248128
+    m_Localized: Aumenta a velocidade do ajudante em 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824825589100544
+    m_Localized: "M\xFAsculos (prata)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824826264383488
+    m_Localized: Ajudantes agora podem virar moedas de prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827497402691584
+    m_Localized: "M\xFAsculos (ouro)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827498417713152
+    m_Localized: Ajudantes agora podem virar moedas de ouro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829395820179456
+    m_Localized: "Giro r\xE1pido (bronze)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829396508045312
+    m_Localized: Moedas de bronze agora podem ser viradas apenas passando o mouse
+      sobre elas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398290624512
+    m_Localized: "Giro r\xE1pido (prata)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398970101760
+    m_Localized: Moedas de prata agora podem ser viradas apenas passando o mouse
+      sobre elas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829391336468480
+    m_Localized: "Giro r\xE1pido (ouro)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829393777553408
+    m_Localized: Moedas de ouro agora podem ser viradas apenas passando o mouse sobre
+      elas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 834044283416576
+    m_Localized: Ganhe 20k$ para desbloquear o ranking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 862026884542464
+    m_Localized: Ranking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833404266180608
+    m_Localized: "Configura\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087572457385984
+    m_Localized: Redefinir progresso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092908710981632
+    m_Localized: Tem certeza que deseja redefinir seu progresso?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093090655694848
+    m_Localized: Sim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093142870585344
+    m_Localized: "N\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629052452302848
+    m_Localized: "Assista ao v\xEDdeo e ganhe:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629447098560512
+    m_Localized: Ou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1958979324178432
+    m_Localized: Lucro X4 por 15 segundos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1959301652246528
+    m_Localized: Lucro X2 por 10 segundos
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5201695287574004030
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1532757679108096

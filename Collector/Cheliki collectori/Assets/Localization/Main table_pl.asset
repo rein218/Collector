@@ -1,0 +1,261 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main table_pl
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 5e289eb7cac5d234da7f96ed6e615cad, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5201695287574004027
+  m_TableData:
+  - m_Id: 1532757679108096
+    m_Localized: Reklama za {0} sekund
+    m_Metadata:
+      m_Items:
+      - rid: 5201695287574004027
+  - m_Id: 810749077057536
+    m_Localized: Pomocnik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810751119683584
+    m_Localized: Automatycznie przewraca monety
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810755167186944
+    m_Localized: "Moneta z br\u0105zu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810867754889216
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812166932164608
+    m_Localized: Srebrna moneta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812168639246336
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812447724040192
+    m_Localized: "Z\u0142ota moneta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812448386740224
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812786665746432
+    m_Localized: "Br\u0105zowy przyp\u0142yw"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812788007923712
+    m_Localized: "Moneta z br\u0105zu daje o 1$ wi\u0119cej"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813979420946432
+    m_Localized: "Br\u0105zowa alchemia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 813981169971200
+    m_Localized: "Moneta z br\u0105zu daje o +25% wi\u0119cej $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816990738280448
+    m_Localized: "Szybki br\u0105z"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816992281784320
+    m_Localized: "Zwi\u0119ksza pr\u0119dko\u015B\u0107 monety z br\u0105zu o 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819931566141440
+    m_Localized: "Szansa na podw\xF3jny rzut (br\u0105z)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819933034147840
+    m_Localized: "Zwi\u0119ksza szans\u0119 na ponowny rzut monet\u0105 z br\u0105zu
+      o 5%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543116636160
+    m_Localized: "Srebrny przyp\u0142yw"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 820543963885568
+    m_Localized: "Srebrna moneta daje o 5$ wi\u0119cej"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472180137984
+    m_Localized: Srebrna alchemia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 821472779923456
+    m_Localized: "Srebrna moneta daje o +25% wi\u0119cej $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822088809934848
+    m_Localized: Szybkie srebro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822089510383616
+    m_Localized: "Zwi\u0119ksza pr\u0119dko\u015B\u0107 srebrnej monety o 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851298853154816
+    m_Localized: "Szansa na podw\xF3jny rzut (srebro)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851418470510592
+    m_Localized: "Zwi\u0119ksza szans\u0119 na ponowny rzut srebrn\u0105 monet\u0105
+      o 5%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822565962346496
+    m_Localized: "Z\u0142oty przyp\u0142yw"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822567333883904
+    m_Localized: "Z\u0142ota moneta daje o 300$ wi\u0119cej"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656259088384
+    m_Localized: "Z\u0142ota alchemia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 823656842096640
+    m_Localized: "Z\u0142ota moneta daje o +25% wi\u0119cej $"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824451322966016
+    m_Localized: "Szybkie z\u0142oto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824455894757376
+    m_Localized: "Zwi\u0119ksza pr\u0119dko\u015B\u0107 z\u0142otej monety o 10%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851552990228480
+    m_Localized: "Szansa na podw\xF3jny rzut (z\u0142oto)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 851555196432384
+    m_Localized: "Zwi\u0119ksza szans\u0119 na ponowny rzut z\u0142ot\u0105 monet\u0105
+      o 5%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824708719013888
+    m_Localized: "Pracu\u015B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824710019248128
+    m_Localized: "Zwi\u0119ksza pr\u0119dko\u015B\u0107 pomocnika o 15%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824825589100544
+    m_Localized: "Mi\u0119\u015Bnie (srebro)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 824826264383488
+    m_Localized: "Pomocnicy mog\u0105 teraz przewraca\u0107 srebrne monety"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827497402691584
+    m_Localized: "Mi\u0119\u015Bnie (z\u0142oto)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 827498417713152
+    m_Localized: "Pomocnicy mog\u0105 teraz przewraca\u0107 z\u0142ote monety"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829395820179456
+    m_Localized: "Szybki rzut (br\u0105z)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829396508045312
+    m_Localized: "Monetami z br\u0105zu mo\u017Cna teraz rzuca\u0107, po prostu naje\u017Cd\u017Caj\u0105c
+      na nie kursorem myszy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398290624512
+    m_Localized: Szybki rzut (srebro)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829398970101760
+    m_Localized: "Srebrnymi monetami mo\u017Cna teraz rzuca\u0107, po prostu naje\u017Cd\u017Caj\u0105c
+      na nie kursorem myszy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829391336468480
+    m_Localized: "Szybki rzut (z\u0142oto)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 829393777553408
+    m_Localized: "Z\u0142otymi monetami mo\u017Cna teraz rzuca\u0107, po prostu naje\u017Cd\u017Caj\u0105c
+      na nie kursorem myszy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 834044283416576
+    m_Localized: "Zdob\u0105d\u017A 20k$, aby odblokowa\u0107 tabel\u0119 wynik\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 862026884542464
+    m_Localized: "Tabela wynik\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833404266180608
+    m_Localized: Ustawienia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087572457385984
+    m_Localized: "Zresetuj post\u0119p"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092908710981632
+    m_Localized: "Jeste\u015B pewien, \u017Ce chcesz zresetowa\u0107 sw\xF3j post\u0119p?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093090655694848
+    m_Localized: Tak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1093142870585344
+    m_Localized: Nie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629052452302848
+    m_Localized: 'Obejrzyj film i otrzymaj:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1629447098560512
+    m_Localized: Lub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1958979324178432
+    m_Localized: Zysk X4 przez 15 sekund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1959301652246528
+    m_Localized: Zysk X2 przez 10 sekund
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5201695287574004027
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1532757679108096

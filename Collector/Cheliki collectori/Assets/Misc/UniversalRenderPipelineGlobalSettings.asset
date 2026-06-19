@@ -81,7 +81,6 @@ MonoBehaviour:
       - rid: 7752762179098771476
       - rid: 3114554777721110529
       - rid: 3114554777721110530
-      - rid: 6244212736770703361
       - rid: 6244212736770703363
   m_AssetVersion: 10
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
@@ -257,7 +256,7 @@ MonoBehaviour:
       type: {class: URPTerrainShaderSetting, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_Version: 0
-        m_IncludeTerrainShaders: 1
+        m_IncludeTerrainShaders: 0
     - rid: 6244212736770703363
       type: {class: URPReflectionProbeSettings, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
@@ -308,7 +307,7 @@ MonoBehaviour:
       type: {class: URPShaderStrippingSetting, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_Version: 0
-        m_StripUnusedPostProcessingVariants: 0
+        m_StripUnusedPostProcessingVariants: 1
         m_StripUnusedVariants: 1
         m_StripScreenCoordOverrideVariants: 1
     - rid: 7752762179098771461
